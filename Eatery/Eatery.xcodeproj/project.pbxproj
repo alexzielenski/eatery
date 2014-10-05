@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */; };
+		C007CAC719E1BEAC00E3BD46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C007CAC619E1BEAC00E3BD46 /* ViewController.swift */; };
+		C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C007CAC819E1BEAC00E3BD46 /* Main.storyboard */; };
+		C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C007CACB19E1BEAC00E3BD46 /* Images.xcassets */; };
+		C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C007CACD19E1BEAC00E3BD46 /* LaunchScreen.xib */; };
+		C007CADB19E1BEAC00E3BD46 /* EateryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C007CADA19E1BEAC00E3BD46 /* EateryTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C007CAD519E1BEAC00E3BD46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C007CAB719E1BEAC00E3BD46 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C007CABE19E1BEAC00E3BD46;
+			remoteInfo = Eatery;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C007CABF19E1BEAC00E3BD46 /* Eatery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eatery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C007CAC319E1BEAC00E3BD46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C007CAC619E1BEAC00E3BD46 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C007CAC919E1BEAC00E3BD46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C007CACB19E1BEAC00E3BD46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C007CACE19E1BEAC00E3BD46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C007CAD419E1BEAC00E3BD46 /* EateryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EateryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C007CAD919E1BEAC00E3BD46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C007CADA19E1BEAC00E3BD46 /* EateryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C007CABC19E1BEAC00E3BD46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C007CAD119E1BEAC00E3BD46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C007CAB619E1BEAC00E3BD46 = {
+			isa = PBXGroup;
+			children = (
+				C007CAC119E1BEAC00E3BD46 /* Eatery */,
+				C007CAD719E1BEAC00E3BD46 /* EateryTests */,
+				C007CAC019E1BEAC00E3BD46 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C007CAC019E1BEAC00E3BD46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C007CABF19E1BEAC00E3BD46 /* Eatery.app */,
+				C007CAD419E1BEAC00E3BD46 /* EateryTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C007CAC119E1BEAC00E3BD46 /* Eatery */ = {
+			isa = PBXGroup;
+			children = (
+				C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */,
+				C007CAC619E1BEAC00E3BD46 /* ViewController.swift */,
+				C007CAC819E1BEAC00E3BD46 /* Main.storyboard */,
+				C007CACB19E1BEAC00E3BD46 /* Images.xcassets */,
+				C007CACD19E1BEAC00E3BD46 /* LaunchScreen.xib */,
+				C007CAC219E1BEAC00E3BD46 /* Supporting Files */,
+			);
+			path = Eatery;
+			sourceTree = "<group>";
+		};
+		C007CAC219E1BEAC00E3BD46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C007CAC319E1BEAC00E3BD46 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C007CAD719E1BEAC00E3BD46 /* EateryTests */ = {
+			isa = PBXGroup;
+			children = (
+				C007CADA19E1BEAC00E3BD46 /* EateryTests.swift */,
+				C007CAD819E1BEAC00E3BD46 /* Supporting Files */,
+			);
+			path = EateryTests;
+			sourceTree = "<group>";
+		};
+		C007CAD819E1BEAC00E3BD46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C007CAD919E1BEAC00E3BD46 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C007CABE19E1BEAC00E3BD46 /* Eatery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C007CADE19E1BEAC00E3BD46 /* Build configuration list for PBXNativeTarget "Eatery" */;
+			buildPhases = (
+				C007CABB19E1BEAC00E3BD46 /* Sources */,
+				C007CABC19E1BEAC00E3BD46 /* Frameworks */,
+				C007CABD19E1BEAC00E3BD46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Eatery;
+			productName = Eatery;
+			productReference = C007CABF19E1BEAC00E3BD46 /* Eatery.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C007CAD319E1BEAC00E3BD46 /* EateryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C007CAE119E1BEAC00E3BD46 /* Build configuration list for PBXNativeTarget "EateryTests" */;
+			buildPhases = (
+				C007CAD019E1BEAC00E3BD46 /* Sources */,
+				C007CAD119E1BEAC00E3BD46 /* Frameworks */,
+				C007CAD219E1BEAC00E3BD46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C007CAD619E1BEAC00E3BD46 /* PBXTargetDependency */,
+			);
+			name = EateryTests;
+			productName = EateryTests;
+			productReference = C007CAD419E1BEAC00E3BD46 /* EateryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C007CAB719E1BEAC00E3BD46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = CUAppDev;
+				TargetAttributes = {
+					C007CABE19E1BEAC00E3BD46 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					C007CAD319E1BEAC00E3BD46 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = C007CABE19E1BEAC00E3BD46;
+					};
+				};
+			};
+			buildConfigurationList = C007CABA19E1BEAC00E3BD46 /* Build configuration list for PBXProject "Eatery" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C007CAB619E1BEAC00E3BD46;
+			productRefGroup = C007CAC019E1BEAC00E3BD46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C007CABE19E1BEAC00E3BD46 /* Eatery */,
+				C007CAD319E1BEAC00E3BD46 /* EateryTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C007CABD19E1BEAC00E3BD46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
+				C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */,
+				C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C007CAD219E1BEAC00E3BD46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C007CABB19E1BEAC00E3BD46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C007CAC719E1BEAC00E3BD46 /* ViewController.swift in Sources */,
+				C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C007CAD019E1BEAC00E3BD46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C007CADB19E1BEAC00E3BD46 /* EateryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C007CAD619E1BEAC00E3BD46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C007CABE19E1BEAC00E3BD46 /* Eatery */;
+			targetProxy = C007CAD519E1BEAC00E3BD46 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C007CAC819E1BEAC00E3BD46 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C007CAC919E1BEAC00E3BD46 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C007CACD19E1BEAC00E3BD46 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C007CACE19E1BEAC00E3BD46 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C007CADC19E1BEAC00E3BD46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C007CADD19E1BEAC00E3BD46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C007CADF19E1BEAC00E3BD46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Eatery/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C007CAE019E1BEAC00E3BD46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Eatery/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C007CAE219E1BEAC00E3BD46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EateryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eatery.app/Eatery";
+			};
+			name = Debug;
+		};
+		C007CAE319E1BEAC00E3BD46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EateryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eatery.app/Eatery";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C007CABA19E1BEAC00E3BD46 /* Build configuration list for PBXProject "Eatery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C007CADC19E1BEAC00E3BD46 /* Debug */,
+				C007CADD19E1BEAC00E3BD46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C007CADE19E1BEAC00E3BD46 /* Build configuration list for PBXNativeTarget "Eatery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C007CADF19E1BEAC00E3BD46 /* Debug */,
+				C007CAE019E1BEAC00E3BD46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C007CAE119E1BEAC00E3BD46 /* Build configuration list for PBXNativeTarget "EateryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C007CAE219E1BEAC00E3BD46 /* Debug */,
+				C007CAE319E1BEAC00E3BD46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C007CAB719E1BEAC00E3BD46 /* Project object */;
+}
