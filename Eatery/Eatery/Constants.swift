@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+// Mark: Load Plist
+let KEYSPATH = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")
+let KEYS = NSDictionary(contentsOfFile: KEYSPATH!)
+
+
+// MARK: Parse
+let PARSEDICT: Dictionary<String, String> = KEYS["Parse"] as Dictionary<String, String>
+let kParseApplicationID: String = PARSEDICT["applicationID"]!
+let kParseClientKey: String = PARSEDICT["clientKey"]!

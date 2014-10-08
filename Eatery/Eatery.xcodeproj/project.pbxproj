@@ -13,6 +13,19 @@
 		C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C007CACB19E1BEAC00E3BD46 /* Images.xcassets */; };
 		C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C007CACD19E1BEAC00E3BD46 /* LaunchScreen.xib */; };
 		C007CADB19E1BEAC00E3BD46 /* EateryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C007CADA19E1BEAC00E3BD46 /* EateryTests.swift */; };
+		C01E03FC19E5C4C90050E8C7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E03FB19E5C4C90050E8C7 /* Parse.framework */; };
+		C01E03FE19E5C4D80050E8C7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E03FD19E5C4D80050E8C7 /* Bolts.framework */; };
+		C01E040019E5C50F0050E8C7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E03FF19E5C50F0050E8C7 /* AudioToolbox.framework */; };
+		C01E040219E5C5140050E8C7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040119E5C5140050E8C7 /* CFNetwork.framework */; };
+		C01E040419E5C51A0050E8C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040319E5C51A0050E8C7 /* CoreGraphics.framework */; };
+		C01E040619E5C5240050E8C7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040519E5C5240050E8C7 /* CoreLocation.framework */; };
+		C01E040819E5C5300050E8C7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040719E5C5300050E8C7 /* libz.dylib */; };
+		C01E040A19E5C5390050E8C7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040919E5C5390050E8C7 /* MobileCoreServices.framework */; };
+		C01E040C19E5C5410050E8C7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040B19E5C5410050E8C7 /* Security.framework */; };
+		C01E040E19E5C5460050E8C7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040D19E5C5460050E8C7 /* StoreKit.framework */; };
+		C01E041019E5C54F0050E8C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040F19E5C54F0050E8C7 /* SystemConfiguration.framework */; };
+		C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041419E5C6FF0050E8C7 /* Constants.swift */; };
+		C01E041C19E5C8E10050E8C7 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01E041B19E5C8E10050E8C7 /* Keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +49,20 @@
 		C007CAD419E1BEAC00E3BD46 /* EateryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EateryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C007CAD919E1BEAC00E3BD46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C007CADA19E1BEAC00E3BD46 /* EateryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryTests.swift; sourceTree = "<group>"; };
+		C01E03FB19E5C4C90050E8C7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		C01E03FD19E5C4D80050E8C7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		C01E03FF19E5C50F0050E8C7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C01E040119E5C5140050E8C7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C01E040319E5C51A0050E8C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C01E040519E5C5240050E8C7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C01E040719E5C5300050E8C7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C01E040919E5C5390050E8C7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C01E040B19E5C5410050E8C7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C01E040D19E5C5460050E8C7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		C01E040F19E5C54F0050E8C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C01E041119E5C5780050E8C7 /* Eatery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Eatery-Bridging-Header.h"; sourceTree = "<group>"; };
+		C01E041419E5C6FF0050E8C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C01E041B19E5C8E10050E8C7 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +70,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C01E041019E5C54F0050E8C7 /* SystemConfiguration.framework in Frameworks */,
+				C01E040E19E5C5460050E8C7 /* StoreKit.framework in Frameworks */,
+				C01E040C19E5C5410050E8C7 /* Security.framework in Frameworks */,
+				C01E040A19E5C5390050E8C7 /* MobileCoreServices.framework in Frameworks */,
+				C01E040819E5C5300050E8C7 /* libz.dylib in Frameworks */,
+				C01E040619E5C5240050E8C7 /* CoreLocation.framework in Frameworks */,
+				C01E040419E5C51A0050E8C7 /* CoreGraphics.framework in Frameworks */,
+				C01E040219E5C5140050E8C7 /* CFNetwork.framework in Frameworks */,
+				C01E040019E5C50F0050E8C7 /* AudioToolbox.framework in Frameworks */,
+				C01E03FC19E5C4C90050E8C7 /* Parse.framework in Frameworks */,
+				C01E03FE19E5C4D80050E8C7 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				C007CAC119E1BEAC00E3BD46 /* Eatery */,
+				C01E03FA19E5C4AD0050E8C7 /* Frameworks */,
 				C007CAD719E1BEAC00E3BD46 /* EateryTests */,
 				C007CAC019E1BEAC00E3BD46 /* Products */,
 			);
@@ -77,8 +116,10 @@
 		C007CAC119E1BEAC00E3BD46 /* Eatery */ = {
 			isa = PBXGroup;
 			children = (
-				C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */,
-				C007CAC619E1BEAC00E3BD46 /* ViewController.swift */,
+				C01E041619E5C7060050E8C7 /* Data */,
+				C01E041719E5C70D0050E8C7 /* Views */,
+				C01E041819E5C71B0050E8C7 /* Controllers */,
+				C01E041A19E5C73F0050E8C7 /* Other Sources */,
 				C007CAC819E1BEAC00E3BD46 /* Main.storyboard */,
 				C007CACB19E1BEAC00E3BD46 /* Images.xcassets */,
 				C007CACD19E1BEAC00E3BD46 /* LaunchScreen.xib */,
@@ -110,6 +151,66 @@
 				C007CAD919E1BEAC00E3BD46 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C01E03FA19E5C4AD0050E8C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C01E040F19E5C54F0050E8C7 /* SystemConfiguration.framework */,
+				C01E040D19E5C5460050E8C7 /* StoreKit.framework */,
+				C01E040B19E5C5410050E8C7 /* Security.framework */,
+				C01E040919E5C5390050E8C7 /* MobileCoreServices.framework */,
+				C01E040719E5C5300050E8C7 /* libz.dylib */,
+				C01E040519E5C5240050E8C7 /* CoreLocation.framework */,
+				C01E040319E5C51A0050E8C7 /* CoreGraphics.framework */,
+				C01E040119E5C5140050E8C7 /* CFNetwork.framework */,
+				C01E03FF19E5C50F0050E8C7 /* AudioToolbox.framework */,
+				C01E03FD19E5C4D80050E8C7 /* Bolts.framework */,
+				C01E03FB19E5C4C90050E8C7 /* Parse.framework */,
+			);
+			name = Frameworks;
+			path = Eatery;
+			sourceTree = "<group>";
+		};
+		C01E041619E5C7060050E8C7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C01E041919E5C7380050E8C7 /* Models */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		C01E041719E5C70D0050E8C7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C01E041819E5C71B0050E8C7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C007CAC619E1BEAC00E3BD46 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C01E041919E5C7380050E8C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C01E041A19E5C73F0050E8C7 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */,
+				C01E041419E5C6FF0050E8C7 /* Constants.swift */,
+				C01E041119E5C5780050E8C7 /* Eatery-Bridging-Header.h */,
+				C01E041B19E5C8E10050E8C7 /* Keys.plist */,
+			);
+			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C01E041C19E5C8E10050E8C7 /* Keys.plist in Resources */,
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
 				C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */,
 				C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */,
@@ -214,6 +316,7 @@
 			files = (
 				C007CAC719E1BEAC00E3BD46 /* ViewController.swift in Sources */,
 				C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */,
+				C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,9 +439,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Eatery",
+				);
 				INFOPLIST_FILE = Eatery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Eatery/Eatery-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -346,9 +456,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Eatery",
+				);
 				INFOPLIST_FILE = Eatery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Eatery/Eatery-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -405,6 +521,7 @@
 				C007CAE019E1BEAC00E3BD46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C007CAE119E1BEAC00E3BD46 /* Build configuration list for PBXNativeTarget "EateryTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +530,7 @@
 				C007CAE319E1BEAC00E3BD46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
