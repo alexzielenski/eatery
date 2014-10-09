@@ -16,7 +16,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-/Eatery/Eatery/Keys.plist
+Eatery/Eatery/Keys.plist
 
 # CocoaPods
 #
