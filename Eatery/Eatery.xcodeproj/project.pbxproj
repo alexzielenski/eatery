@@ -118,6 +118,7 @@
 		C007CAC119E1BEAC00E3BD46 /* Eatery */ = {
 			isa = PBXGroup;
 			children = (
+				C01E042119E618460050E8C7 /* Vendor */,
 				C01E041619E5C7060050E8C7 /* Data */,
 				C01E041719E5C70D0050E8C7 /* Views */,
 				C01E041819E5C71B0050E8C7 /* Controllers */,
@@ -214,6 +215,21 @@
 				C01E041D19E60E9E0050E8C7 /* Keys.plist */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		C01E042119E618460050E8C7 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				C01E042219E6184F0050E8C7 /* Alamofire */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		C01E042219E6184F0050E8C7 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Alamofire;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
