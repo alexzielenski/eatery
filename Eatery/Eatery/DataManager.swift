@@ -8,6 +8,22 @@
 
 import Foundation
 
+// Mark: Eatery API
+enum Endpoints: String {
+    case Calendars = "calendar"
+    case Menus = "menu"
+    case Locations = "location"
+}
+
+enum CalendarEndpoints: String {
+    case ID = "id"
+}
+
+enum MenuEndpoints: String {
+    case ID = "id"
+    case MealType = "meal_type"
+}
+
 
 class DataManager: NSObject {
     
@@ -24,7 +40,6 @@ class DataManager: NSObject {
             
         return Static.instance!
     }
-    
     
     //
     //
