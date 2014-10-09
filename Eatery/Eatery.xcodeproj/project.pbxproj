@@ -26,6 +26,7 @@
 		C01E041019E5C54F0050E8C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040F19E5C54F0050E8C7 /* SystemConfiguration.framework */; };
 		C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041419E5C6FF0050E8C7 /* Constants.swift */; };
 		C01E041E19E60E9E0050E8C7 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01E041D19E60E9E0050E8C7 /* Keys.plist */; };
+		C01E042019E611650050E8C7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041F19E611650050E8C7 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		C01E041119E5C5780050E8C7 /* Eatery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Eatery-Bridging-Header.h"; sourceTree = "<group>"; };
 		C01E041419E5C6FF0050E8C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C01E041D19E60E9E0050E8C7 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		C01E041F19E611650050E8C7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				C01E041919E5C7380050E8C7 /* Models */,
+				C01E041F19E611650050E8C7 /* DataManager.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C007CAC719E1BEAC00E3BD46 /* ViewController.swift in Sources */,
+				C01E042019E611650050E8C7 /* DataManager.swift in Sources */,
 				C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */,
 				C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */,
 			);

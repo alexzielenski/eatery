@@ -14,9 +14,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        DataManager.sharedInstance
+        
         var testObject = PFObject(className: "TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackground()
+        
+        
         
     }
 
