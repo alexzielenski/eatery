@@ -25,7 +25,7 @@
 		C01E040E19E5C5460050E8C7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040D19E5C5460050E8C7 /* StoreKit.framework */; };
 		C01E041019E5C54F0050E8C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E040F19E5C54F0050E8C7 /* SystemConfiguration.framework */; };
 		C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041419E5C6FF0050E8C7 /* Constants.swift */; };
-		C01E041C19E5C8E10050E8C7 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01E041B19E5C8E10050E8C7 /* Keys.plist */; };
+		C01E041E19E60E9E0050E8C7 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01E041D19E60E9E0050E8C7 /* Keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,7 @@
 		C01E040F19E5C54F0050E8C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C01E041119E5C5780050E8C7 /* Eatery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Eatery-Bridging-Header.h"; sourceTree = "<group>"; };
 		C01E041419E5C6FF0050E8C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C01E041B19E5C8E10050E8C7 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		C01E041D19E60E9E0050E8C7 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,7 +208,7 @@
 				C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */,
 				C01E041419E5C6FF0050E8C7 /* Constants.swift */,
 				C01E041119E5C5780050E8C7 /* Eatery-Bridging-Header.h */,
-				C01E041B19E5C8E10050E8C7 /* Keys.plist */,
+				C01E041D19E60E9E0050E8C7 /* Keys.plist */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C01E041C19E5C8E10050E8C7 /* Keys.plist in Resources */,
+				C01E041E19E60E9E0050E8C7 /* Keys.plist in Resources */,
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
 				C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */,
 				C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */,
