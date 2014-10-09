@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 // Mark: Eatery API
 enum Endpoints: String {
@@ -45,4 +46,30 @@ class DataManager: NSObject {
     //
     //
     //
+    
+    func alamoTest() {
+        Alamofire
+            .request(.GET, "http://httpbin.org/get", parameters: ["foo" : "bar"], encoding: .URL)
+            .response { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
+                println("REQUEST")
+                println(request)
+                println("RESPONSE")
+                println(response)
+                println("DATA")
+                println(NSString(data: data! as NSData, encoding: NSUTF8StringEncoding))
+                println("ERROR")
+                println(error)
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
