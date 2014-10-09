@@ -1,0 +1,3 @@
+[submodule "Eatery/Eatery/vendor/Alamofire"]
+	path = Eatery/Eatery/vendor/Alamofire
+	url = git@github.com:Alamofire/Alamofire.git

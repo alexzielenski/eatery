@@ -27,6 +27,8 @@
 		C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041419E5C6FF0050E8C7 /* Constants.swift */; };
 		C01E041E19E60E9E0050E8C7 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01E041D19E60E9E0050E8C7 /* Keys.plist */; };
 		C01E042019E611650050E8C7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041F19E611650050E8C7 /* DataManager.swift */; };
+		C01E043219E626190050E8C7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; };
+		C01E043419E626490050E8C7 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,42 @@
 			remoteGlobalIDString = C007CABE19E1BEAC00E3BD46;
 			remoteInfo = Eatery;
 		};
+		C01E042E19E625AD0050E8C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
+		C01E043019E625AD0050E8C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
+		C01E043519E626530050E8C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C01E043319E626260050E8C7 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C01E043419E626490050E8C7 /* Alamofire.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C007CABF19E1BEAC00E3BD46 /* Eatery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eatery.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +102,7 @@
 		C01E041419E5C6FF0050E8C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C01E041D19E60E9E0050E8C7 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		C01E041F19E611650050E8C7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = vendor/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C01E043219E626190050E8C7 /* Alamofire.framework in Frameworks */,
 				C01E041019E5C54F0050E8C7 /* SystemConfiguration.framework in Frameworks */,
 				C01E040E19E5C5460050E8C7 /* StoreKit.framework in Frameworks */,
 				C01E040C19E5C5410050E8C7 /* Security.framework in Frameworks */,
@@ -118,6 +157,7 @@
 		C007CAC119E1BEAC00E3BD46 /* Eatery */ = {
 			isa = PBXGroup;
 			children = (
+				C01E042719E625920050E8C7 /* Vendor */,
 				C01E041619E5C7060050E8C7 /* Data */,
 				C01E041719E5C70D0050E8C7 /* Views */,
 				C01E041819E5C71B0050E8C7 /* Controllers */,
@@ -216,6 +256,23 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		C01E042719E625920050E8C7 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		C01E042A19E625AD0050E8C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C01E042F19E625AD0050E8C7 /* Alamofire.framework */,
+				C01E043119E625AD0050E8C7 /* AlamofireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,10 +283,12 @@
 				C007CABB19E1BEAC00E3BD46 /* Sources */,
 				C007CABC19E1BEAC00E3BD46 /* Frameworks */,
 				C007CABD19E1BEAC00E3BD46 /* Resources */,
+				C01E043319E626260050E8C7 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C01E043619E626530050E8C7 /* PBXTargetDependency */,
 			);
 			name = Eatery;
 			productName = Eatery;
@@ -283,6 +342,12 @@
 			mainGroup = C007CAB619E1BEAC00E3BD46;
 			productRefGroup = C007CAC019E1BEAC00E3BD46 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C01E042A19E625AD0050E8C7 /* Products */;
+					ProjectRef = C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C007CABE19E1BEAC00E3BD46 /* Eatery */,
@@ -290,6 +355,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C01E042F19E625AD0050E8C7 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = C01E042E19E625AD0050E8C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C01E043119E625AD0050E8C7 /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = C01E043019E625AD0050E8C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C007CABD19E1BEAC00E3BD46 /* Resources */ = {
@@ -339,6 +421,11 @@
 			isa = PBXTargetDependency;
 			target = C007CABE19E1BEAC00E3BD46 /* Eatery */;
 			targetProxy = C007CAD519E1BEAC00E3BD46 /* PBXContainerItemProxy */;
+		};
+		C01E043619E626530050E8C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			targetProxy = C01E043519E626530050E8C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -13,7 +13,10 @@ let KEYSPATH = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")
 let KEYS = NSDictionary(contentsOfFile: KEYSPATH!)
 
 
-// MARK: Parse
+// Mark: Parse
 let PARSEDICT: Dictionary<String, String> = KEYS["Parse"] as Dictionary<String, String>
 let kParseApplicationID: String = PARSEDICT["applicationID"]!
 let kParseClientKey: String = PARSEDICT["clientKey"]!
+
+// Mark: Eatery API
+private let kApiBaseURL: String = "foo.com/"

@@ -7,6 +7,23 @@
 //
 
 import Foundation
+import Alamofire
+
+// Mark: Eatery API
+enum Endpoints: String {
+    case Calendars = "calendar"
+    case Menus = "menu"
+    case Locations = "location"
+}
+
+enum CalendarEndpoints: String {
+    case ID = "id"
+}
+
+enum MenuEndpoints: String {
+    case ID = "id"
+    case MealType = "meal_type"
+}
 
 
 class DataManager: NSObject {
@@ -25,9 +42,34 @@ class DataManager: NSObject {
         return Static.instance!
     }
     
+    //
+    //
+    //
+    //
     
-    //
-    //
-    //
-    //
+    func alamoTest() {
+        Alamofire
+            .request(.GET, "http://httpbin.org/get", parameters: ["foo" : "bar"], encoding: .URL)
+            .response { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
+                println("REQUEST")
+                println(request)
+                println("RESPONSE")
+                println(response)
+                println("DATA")
+                println(NSString(data: data! as NSData, encoding: NSUTF8StringEncoding))
+                println("ERROR")
+                println(error)
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
