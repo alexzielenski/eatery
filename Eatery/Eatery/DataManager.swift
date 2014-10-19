@@ -42,34 +42,48 @@ class DataManager: NSObject {
         return Static.instance!
     }
     
-    //
-    //
-    //
-    //
-    
     func alamoTest() {
+        println("\nfunc alamoTest()")
         Alamofire
             .request(.GET, "http://httpbin.org/get", parameters: ["foo" : "bar"], encoding: .URL)
-            .response { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
-                println("REQUEST")
+            .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
+                let separator = "\n------------------------------------------"
+                println(separator + "\nREQUEST")
                 println(request)
-                println("RESPONSE")
+                println(separator + "\nRESPONSE")
                 println(response)
-                println("DATA")
-                println(NSString(data: data! as NSData, encoding: NSUTF8StringEncoding))
-                println("ERROR")
+                println(separator + "\nDATA") // raw json
+                println(data)
+                println(separator + "\nJSON")
+                if let swiftyJSON = JSON.fromRaw(data!) { // if object can be converted to JSON
+                    
+                    println(swiftyJSON)
+                    println("SwiftyJSON values:")
+                    // Optional value (no additional chaining required :)
+                    if let host = swiftyJSON["headers"]["Host"].string {
+                        println("host: \(host)")
+                    } else {
+                        println("error getting value for key: " + "swiftyJSON[\"headers\"][\"Host\"]")
+                    }
+                    
+                    /* 
+                    Use .xxxValue to get the non-optional value
+                    *
+                    *  BEWARE:
+                    *  These are the values you will get if nil (taken from SwiftyJSON github page ( https://github.com/SwiftyJSON/SwiftyJSON#non-optional-getter )
+                    *
+                    **    If not a Number or nil, return 0
+                    **    If not a String or nil, return ""
+                    **    If not a Array or nil, return []
+                    **    If not a Dictionary or nil, return [:]
+                    *
+                    */
+                    let url = swiftyJSON["url"].stringValue
+                    println("url: \(url)")
+                }
+                println(separator + "\nERROR")
                 println(error)
         }
-
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
