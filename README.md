@@ -7,3 +7,4 @@
 3.  Run  
 git submodule init  
 git submodule update  
+4.  git checkout develop

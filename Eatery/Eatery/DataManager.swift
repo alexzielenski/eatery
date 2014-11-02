@@ -54,10 +54,11 @@ class DataManager: NSObject {
                 println(response)
                 println(separator + "\nDATA") // raw json
                 println(data)
-                println(separator + "\nJSON")
+                println(separator + "\nJSON") // SwiftyJSON
                 if let swiftyJSON = JSON.fromRaw(data!) { // if object can be converted to JSON
                     
                     println(swiftyJSON)
+                    
                     println("SwiftyJSON values:")
                     // Optional value (no additional chaining required :)
                     if let host = swiftyJSON["headers"]["Host"].string {
