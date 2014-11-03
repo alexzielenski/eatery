@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId(kParseApplicationID, clientKey: kParseClientKey)
         
+//        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
         PFFacebookUtils.initializeFacebook()
-
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         return true
     }
@@ -53,12 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         openURL url: NSURL,
         sourceApplication: String,
         annotation: AnyObject?) -> Bool {
-            println(url)
-            println(sourceApplication)
-            println(annotation)
+//            println(url)
+//            println(sourceApplication)
+//            println(annotation)
             
-            return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication,
-                withSession:PFFacebookUtils.session())
+            return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, withSession:PFFacebookUtils.session())
     }
 
 }
