@@ -15,11 +15,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        // MARK: View Controllers
+        
+        let eatNow = EatNowTableViewController()
+        eatNow.title = "Eat Now"
+        let eatNavController = UINavigationController(rootViewController: eatNow)
+
+        let beacon = BeaconViewController()
+        beacon.title = "Beacon"
+        let beaconNavController = UINavigationController(rootViewController: beacon)
+        
+        let friends = FriendsViewController()
+        friends.title = "Friends"
+        let friendsNavController = UINavigationController(rootViewController: friends)
+        
+        let testing = NetworkingViewController()
+        testing.title = "Test"
+        let testingNavController = UINavigationController(rootViewController: testing)
+        
+        let viewControllers = [
+            eatNavController,
+            beaconNavController,
+            friendsNavController,
+            testingNavController
+        ]
+        
+        let tabBarController = TabBarController()
+        tabBarController.setViewControllers(viewControllers, animated: true)
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
+        
+        // MARK: Parse Stuff
         Parse.setApplicationId(kParseApplicationID, clientKey: kParseClientKey)
         
-//        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
         
         PFFacebookUtils.initializeFacebook()
         

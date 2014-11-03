@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */; };
-		C007CAC719E1BEAC00E3BD46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C007CAC619E1BEAC00E3BD46 /* ViewController.swift */; };
+		C007CAC719E1BEAC00E3BD46 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C007CAC619E1BEAC00E3BD46 /* NetworkingViewController.swift */; };
 		C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C007CAC819E1BEAC00E3BD46 /* Main.storyboard */; };
 		C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C007CACB19E1BEAC00E3BD46 /* Images.xcassets */; };
 		C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C007CACD19E1BEAC00E3BD46 /* LaunchScreen.xib */; };
@@ -33,6 +33,13 @@
 		C0893A711A07046A00A8E1BF /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089395C1A07046900A8E1BF /* FBAudienceNetwork.framework */; };
 		C09640871A0769A400F3841F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09640861A0769A400F3841F /* Parse.framework */; };
 		C09640891A0769AA00F3841F /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09640881A0769AA00F3841F /* ParseFacebookUtils.framework */; };
+		C096408B1A07D4D800F3841F /* PFUser+Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C096408A1A07D4D800F3841F /* PFUser+Printable.swift */; };
+		C096408D1A08188B00F3841F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C096408C1A08188B00F3841F /* TabBarController.swift */; };
+		C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C096408E1A08191900F3841F /* EatNowTableViewController.swift */; };
+		C09640931A081D2700F3841F /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640921A081D2700F3841F /* BeaconViewController.swift */; };
+		C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640961A081DC000F3841F /* FriendsViewController.swift */; };
+		C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */; };
+		C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */; };
 		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 		C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */; };
 /* End PBXBuildFile section */
@@ -86,7 +93,7 @@
 		C007CABF19E1BEAC00E3BD46 /* Eatery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eatery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C007CAC319E1BEAC00E3BD46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C007CAC619E1BEAC00E3BD46 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C007CAC619E1BEAC00E3BD46 /* NetworkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
 		C007CAC919E1BEAC00E3BD46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C007CACB19E1BEAC00E3BD46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C007CACE19E1BEAC00E3BD46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -113,6 +120,13 @@
 		C089395C1A07046900A8E1BF /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = FBAudienceNetwork/FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		C09640861A0769A400F3841F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C09640881A0769AA00F3841F /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		C096408A1A07D4D800F3841F /* PFUser+Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+Printable.swift"; sourceTree = "<group>"; };
+		C096408C1A08188B00F3841F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C096408E1A08191900F3841F /* EatNowTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatNowTableViewController.swift; sourceTree = "<group>"; };
+		C09640921A081D2700F3841F /* BeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewController.swift; sourceTree = "<group>"; };
+		C09640961A081DC000F3841F /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatNowTableViewCell.swift; sourceTree = "<group>"; };
+		C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableViewCell.xib; sourceTree = "<group>"; };
 		C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,7 +191,6 @@
 				C01E041719E5C70D0050E8C7 /* Views */,
 				C01E041819E5C71B0050E8C7 /* Controllers */,
 				C01E041A19E5C73F0050E8C7 /* Other Sources */,
-				C007CAC819E1BEAC00E3BD46 /* Main.storyboard */,
 				C007CACB19E1BEAC00E3BD46 /* Images.xcassets */,
 				C007CACD19E1BEAC00E3BD46 /* LaunchScreen.xib */,
 				C007CAC219E1BEAC00E3BD46 /* Supporting Files */,
@@ -242,6 +255,7 @@
 		C01E041719E5C70D0050E8C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C096409D1A081EA300F3841F /* Eat Now TableViewCell */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -249,7 +263,11 @@
 		C01E041819E5C71B0050E8C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C007CAC619E1BEAC00E3BD46 /* ViewController.swift */,
+				C096408C1A08188B00F3841F /* TabBarController.swift */,
+				C007CAC619E1BEAC00E3BD46 /* NetworkingViewController.swift */,
+				C09640941A081D3800F3841F /* Eat Now */,
+				C09640951A081D3D00F3841F /* Beacon */,
+				C09640981A081DC800F3841F /* Friends */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -266,10 +284,10 @@
 			children = (
 				C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */,
 				C01E041419E5C6FF0050E8C7 /* Constants.swift */,
-				C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */,
-				C037F36C1A07583C0061B57F /* UIColor+ColorScheme.swift */,
+				C096409E1A08263A00F3841F /* Class Extensions */,
 				C01E041119E5C5780050E8C7 /* Eatery-Bridging-Header.h */,
 				C01E041D19E60E9E0050E8C7 /* Keys.plist */,
+				C007CAC819E1BEAC00E3BD46 /* Main.storyboard */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -300,6 +318,49 @@
 				C089395C1A07046900A8E1BF /* FBAudienceNetwork.framework */,
 			);
 			path = FacebookSDK;
+			sourceTree = "<group>";
+		};
+		C09640941A081D3800F3841F /* Eat Now */ = {
+			isa = PBXGroup;
+			children = (
+				C096408E1A08191900F3841F /* EatNowTableViewController.swift */,
+			);
+			name = "Eat Now";
+			sourceTree = "<group>";
+		};
+		C09640951A081D3D00F3841F /* Beacon */ = {
+			isa = PBXGroup;
+			children = (
+				C09640921A081D2700F3841F /* BeaconViewController.swift */,
+			);
+			name = Beacon;
+			sourceTree = "<group>";
+		};
+		C09640981A081DC800F3841F /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C09640961A081DC000F3841F /* FriendsViewController.swift */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
+		C096409D1A081EA300F3841F /* Eat Now TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */,
+				C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */,
+			);
+			name = "Eat Now TableViewCell";
+			sourceTree = "<group>";
+		};
+		C096409E1A08263A00F3841F /* Class Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */,
+				C037F36C1A07583C0061B57F /* UIColor+ColorScheme.swift */,
+				C096408A1A07D4D800F3841F /* PFUser+Printable.swift */,
+			);
+			name = "Class Extensions";
 			sourceTree = "<group>";
 		};
 		C0A171B61A06FD320005BC03 /* Alamofire */ = {
@@ -426,6 +487,7 @@
 			files = (
 				C01E041E19E60E9E0050E8C7 /* Keys.plist in Resources */,
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
+				C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */,
 				C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */,
 				C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */,
 			);
@@ -445,13 +507,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C007CAC719E1BEAC00E3BD46 /* ViewController.swift in Sources */,
+				C007CAC719E1BEAC00E3BD46 /* NetworkingViewController.swift in Sources */,
 				C01E042019E611650050E8C7 /* DataManager.swift in Sources */,
+				C096408B1A07D4D800F3841F /* PFUser+Printable.swift in Sources */,
+				C096408D1A08188B00F3841F /* TabBarController.swift in Sources */,
+				C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */,
+				C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */,
 				C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */,
 				C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */,
 				C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */,
+				C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */,
 				C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */,
 				C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */,
+				C09640931A081D2700F3841F /* BeaconViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
