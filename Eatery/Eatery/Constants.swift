@@ -10,7 +10,7 @@ import Foundation
 
 // Mark: Load Plist
 let KEYSPATH = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")
-let KEYS = NSDictionary(contentsOfFile: KEYSPATH!)
+let KEYS = NSDictionary(contentsOfFile: KEYSPATH!)!
 
 
 // Mark: Parse

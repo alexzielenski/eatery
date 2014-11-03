@@ -16,6 +16,15 @@ class ViewController: UIViewController {
         // MARK: DataManager
         DataManager.sharedInstance.alamoTest()
         
+        let permissions = [
+            "public_profile",
+            "email",
+            "user_friends"
+        ]
+        
+        let loginView = FBLoginView(readPermissions: permissions)
+        view.addSubview(loginView)
+        
         // MARK: Parse
 //        var testObject = PFObject(className: "TestObject")
 //        testObject["foo"] = "bar"

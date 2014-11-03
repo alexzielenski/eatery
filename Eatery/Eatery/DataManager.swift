@@ -55,7 +55,7 @@ class DataManager: NSObject {
                 println(separator + "\nDATA") // raw json
                 println(data)
                 println(separator + "\nJSON") // SwiftyJSON
-                if let swiftyJSON = JSON.fromRaw(data!) { // if object can be converted to JSON
+                if let swiftyJSON = JSON(rawValue: data!) { // if object can be converted to JSON
                     
                     println(swiftyJSON)
                     

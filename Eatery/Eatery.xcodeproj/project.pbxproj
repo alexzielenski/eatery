@@ -29,6 +29,10 @@
 		C01E042019E611650050E8C7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041F19E611650050E8C7 /* DataManager.swift */; };
 		C01E043219E626190050E8C7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; };
 		C01E043419E626490050E8C7 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C0893A6F1A07046A00A8E1BF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08939591A07046900A8E1BF /* Bolts.framework */; };
+		C0893A701A07046A00A8E1BF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089395A1A07046900A8E1BF /* FacebookSDK.framework */; };
+		C0893A711A07046A00A8E1BF /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089395C1A07046900A8E1BF /* FBAudienceNetwork.framework */; };
+		C0893B2F1A07060300A8E1BF /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0893B2E1A07060300A8E1BF /* ParseFacebookUtils.framework */; };
 		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +108,10 @@
 		C01E041D19E60E9E0050E8C7 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		C01E041F19E611650050E8C7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = vendor/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		C08939591A07046900A8E1BF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		C089395A1A07046900A8E1BF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		C089395C1A07046900A8E1BF /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		C0893B2E1A07060300A8E1BF /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,15 +123,19 @@
 				C01E043219E626190050E8C7 /* Alamofire.framework in Frameworks */,
 				C01E041019E5C54F0050E8C7 /* SystemConfiguration.framework in Frameworks */,
 				C01E040E19E5C5460050E8C7 /* StoreKit.framework in Frameworks */,
+				C0893A711A07046A00A8E1BF /* FBAudienceNetwork.framework in Frameworks */,
 				C01E040C19E5C5410050E8C7 /* Security.framework in Frameworks */,
 				C01E040A19E5C5390050E8C7 /* MobileCoreServices.framework in Frameworks */,
 				C01E040819E5C5300050E8C7 /* libz.dylib in Frameworks */,
 				C01E040619E5C5240050E8C7 /* CoreLocation.framework in Frameworks */,
+				C0893A6F1A07046A00A8E1BF /* Bolts.framework in Frameworks */,
 				C01E040419E5C51A0050E8C7 /* CoreGraphics.framework in Frameworks */,
 				C01E040219E5C5140050E8C7 /* CFNetwork.framework in Frameworks */,
 				C01E040019E5C50F0050E8C7 /* AudioToolbox.framework in Frameworks */,
 				C01E03FC19E5C4C90050E8C7 /* Parse.framework in Frameworks */,
 				C01E03FE19E5C4D80050E8C7 /* Bolts.framework in Frameworks */,
+				C0893B2F1A07060300A8E1BF /* ParseFacebookUtils.framework in Frameworks */,
+				C0893A701A07046A00A8E1BF /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +212,8 @@
 		C01E03FA19E5C4AD0050E8C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0893B2E1A07060300A8E1BF /* ParseFacebookUtils.framework */,
+				C08939581A07046900A8E1BF /* FacebookSDK */,
 				C01E040F19E5C54F0050E8C7 /* SystemConfiguration.framework */,
 				C01E040D19E5C5460050E8C7 /* StoreKit.framework */,
 				C01E040B19E5C5410050E8C7 /* Security.framework */,
@@ -274,6 +288,24 @@
 				C01E043119E625AD0050E8C7 /* AlamofireTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C08939581A07046900A8E1BF /* FacebookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				C08939591A07046900A8E1BF /* Bolts.framework */,
+				C089395A1A07046900A8E1BF /* FacebookSDK.framework */,
+				C089395B1A07046900A8E1BF /* FBAudienceNetwork */,
+			);
+			path = FacebookSDK;
+			sourceTree = "<group>";
+		};
+		C089395B1A07046900A8E1BF /* FBAudienceNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				C089395C1A07046900A8E1BF /* FBAudienceNetwork.framework */,
+			);
+			path = FBAudienceNetwork;
 			sourceTree = "<group>";
 		};
 		C0A171B61A06FD320005BC03 /* Alamofire */ = {
@@ -357,6 +389,7 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = C007CAB619E1BEAC00E3BD46;
 			productRefGroup = C007CAC019E1BEAC00E3BD46 /* Products */;
@@ -554,6 +587,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Eatery",
+					"$(PROJECT_DIR)/Eatery/FacebookSDK",
+					"$(PROJECT_DIR)/Eatery/FacebookSDK/FBAudienceNetwork",
 				);
 				INFOPLIST_FILE = Eatery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -571,6 +606,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Eatery",
+					"$(PROJECT_DIR)/Eatery/FacebookSDK",
+					"$(PROJECT_DIR)/Eatery/FacebookSDK/FBAudienceNetwork",
 				);
 				INFOPLIST_FILE = Eatery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
