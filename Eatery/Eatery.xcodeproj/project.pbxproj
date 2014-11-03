@@ -29,7 +29,7 @@
 		C01E042019E611650050E8C7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041F19E611650050E8C7 /* DataManager.swift */; };
 		C01E043219E626190050E8C7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; };
 		C01E043419E626490050E8C7 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C0DBBD1919F334E900E80F54 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBBD1819F334E900E80F54 /* SwiftyJSON.swift */; };
+		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +104,7 @@
 		C01E041D19E60E9E0050E8C7 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		C01E041F19E611650050E8C7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = vendor/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
-		C0DBBD1819F334E900E80F54 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				C0DBBD1B19F334F700E80F54 /* SwiftyJSON */,
-				C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */,
+				C0A171B61A06FD320005BC03 /* Alamofire */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -276,10 +276,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C0A171B61A06FD320005BC03 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */,
+			);
+			name = Alamofire;
+			sourceTree = "<group>";
+		};
 		C0DBBD1B19F334F700E80F54 /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				C0DBBD1819F334E900E80F54 /* SwiftyJSON.swift */,
+				C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */,
 			);
 			name = SwiftyJSON;
 			sourceTree = "<group>";
@@ -413,7 +421,7 @@
 				C007CAC719E1BEAC00E3BD46 /* ViewController.swift in Sources */,
 				C01E042019E611650050E8C7 /* DataManager.swift in Sources */,
 				C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */,
-				C0DBBD1919F334E900E80F54 /* SwiftyJSON.swift in Sources */,
+				C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */,
 				C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
