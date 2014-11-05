@@ -27,6 +27,7 @@
 		C01E042019E611650050E8C7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E041F19E611650050E8C7 /* DataManager.swift */; };
 		C01E043219E626190050E8C7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; };
 		C01E043419E626490050E8C7 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C033B3FA1A0AB372000EFB98 /* AF+Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C033B3F91A0AB372000EFB98 /* AF+Date+Extension.swift */; };
 		C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C037F36C1A07583C0061B57F /* UIColor+ColorScheme.swift */; };
 		C0893A6F1A07046A00A8E1BF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08939591A07046900A8E1BF /* Bolts.framework */; };
 		C0893A701A07046A00A8E1BF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089395A1A07046900A8E1BF /* FacebookSDK.framework */; };
@@ -114,6 +115,7 @@
 		C01E041D19E60E9E0050E8C7 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		C01E041F19E611650050E8C7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = vendor/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		C033B3F91A0AB372000EFB98 /* AF+Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AF+Date+Extension.swift"; sourceTree = "<group>"; };
 		C037F36C1A07583C0061B57F /* UIColor+ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorScheme.swift"; sourceTree = "<group>"; };
 		C08939591A07046900A8E1BF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C089395A1A07046900A8E1BF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		C01E042719E625920050E8C7 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C033B3F81A0AB372000EFB98 /* AF+Date+Helper */,
 				C0DBBD1B19F334F700E80F54 /* SwiftyJSON */,
 				C0A171B61A06FD320005BC03 /* Alamofire */,
 			);
@@ -308,6 +311,14 @@
 				C01E043119E625AD0050E8C7 /* AlamofireTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C033B3F81A0AB372000EFB98 /* AF+Date+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C033B3F91A0AB372000EFB98 /* AF+Date+Extension.swift */,
+			);
+			path = "AF+Date+Helper";
 			sourceTree = "<group>";
 		};
 		C08939581A07046900A8E1BF /* FacebookSDK */ = {
@@ -515,6 +526,7 @@
 				C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */,
 				C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */,
 				C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */,
+				C033B3FA1A0AB372000EFB98 /* AF+Date+Extension.swift in Sources */,
 				C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */,
 				C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */,
 				C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */,

@@ -67,21 +67,20 @@ class NetworkingViewController: UIViewController {
     
     // MARK: Parse data methods
     func parseDataButtonPressed(sender: UIButton) {
-//        var testObject = PFObject(className: "TestObject")
-//        testObject["foo"] = "bar"
-//        testObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
-//            if error != nil {
-//                error.showAlert()
-//            } else {
-//                println("\n>>>>>>>>Test Object Saved")
-//            }
-//        }
+        var testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
+            if error != nil {
+                error.showAlert()
+            } else {
+                println("\n>>>>>>>>Test Object Saved")
+            }
+        }
         var beaconObject = PFObject(className: "Beacon")
         beaconObject["author"] = "me"
         beaconObject["audience"] = [PFUser.currentUser().objectId]
-        beaconObject["startDate"] = NSDate(timeIntervalSince1970: <#NSTimeInterval#>)
-        let oneHour: Double = 60*60
-        beaconObject["endDate"] = NSDate(timeIntervalSinceNow: oneHour)
+        beaconObject["startDate"] = NSDate()
+        beaconObject["endDate"] = NSDate().dateByAddingHours(1)
         beaconObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
             if error != nil {
                 error.showAlert()
