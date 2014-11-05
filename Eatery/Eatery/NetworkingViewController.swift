@@ -59,7 +59,7 @@ class NetworkingViewController: UIViewController {
         loginButton.center = CGPoint(x: view.center.x, y: view.center.y + 84)
         loginButton.layer.cornerRadius = 5
         loginButton.backgroundColor = UIColor.facebookBlue()
-        loginButton.setTitle("Login With Facebook", forState: UIControlState.Normal)
+        loginButton.setTitle("Facebook", forState: UIControlState.Normal)
         loginButton.addTarget(self, action: "loginWithFacebookButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(loginButton)
         
@@ -105,60 +105,10 @@ class NetworkingViewController: UIViewController {
     
     // MARK: Facebook methods
     func loginWithFacebookButtonPressed(sender: UIButton) {
-        let permissions = [
-            "public_profile",
-            "email",
-            "user_friends"
-        ]
-        PFFacebookUtils.logInWithPermissions(permissions, {
-            (user: PFUser!, error: NSError!) -> Void in
-            println()
-            if user == nil {
-                println(">>>>>>>>Uh oh. The user cancelled the Facebook login.")
-            } else if user.isNew {
-                println(">>>>>>>>User signed up and logged in through Facebook!")
-                self.getFacebookInfo()
-            } else {
-                println(">>>>>>>>User logged in through Facebook!")
-                self.getFacebookInfo()
-            }
-        })
+        let profileViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+        navigationController?.pushViewController(profileViewController, animated: true)
     }
     
-    func getFacebookInfo() {
-        FBRequestConnection.startForMeWithCompletionHandler { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
-            if error != nil {
-                error.showAlert()
-            } else {
-                if let swiftyJSON = JSON(rawValue: result) {
-                    println("My Profile:")
-                    println(swiftyJSON)
-                    let id = swiftyJSON["id"].stringValue
-                    self.printMyFriendsList(id)
-                }
-            }
-        }
-    }
-    
-    func printMyFriendsList(facebookID: String) {
-        // This will only print friends who have given our app fb access.  The new api does not allow access to a person's entire friends list.
-        FBRequestConnection.startForMyFriendsWithCompletionHandler { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
-            if error != nil {
-                error.showAlert()
-            } else {
-                if let swiftyJSON = JSON(rawValue: result) {
-                    println("My Friends:")
-                    println(swiftyJSON)
-                    let friendObjects: Array = swiftyJSON["data"].arrayValue
-                    var friendIDs: [String] = []
-                    friendIDs.reserveCapacity(friendObjects.count)
-                    for fo in friendObjects {
-                        friendIDs.append(fo.stringValue)
-                    }
-                }
-            }
-        }
-    }
 
 }
 

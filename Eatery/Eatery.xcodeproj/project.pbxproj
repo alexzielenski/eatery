@@ -28,6 +28,9 @@
 		C01E043219E626190050E8C7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; };
 		C01E043419E626490050E8C7 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C01E042F19E625AD0050E8C7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C033B3FA1A0AB372000EFB98 /* AF+Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C033B3F91A0AB372000EFB98 /* AF+Date+Extension.swift */; };
+		C033B3FD1A0AB7FD000EFB98 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C033B3FB1A0AB7FD000EFB98 /* ProfileViewController.swift */; };
+		C033B3FE1A0AB7FD000EFB98 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C033B3FC1A0AB7FD000EFB98 /* ProfileViewController.xib */; };
+		C033B4001A0AB907000EFB98 /* facebookLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C033B3FF1A0AB907000EFB98 /* facebookLoginButton.swift */; };
 		C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C037F36C1A07583C0061B57F /* UIColor+ColorScheme.swift */; };
 		C0893A6F1A07046A00A8E1BF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08939591A07046900A8E1BF /* Bolts.framework */; };
 		C0893A701A07046A00A8E1BF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089395A1A07046900A8E1BF /* FacebookSDK.framework */; };
@@ -116,6 +119,9 @@
 		C01E041F19E611650050E8C7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C01E042919E625AD0050E8C7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = vendor/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		C033B3F91A0AB372000EFB98 /* AF+Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AF+Date+Extension.swift"; sourceTree = "<group>"; };
+		C033B3FB1A0AB7FD000EFB98 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C033B3FC1A0AB7FD000EFB98 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		C033B3FF1A0AB907000EFB98 /* facebookLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = facebookLoginButton.swift; sourceTree = "<group>"; };
 		C037F36C1A07583C0061B57F /* UIColor+ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorScheme.swift"; sourceTree = "<group>"; };
 		C08939591A07046900A8E1BF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C089395A1A07046900A8E1BF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -257,6 +263,7 @@
 		C01E041719E5C70D0050E8C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C033B3FF1A0AB907000EFB98 /* facebookLoginButton.swift */,
 				C096409D1A081EA300F3841F /* Eat Now TableViewCell */,
 			);
 			name = Views;
@@ -267,6 +274,7 @@
 			children = (
 				C096408C1A08188B00F3841F /* TabBarController.swift */,
 				C007CAC619E1BEAC00E3BD46 /* NetworkingViewController.swift */,
+				C033B4011A0ACBAA000EFB98 /* Profile */,
 				C09640941A081D3800F3841F /* Eat Now */,
 				C09640951A081D3D00F3841F /* Beacon */,
 				C09640981A081DC800F3841F /* Friends */,
@@ -319,6 +327,15 @@
 				C033B3F91A0AB372000EFB98 /* AF+Date+Extension.swift */,
 			);
 			path = "AF+Date+Helper";
+			sourceTree = "<group>";
+		};
+		C033B4011A0ACBAA000EFB98 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C033B3FB1A0AB7FD000EFB98 /* ProfileViewController.swift */,
+				C033B3FC1A0AB7FD000EFB98 /* ProfileViewController.xib */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		C08939581A07046900A8E1BF /* FacebookSDK */ = {
@@ -496,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C033B3FE1A0AB7FD000EFB98 /* ProfileViewController.xib in Resources */,
 				C01E041E19E60E9E0050E8C7 /* Keys.plist in Resources */,
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
 				C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */,
@@ -521,6 +539,7 @@
 				C007CAC719E1BEAC00E3BD46 /* NetworkingViewController.swift in Sources */,
 				C01E042019E611650050E8C7 /* DataManager.swift in Sources */,
 				C096408B1A07D4D800F3841F /* PFUser+Printable.swift in Sources */,
+				C033B4001A0AB907000EFB98 /* facebookLoginButton.swift in Sources */,
 				C096408D1A08188B00F3841F /* TabBarController.swift in Sources */,
 				C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */,
 				C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */,
@@ -530,6 +549,7 @@
 				C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */,
 				C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */,
 				C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */,
+				C033B3FD1A0AB7FD000EFB98 /* ProfileViewController.swift in Sources */,
 				C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */,
 				C09640931A081D2700F3841F /* BeaconViewController.swift in Sources */,
 			);

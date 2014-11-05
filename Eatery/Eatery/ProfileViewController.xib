@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Eatery" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="HMv-YD-At9" id="zoH-dP-WPK"/>
+                <outlet property="bodyTextView" destination="RJG-NO-hvz" id="sSa-mc-WR5"/>
+                <outlet property="fbLoginButton" destination="lOZ-kc-MAZ" id="9Fk-CS-gY1"/>
+                <outlet property="nameLabel" destination="qdw-A0-MfK" id="Ckx-rk-3Wc"/>
+                <outlet property="profileImageView" destination="5zM-Ke-oR2" id="cSv-IQ-33g"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5zM-Ke-oR2">
+                    <rect key="frame" x="250" y="100" width="100" height="100"/>
+                    <color key="backgroundColor" red="0.88484642079999998" green="0.95854385850000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="alo-Xa-DhQ"/>
+                        <constraint firstAttribute="height" constant="100" id="lhl-7S-e0U"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="50"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                            <color key="value" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdw-A0-MfK">
+                    <rect key="frame" x="279" y="210" width="42" height="22.5"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJG-NO-hvz">
+                    <rect key="frame" x="20" y="242" width="560" height="169.5"/>
+                    <color key="backgroundColor" red="0.88484642079999998" green="0.95854385850000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="10"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOZ-kc-MAZ" customClass="facebookLoginButton" customModule="Eatery" customModuleProvider="target">
+                    <rect key="frame" x="178" y="456" width="244" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="244" id="cLZ-Cn-brS"/>
+                        <constraint firstAttribute="height" constant="44" id="uW6-rd-WRO"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="fbButtonPressed:" destination="-1" eventType="touchUpInside" id="9Uz-Lz-beG"/>
+                    </connections>
+                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-YD-At9">
+                    <rect key="frame" x="20" y="84" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="qdw-A0-MfK" firstAttribute="top" secondItem="5zM-Ke-oR2" secondAttribute="bottom" constant="10" id="AtP-Ky-Ue3"/>
+                <constraint firstAttribute="centerX" secondItem="qdw-A0-MfK" secondAttribute="centerX" id="EMF-L8-4li"/>
+                <constraint firstItem="HMv-YD-At9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="EiL-Il-MPm"/>
+                <constraint firstItem="lOZ-kc-MAZ" firstAttribute="top" secondItem="RJG-NO-hvz" secondAttribute="bottom" constant="44" id="GGw-0j-84D"/>
+                <constraint firstAttribute="centerX" secondItem="5zM-Ke-oR2" secondAttribute="centerX" id="MxL-dq-Mjn"/>
+                <constraint firstItem="5zM-Ke-oR2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="PVU-Qe-z7M"/>
+                <constraint firstAttribute="trailing" secondItem="RJG-NO-hvz" secondAttribute="trailing" constant="20" id="SOV-w6-yj7"/>
+                <constraint firstItem="HMv-YD-At9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="aDG-gR-fRh"/>
+                <constraint firstAttribute="centerX" secondItem="lOZ-kc-MAZ" secondAttribute="centerX" id="eEs-Le-nCM"/>
+                <constraint firstAttribute="bottom" secondItem="lOZ-kc-MAZ" secondAttribute="bottom" constant="20" id="h7b-Sv-s67"/>
+                <constraint firstItem="RJG-NO-hvz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pch-71-xlr"/>
+                <constraint firstAttribute="bottom" secondItem="lOZ-kc-MAZ" secondAttribute="bottom" constant="100" id="rcQ-YG-vax"/>
+                <constraint firstItem="lOZ-kc-MAZ" firstAttribute="top" secondItem="RJG-NO-hvz" secondAttribute="bottom" constant="44" id="tEj-Zh-TfF"/>
+                <constraint firstAttribute="bottom" secondItem="RJG-NO-hvz" secondAttribute="bottom" constant="20" symbolic="YES" id="uuP-rz-RNt"/>
+                <constraint firstItem="RJG-NO-hvz" firstAttribute="top" secondItem="qdw-A0-MfK" secondAttribute="bottom" constant="10" id="wAg-0M-33e"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="uuP-rz-RNt"/>
+                    <exclude reference="GGw-0j-84D"/>
+                    <exclude reference="h7b-Sv-s67"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="139" y="154"/>
+        </view>
+        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="SvZ-pj-Enn">
+            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+        </activityIndicatorView>
+    </objects>
+</document>
