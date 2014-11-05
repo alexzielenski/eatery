@@ -14,22 +14,6 @@ let VERBOSE = true
 
 let separator = ":------------------------------------------"
 
-//// Mark: Eatery API
-//enum Endpoints: String {
-//    case Calendars = "calendar"
-//    case Menus = "menu"
-//    case Locations = "location"
-//}
-//
-//enum CalendarEndpoints: String {
-//    case ID = "id"
-//}
-//
-//enum MenuEndpoints: String {
-//    case ID = "id"
-//    case MealType = "meal_type"
-//}
-
 enum Time: String {
     case Today = "today"
     case Tomorrow = "tomorrow"
@@ -44,9 +28,17 @@ enum MealType: String {
 
 
 /**
-Endpoints enum
+Router Endpoints enum
 
-- SignIn: /rest_sign_in
+- .Root
+- .Calendars
+- .Calendar
+- .CalendarRange
+- .Menus
+- .Menu
+- .MenuMeal
+- .Locations
+- .Location
 */
 enum Router: URLStringConvertible {
     static let baseURLString = "https://eatery-web.herokuapp.com"
@@ -92,17 +84,10 @@ enum Router: URLStringConvertible {
 class DataManager: NSObject {
     
     class var sharedInstance : DataManager {
-        
         struct Static {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : DataManager? = nil
+            static var instance: DataManager = DataManager()
         }
-        
-        dispatch_once(&Static.onceToken) {
-            Static.instance = DataManager()
-        }
-            
-        return Static.instance!
+        return Static.instance
     }
     
     func alamoTest(completion:(error: NSError?) -> Void) {
@@ -194,6 +179,6 @@ func printNetworkResponse(request: NSURLRequest, response: NSHTTPURLResponse?, d
                 println(swiftyJSON)
             }
         }
-        println(separator)
+        println("end " + separator)
     }
 }
