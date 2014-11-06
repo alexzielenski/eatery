@@ -34,10 +34,7 @@ class ProfileViewController: UIViewController {
     }
         
     func isLoggedIn() -> Bool {
-        if let user = PFUser.currentUser() {
-            return true
-        }
-        return false
+        return userIsLoggedIn()
     }
     
     func updateUIWithFacebookProfile(profile: JSON) {

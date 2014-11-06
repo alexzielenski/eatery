@@ -38,12 +38,16 @@ class SignInViewController: UIViewController {
             if user == nil {
                 println(">>>>>>>>Facebook login failed.")
                 error.handleFacebookError()
-            } else if user.isNew {
-                println(">>>>>>>>User signed up and logged in through Facebook!")
-                self.navigationController?.popToRootViewControllerAnimated(false)
             } else {
-                println(">>>>>>>>User logged in through Facebook!")
-                self.navigationController?.popToRootViewControllerAnimated(false)
+                let beacon = BeaconViewController()
+                beacon.title = "Beacon"
+                if user.isNew {
+                    println(">>>>>>>>User signed up and logged in through Facebook!")
+                    self.navigationController?.setViewControllers([beacon], animated: true)
+                } else {
+                    println(">>>>>>>>User logged in through Facebook!")
+                    self.navigationController?.setViewControllers([beacon], animated: true)
+                }
             }
         })
         
