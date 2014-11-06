@@ -7,4 +7,5 @@
 3.  Run  
 git submodule init  
 git submodule update  
+git pull origin master
 4.  git checkout develop
