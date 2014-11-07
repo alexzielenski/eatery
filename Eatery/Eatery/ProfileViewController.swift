@@ -34,13 +34,7 @@ class ProfileViewController: UIViewController {
     }
         
     func isLoggedIn() -> Bool {
-//        if PFFacebookUtils.session().state == FBSessionState.CreatedTokenLoaded {
-//            return true
-//        }
-        if let user = PFUser.currentUser() {
-            return true
-        }
-        return false
+        return userIsLoggedIn()
     }
     
     func updateUIWithFacebookProfile(profile: JSON) {
@@ -76,7 +70,7 @@ class ProfileViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 println()
                 if user == nil {
-                    println(">>>>>>>>Uh oh. The user cancelled the Facebook login.")
+                    println(">>>>>>>>Facebook login failed.")
                     error.handleFacebookError()
                     sender.setLoginState(.LoggedOut)
                 } else if user.isNew {

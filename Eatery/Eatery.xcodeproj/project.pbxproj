@@ -32,6 +32,9 @@
 		C033B3FE1A0AB7FD000EFB98 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C033B3FC1A0AB7FD000EFB98 /* ProfileViewController.xib */; };
 		C033B4001A0AB907000EFB98 /* facebookLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C033B3FF1A0AB907000EFB98 /* facebookLoginButton.swift */; };
 		C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C037F36C1A07583C0061B57F /* UIColor+ColorScheme.swift */; };
+		C06149261A0C067C00AB4DEF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06149241A0C067C00AB4DEF /* SignInViewController.swift */; };
+		C06149271A0C067C00AB4DEF /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06149251A0C067C00AB4DEF /* SignInViewController.xib */; };
+		C061492C1A0C092F00AB4DEF /* ConvenienceMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061492B1A0C092F00AB4DEF /* ConvenienceMethods.swift */; };
 		C0893A6F1A07046A00A8E1BF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08939591A07046900A8E1BF /* Bolts.framework */; };
 		C0893A701A07046A00A8E1BF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089395A1A07046900A8E1BF /* FacebookSDK.framework */; };
 		C0893A711A07046A00A8E1BF /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089395C1A07046900A8E1BF /* FBAudienceNetwork.framework */; };
@@ -127,6 +130,9 @@
 		C033B3FC1A0AB7FD000EFB98 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		C033B3FF1A0AB907000EFB98 /* facebookLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = facebookLoginButton.swift; sourceTree = "<group>"; };
 		C037F36C1A07583C0061B57F /* UIColor+ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorScheme.swift"; sourceTree = "<group>"; };
+		C06149241A0C067C00AB4DEF /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		C06149251A0C067C00AB4DEF /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		C061492B1A0C092F00AB4DEF /* ConvenienceMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenienceMethods.swift; sourceTree = "<group>"; };
 		C08939591A07046900A8E1BF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C089395A1A07046900A8E1BF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		C089395C1A07046900A8E1BF /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = FBAudienceNetwork/FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				C01E041919E5C7380050E8C7 /* Models */,
+				C061492B1A0C092F00AB4DEF /* ConvenienceMethods.swift */,
 				C01E041F19E611650050E8C7 /* DataManager.swift */,
 			);
 			name = Data;
@@ -284,11 +291,10 @@
 			isa = PBXGroup;
 			children = (
 				C096408C1A08188B00F3841F /* TabBarController.swift */,
-				C007CAC619E1BEAC00E3BD46 /* NetworkingViewController.swift */,
-				C033B4011A0ACBAA000EFB98 /* Profile */,
 				C09640941A081D3800F3841F /* Eat Now */,
 				C09640951A081D3D00F3841F /* Beacon */,
 				C09640981A081DC800F3841F /* Friends */,
+				C06149291A0C068500AB4DEF /* Facebook */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -348,6 +354,25 @@
 				C033B3FC1A0AB7FD000EFB98 /* ProfileViewController.xib */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		C06149291A0C068500AB4DEF /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				C007CAC619E1BEAC00E3BD46 /* NetworkingViewController.swift */,
+				C061492A1A0C069A00AB4DEF /* SignIn */,
+				C033B4011A0ACBAA000EFB98 /* Profile */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		C061492A1A0C069A00AB4DEF /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				C06149241A0C067C00AB4DEF /* SignInViewController.swift */,
+				C06149251A0C067C00AB4DEF /* SignInViewController.xib */,
+			);
+			name = SignIn;
 			sourceTree = "<group>";
 		};
 		C08939581A07046900A8E1BF /* FacebookSDK */ = {
@@ -529,6 +554,7 @@
 				C01E041E19E60E9E0050E8C7 /* Keys.plist in Resources */,
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
 				C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */,
+				C06149271A0C067C00AB4DEF /* SignInViewController.xib in Resources */,
 				C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */,
 				C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */,
 				FAA0C19A1A0C81C400D104C6 /* GroupsCollectionViewController.xib in Resources */,
@@ -551,13 +577,13 @@
 			files = (
 				C007CAC719E1BEAC00E3BD46 /* NetworkingViewController.swift in Sources */,
 				C01E042019E611650050E8C7 /* DataManager.swift in Sources */,
+				C061492C1A0C092F00AB4DEF /* ConvenienceMethods.swift in Sources */,
 				C096408B1A07D4D800F3841F /* PFUser+Printable.swift in Sources */,
 				C033B4001A0AB907000EFB98 /* facebookLoginButton.swift in Sources */,
 				C096408D1A08188B00F3841F /* TabBarController.swift in Sources */,
 				C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */,
 				C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */,
-				FAA0C1991A0C81C400D104C6 /* GroupsCollectionViewController.swift in Sources */,
-				FA5D3E321A0AF3E000A66986 /* User.swift in Sources */,
+				C06149261A0C067C00AB4DEF /* SignInViewController.swift in Sources */,
 				C007CAC519E1BEAC00E3BD46 /* AppDelegate.swift in Sources */,
 				C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */,
 				C033B3FA1A0AB372000EFB98 /* AF+Date+Extension.swift in Sources */,

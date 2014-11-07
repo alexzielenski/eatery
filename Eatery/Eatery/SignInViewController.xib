@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="Eatery" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="MLG-SE-DAu" id="iRO-HK-A3N"/>
+                <outlet property="fbLoginButton" destination="jVE-FB-tiU" id="y1S-Ui-1F0"/>
+                <outlet property="instructionLabel" destination="tWa-aD-GF6" id="LT8-6c-X0C"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVE-FB-tiU" customClass="facebookLoginButton" customModule="Eatery" customModuleProvider="target">
+                    <rect key="frame" x="178" y="278" width="244" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="244" id="Utw-aV-BiI"/>
+                        <constraint firstAttribute="height" constant="44" id="sNe-jF-j3p"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="fbButtonPressed:" destination="-1" eventType="touchUpInside" id="Khd-fs-aMN"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWa-aD-GF6">
+                    <rect key="frame" x="88" y="169" width="424" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MLG-SE-DAu">
+                    <rect key="frame" x="290" y="366" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jVE-FB-tiU" firstAttribute="top" secondItem="tWa-aD-GF6" secondAttribute="bottom" constant="88" id="XvV-oV-P5n"/>
+                <constraint firstAttribute="centerX" secondItem="MLG-SE-DAu" secondAttribute="centerX" id="aOz-nU-hPx"/>
+                <constraint firstItem="MLG-SE-DAu" firstAttribute="top" secondItem="jVE-FB-tiU" secondAttribute="bottom" constant="44" id="hfP-6g-O0i"/>
+                <constraint firstItem="jVE-FB-tiU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="iHT-gQ-q89"/>
+                <constraint firstItem="jVE-FB-tiU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jMh-sD-9yN"/>
+                <constraint firstAttribute="centerX" secondItem="tWa-aD-GF6" secondAttribute="centerX" id="kbh-Hc-NFg"/>
+                <constraint firstItem="tWa-aD-GF6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="88" id="qtE-ch-6Ut"/>
+                <constraint firstAttribute="trailing" secondItem="tWa-aD-GF6" secondAttribute="trailing" constant="88" id="wfp-ll-WcV"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

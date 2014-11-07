@@ -60,19 +60,19 @@ enum Router: URLStringConvertible {
             case .Calendars:
                 return "/calendars"
             case .Calendar(let calID):
-                return "/calendars/\(calID)"
+                return "/calendar/\(calID)"
             case .CalendarRange(let calID, let start, let end):
-                return "/calendars/\(calID)/\(start.rawValue)/\(end.rawValue)/"
+                return "/calendar/\(calID)/\(start.rawValue)/\(end.rawValue)/"
             case .Menus:
                 return "/menus"
             case .Menu(let menuID):
-                return "/menus/\(menuID)"
+                return "/menu/\(menuID)"
             case .MenuMeal(let menuID, let meal):
-                return "/menus/\(menuID)/\(meal.rawValue)"
+                return "/menu/\(menuID)/\(meal.rawValue)"
             case .Locations:
                 return "/locations"
             case .Location(let locationID):
-                return "/locations/\(locationID)"
+                return "/location/\(locationID)"
             }
         }()
         return Router.baseURLString + path
