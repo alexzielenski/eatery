@@ -64,9 +64,7 @@ class GroupsCollectionViewController: UIViewController, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
     
         // Configure the cell
-        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.blackColor() : UIColor.blueColor()
-        
-        println(cell.frame)
+        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.blackColor() : UIColor.blueColor()        
         return cell
     }
 

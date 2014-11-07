@@ -84,21 +84,36 @@ class User: NSObject {
     private override init() {
         super.init()
         self.isMe = true
-
-        loadUserInfo() {
-            [unowned self] result in
-            self.loadedUserInfo = true
-        }
-        loadFriendsList() {
-            [unowned self] result in
-            self.loadedFriendsList = true
-        }
+        self.loadInformation(nil)
     }
     
     private init(responseDictionary: NSDictionary) {
         super.init()
         
         initializeProperties(responseDictionary)
+    }
+    
+    private func loadInformation(completion: ((result: Bool) -> Void)?) {
+        if (self.isLoggedIn) {
+            loadUserInfo() {
+                [unowned self] result in
+                self.loadedUserInfo = true
+                
+                if (self.isLoggedIn && completion != nil) {
+                    completion!(result: true);
+                }
+                
+            }
+            
+            loadFriendsList() {
+                [unowned self] result in
+                self.loadedFriendsList = true
+                
+                if (self.isLoggedIn && completion != nil) {
+                    completion!(result: true);
+                }
+            }
+        }
     }
     
     // Populates the class' properties from a raw response dictionary
@@ -183,11 +198,46 @@ class User: NSObject {
         }
     }
     
-    func isLoggedIn() -> Bool {
+    var isLoggedIn: Bool {
         if let user = PFUser.currentUser() {
             return true
         }
         return false
+    }
+    
+    func login(completion: ((result: Bool) -> Void)?) {
+        let permissions = [
+            "public_profile",
+            "email",
+            "user_friends"
+        ]
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        PFFacebookUtils.logInWithPermissions(permissions, {
+            (user: PFUser!, error: NSError!) -> Void in
+            
+            self.willChangeValueForKey("isLoggedIn")
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            if user == nil {
+                println(">>>>>>>>Facebook login failed.")
+                error.handleFacebookError()
+                
+                if let completion = completion {
+                    completion(result: false)
+                }
+                
+            } else {
+                if user.isNew {
+                    println(">>>>>>>>User signed up and logged in through Facebook!")
+                } else {
+                    println(">>>>>>>>User logged in through Facebook!")
+                }
+                
+                self.loadInformation(completion)
+            }
+            
+            self.didChangeValueForKey("isLoggedIn")
+        })
     }
     
     private class func keyPathsForValuesAffectingIsFinishedLoading() -> NSSet {

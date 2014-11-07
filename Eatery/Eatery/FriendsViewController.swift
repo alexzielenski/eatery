@@ -27,6 +27,19 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         view.backgroundColor = UIColor.whiteColor()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if (!User.sharedInstance.isLoggedIn) {
+            let signIn = SignInViewController(nibName: "SignInViewController", bundle: nil)
+            signIn.completionHandler = {
+                [unowned self] result in
+                
+                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                self.tableView.reloadData()
+            }
+            self.navigationController?.presentViewController(signIn, animated: true, completion: nil)
+        }
+    }
+    
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (context == &FRIENDSCTX) {
             self.sortFiendsList(User.sharedInstance.friendsList)

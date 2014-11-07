@@ -49,10 +49,10 @@
 		C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */; };
 		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 		C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */; };
-		FA5D3E321A0AF3E000A66986 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D3E311A0AF3E000A66986 /* User.swift */; };
 		FAA0C1951A0C810500D104C6 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0C1941A0C810500D104C6 /* GroupsTableViewCell.swift */; };
-		FAA0C1991A0C81C400D104C6 /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0C1971A0C81C400D104C6 /* GroupsCollectionViewController.swift */; };
 		FAA0C19A1A0C81C400D104C6 /* GroupsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA0C1981A0C81C400D104C6 /* GroupsCollectionViewController.xib */; };
+		FAA0C1A61A0CA80A00D104C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D3E311A0AF3E000A66986 /* User.swift */; };
+		FAA0C1A81A0CA80E00D104C6 /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0C1971A0C81C400D104C6 /* GroupsCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,8 +281,6 @@
 				C033B3FF1A0AB907000EFB98 /* facebookLoginButton.swift */,
 				C096409D1A081EA300F3841F /* Eat Now TableViewCell */,
 				FAA0C1941A0C810500D104C6 /* GroupsTableViewCell.swift */,
-				FAA0C1971A0C81C400D104C6 /* GroupsCollectionViewController.swift */,
-				FAA0C1981A0C81C400D104C6 /* GroupsCollectionViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -404,6 +402,8 @@
 		C09640981A081DC800F3841F /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				FAA0C1971A0C81C400D104C6 /* GroupsCollectionViewController.swift */,
+				FAA0C1981A0C81C400D104C6 /* GroupsCollectionViewController.xib */,
 				C09640961A081DC000F3841F /* FriendsViewController.swift */,
 			);
 			name = Friends;
@@ -579,6 +579,8 @@
 				C01E042019E611650050E8C7 /* DataManager.swift in Sources */,
 				C061492C1A0C092F00AB4DEF /* ConvenienceMethods.swift in Sources */,
 				C096408B1A07D4D800F3841F /* PFUser+Printable.swift in Sources */,
+				FAA0C1A61A0CA80A00D104C6 /* User.swift in Sources */,
+				FAA0C1A81A0CA80E00D104C6 /* GroupsCollectionViewController.swift in Sources */,
 				C033B4001A0AB907000EFB98 /* facebookLoginButton.swift in Sources */,
 				C096408D1A08188B00F3841F /* TabBarController.swift in Sources */,
 				C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */,
