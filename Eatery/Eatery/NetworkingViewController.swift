@@ -67,27 +67,29 @@ class NetworkingViewController: UIViewController {
     
     // MARK: Parse data methods
     func parseDataButtonPressed(sender: UIButton) {
-        var testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
-            if error != nil {
-                error.showAlert()
-            } else {
-                println("\n>>>>>>>>Test Object Saved")
-            }
-        }
-        var beaconObject = PFObject(className: "Beacon")
-        beaconObject["author"] = "me"
-        beaconObject["audience"] = [PFUser.currentUser().objectId]
-        beaconObject["startDate"] = NSDate()
-        beaconObject["endDate"] = NSDate().dateByAddingHours(1)
-        beaconObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
-            if error != nil {
-                error.showAlert()
-            } else {
-                println("\n>>>>>>>>Beacon Object Saved")
-            }
-        }
+//        var testObject = PFObject(className: "TestObject")
+//        testObject["foo"] = "bar"
+//        testObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
+//            if error != nil {
+//                error.showAlert()
+//            } else {
+//                println("\n>>>>>>>>Test Object Saved")
+//            }
+//        }
+//        var beaconObject = PFObject(className: "Beacon")
+//        beaconObject["author"] = "me"
+//        beaconObject["audience"] = [PFUser.currentUser().objectId]
+//        beaconObject["startDate"] = NSDate()
+//        beaconObject["endDate"] = NSDate().dateByAddingHours(1)
+//        beaconObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
+//            if error != nil {
+//                error.showAlert()
+//            } else {
+//                println("\n>>>>>>>>Beacon Object Saved")
+//            }
+//        }
+        var testGroup = PFObject(className: "Group")
+        println(User.sharedInstance.friendsList.valueForKeyPath("parseUser"));
     }
     
     // MARK: eateryAPI methods
