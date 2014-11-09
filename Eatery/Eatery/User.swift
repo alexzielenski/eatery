@@ -35,13 +35,7 @@ class User: NSObject {
         return self.loadedUserInfo && self.loadedFriendsList
     }
     
-    var parseUser: PFUser? {
-        if (isMe) {
-            return PFUser.currentUser()
-        }
-        
-        return nil
-    }
+    var parseUser: PFUser?;
     
     private var _profilePicture: UIImage?
     var profilePicture: UIImage {
@@ -84,16 +78,27 @@ class User: NSObject {
     private override init() {
         super.init()
         self.isMe = true
+        self.parseUser = PFUser.currentUser()
         self.loadInformation(nil)
     }
     
     private init(responseDictionary: NSDictionary) {
         super.init()
-        
         initializeProperties(responseDictionary)
+
+        var query = PFUser.query()
+        query.whereKey("facebookID", equalTo: self.facebookID)
+        
+        query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+            if error == nil && results.count > 0{
+                self.parseUser = results[0] as? PFUser;
+            }
+        }
     }
     
     private func loadInformation(completion: ((result: Bool) -> Void)?) {
+        println(self.isLoggedIn)
+        
         if (self.isLoggedIn) {
             loadUserInfo() {
                 [unowned self] result in
@@ -153,7 +158,7 @@ class User: NSObject {
             if error != nil {
                 error.handleFacebookError()
                 if let completion = completion {
-                    completion(result: false);
+                    completion(result: false)
                 }
             } else {
                 let object = (result as NSDictionary)
@@ -230,13 +235,29 @@ class User: NSObject {
                 }
                 
             } else {
-                if user.isNew {
-                    println(">>>>>>>>User signed up and logged in through Facebook!")
-                } else {
-                    println(">>>>>>>>User logged in through Facebook!")
-                }
-                
-                self.loadInformation(completion)
+                self.loadInformation({ (result) -> Void in
+                    println(self.facebookID)
+                    println("finished")
+                    println(user)
+                    if user.isNew {
+                        println(">>>>>>>>User signed up and logged in through Facebook!")
+                        user["facebookID"] = self.facebookID
+                        user["name"] = self.name
+                        user["email"] = self.email
+                        
+                        user.saveInBackgroundWithBlock(nil)
+                    } else {
+                        println(">>>>>>>>User logged in through Facebook!")
+                        if user["name"] as NSString != self.name || user["email"] as NSString != self.email  {
+                            user["name"] = self.name
+                            user["email"] = self.email
+                            user.saveInBackgroundWithBlock(nil)
+                        }
+                    }
+                    if let completion = completion {
+                        completion(result: result);
+                    }
+                })
             }
             
             self.didChangeValueForKey("isLoggedIn")

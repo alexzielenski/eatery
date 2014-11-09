@@ -64,28 +64,8 @@ class ProfileViewController: UIViewController {
             "user_friends"
         ]
         if sender.loginState == .LoggedOut {
-            activityIndicator.startAnimating()
-            PFFacebookUtils.logInWithPermissions(permissions, {
-                (user: PFUser!, error: NSError!) -> Void in
-                self.activityIndicator.stopAnimating()
-                println()
-                if user == nil {
-                    println(">>>>>>>>Facebook login failed.")
-                    error.handleFacebookError()
-                    sender.setLoginState(.LoggedOut)
-                } else if user.isNew {
-                    println(">>>>>>>>User signed up and logged in through Facebook!")
-                    sender.setLoginState(.LoggedIn)
-                    self.getFacebookInfo({ (result) -> Void in
-                        self.updateUIWithFacebookProfile(result)
-                    })
-                } else {
-                    sender.setLoginState(.LoggedIn)
-                    println(">>>>>>>>User logged in through Facebook!")
-                    self.getFacebookInfo({ (result) -> Void in
-                        self.updateUIWithFacebookProfile(result)
-                    })
-                }
+            User.sharedInstance.login({ (result) -> Void in
+//                updateUIWithFacebookProfile(<#profile: JSON#>)
             })
         } else {
             PFUser.logOut()
