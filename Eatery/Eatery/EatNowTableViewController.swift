@@ -9,12 +9,24 @@
 import UIKit
 
 class EatNowTableViewController: UITableViewController {
-        
+    
     override func viewDidLoad() {
+        var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)
+        
+        tableView.registerNib(nib, forCellReuseIdentifier: "eatNowCell")
+        tableView.rowHeight = 95
         super.viewDidLoad()
         
-        tableView.registerClass(EatNowTableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
+        //tableView.registerClass(EatNowTableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
     }
+    
+    var items: [(String, String, String, String, String)] = [
+        ("appel.jpg", "North Star", "Appel Commons - Dining Hall", "0.1mi", "Open until 8:30PM"),
+        ("appel.jpg", "RPCC Eatery", "RPCC - Dining Hall", "0.3mi", "Open until 8:30PM"),
+        ("appel.jpg", "Bear Necessities", "Appel Commons - Dining Hall", "0.5mi", "Open until 8:30PM"),
+        ("appel.jpg", "Cafe Jennie", "Cornell Store - Cafe", "0.1mi", "Open until 8:30PM"),
+        ("appel.jpg", "Cascadeli", "Willard Straight Hall - Cafe", "0.3mi", "Open until 8:30PM")
+    ]
 
     // MARK: - Table view data source
 
@@ -23,18 +35,25 @@ class EatNowTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as EatNowTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("eatNowCell", forIndexPath: indexPath) as EatNowTableViewCell
 
-        cell.textLabel.text = "Cell (\(indexPath.section),\(indexPath.row))"
+        var (image, name, desc, miles, hours) = items[indexPath.row]
+
+        cell.loadItem(image: image, name: name, desc: desc, miles: miles, hours: hours)
         
         return cell
+        //cell.textLabel.text = "Cell (\(indexPath.section),\(indexPath.row))"
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailViewController =  EatNowDetailViewController(nibName: "EatNowDetailViewController", bundle: nil)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
