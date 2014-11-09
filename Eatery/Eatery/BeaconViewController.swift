@@ -16,7 +16,6 @@ class BeaconViewController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         
         
-        
     }
     
     override func viewWillAppear(animated: Bool) {

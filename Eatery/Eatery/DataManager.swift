@@ -26,7 +26,6 @@ enum MealType: String {
     case Dinner = "Dinner"
 }
 
-
 /**
 Router Endpoints enum
 
