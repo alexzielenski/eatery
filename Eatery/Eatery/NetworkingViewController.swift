@@ -67,27 +67,56 @@ class NetworkingViewController: UIViewController {
     
     // MARK: Parse data methods
     func parseDataButtonPressed(sender: UIButton) {
-        var testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
-            if error != nil {
-                error.showAlert()
-            } else {
-                println("\n>>>>>>>>Test Object Saved")
+//        var testObject = PFObject(className: "TestObject")
+//        testObject["foo"] = "bar"
+//        testObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
+//            if error != nil {
+//                error.showAlert()
+//            } else {
+//                println("\n>>>>>>>>Test Object Saved")
+//            }
+//        }
+//        var beaconObject = PFObject(className: "Beacon")
+//        beaconObject["author"] = "me"
+//        beaconObject["audience"] = [PFUser.currentUser().objectId]
+//        beaconObject["startDate"] = NSDate()
+//        beaconObject["endDate"] = NSDate().dateByAddingHours(1)
+//        beaconObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
+//            if error != nil {
+//                error.showAlert()
+//            } else {
+//                println("\n>>>>>>>>Beacon Object Saved")
+//            }
+//        }
+        var testGroup = PFObject(className: "Group")
+
+        var friendParseIDs: [String] = [PFUser.currentUser().objectId]
+        for user in User.sharedInstance.friendsList {
+            if let parseUser = user.parseUser {
+                friendParseIDs.append(parseUser.objectId)
             }
         }
-        var beaconObject = PFObject(className: "Beacon")
-        beaconObject["author"] = "me"
-        beaconObject["audience"] = [PFUser.currentUser().objectId]
-        beaconObject["startDate"] = NSDate()
-        beaconObject["endDate"] = NSDate().dateByAddingHours(1)
-        beaconObject.saveInBackgroundWithBlock { (success: Bool!, error: NSError!) -> Void in
-            if error != nil {
-                error.showAlert()
-            } else {
-                println("\n>>>>>>>>Beacon Object Saved")
-            }
+        
+        testGroup["creator"] = User.sharedInstance.parseUser!
+        testGroup["name"] = "ballers"
+        testGroup["members"] = friendParseIDs
+        testGroup.saveInBackgroundWithBlock { (success, error) -> Void in
+            // test the results
+            self.retrieveGroupsForUser(PFUser.currentUser().objectId)
+        
         }
+//        println((User.sharedInstance.friendsList as AnyObject).valueForKeyPath("parseUser"));
+    }
+    
+    func retrieveGroupsForUser(id: String) {
+        var query = PFQuery(className: "Group")
+        query.whereKey("members", equalTo: PFUser.currentUser().objectId)
+        query.findObjectsInBackgroundWithBlock({ (result: [AnyObject]!, error) -> Void in
+            println("Group IDs User \(id) is a member of:")
+            for r in result as [PFObject] {
+                println(r.objectId)
+            }
+        })
     }
     
     // MARK: eateryAPI methods

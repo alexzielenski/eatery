@@ -11,8 +11,8 @@ import UIKit
 private func primaryLetterForUser(user: User) -> String {
     // Typically return first letter of last name, but if
     // that isnt available, first letter of name
-    let primaryName = user.lastName != nil && user.lastName.length > 0 ? user.lastName : user.name
-    return primaryName.substringToIndex(1)
+    let primaryName = user.lastName != nil && countElements(user.lastName) > 0 ? user.lastName : user.name
+    return primaryName.substringToIndex(advance(primaryName.startIndex, 1))
 }
 
 private var FRIENDSCTX = 0

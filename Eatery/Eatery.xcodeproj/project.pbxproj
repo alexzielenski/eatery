@@ -279,8 +279,8 @@
 			isa = PBXGroup;
 			children = (
 				C01E041919E5C7380050E8C7 /* Models */,
-				C061492B1A0C092F00AB4DEF /* ConvenienceMethods.swift */,
 				C01E041F19E611650050E8C7 /* DataManager.swift */,
+				C061492B1A0C092F00AB4DEF /* ConvenienceMethods.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";

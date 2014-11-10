@@ -13,7 +13,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var fbLoginButton: facebookLoginButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var completionHandler: ((result: Bool) -> Void)?
+    var completionHandler: ((error: NSError?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
