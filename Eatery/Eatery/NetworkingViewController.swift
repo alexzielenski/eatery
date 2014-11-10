@@ -89,6 +89,16 @@ class NetworkingViewController: UIViewController {
 //            }
 //        }
         var testGroup = PFObject(className: "Group")
+
+        var relation = User.sharedInstance.parseUser!.relationForKey("members")
+        for user in User.sharedInstance.friendsList.valueForKeyPath("parseUser")! as NSArray {
+            println(user);
+            relation.addObject(user as PFUser)
+        }
+        
+        testGroup["creator"] = User.sharedInstance.parseUser!
+        testGroup["name"] = "ballers"
+        testGroup.saveInBackgroundWithBlock(nil)
         println(User.sharedInstance.friendsList.valueForKeyPath("parseUser"));
     }
     

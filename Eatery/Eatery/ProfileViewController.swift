@@ -66,6 +66,7 @@ class ProfileViewController: UIViewController {
         if sender.loginState == .LoggedOut {
             User.sharedInstance.login({ (result) -> Void in
 //                updateUIWithFacebookProfile(<#profile: JSON#>)
+                sender.loginState = result ? .LoggedIn : .LoggedOut
             })
         } else {
             PFUser.logOut()
