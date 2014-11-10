@@ -1,52 +1,58 @@
 //
-//  EatNowTableViewController.swift
+//  SortByTableViewController.swift
 //  Eatery
 //
-//  Created by Eric Appel on 11/3/14.
+//  Created by Adam on 11/2/14.
 //  Copyright (c) 2014 CUAppDev. All rights reserved.
 //
 
 import UIKit
 
-class EatNowTableViewController: UITableViewController {
-        
+class SortByTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    let options = ["Distance", "Open", "Closed", "Popularity", "Dining Hall", "Food Court", "Cafe", "Coffee House"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerClass(EatNowTableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
-        
-        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search"), animated: true)
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort By", style: UIBarButtonItemStyle.Plain, target: self, action: "sortby")
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        return options.count
     }
 
-    
+   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as EatNowTableViewCell
-
-        cell.textLabel.text = "Cell (\(indexPath.section),\(indexPath.row))"
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+    
+        cell.textLabel.text = options[indexPath.row]
         return cell
     }
-    //Function used to confirm functionality of the SortByTableView
-   // override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-     //   let sortByTableViewController =  SortByTableViewController(nibName: "SortByTableViewController", bundle: nil)
-       // self.navigationController?.pushViewController(sortByTableViewController, animated: true)
-        
-   // }
+    
 
-    /*
+       /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
