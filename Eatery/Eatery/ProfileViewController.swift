@@ -58,15 +58,13 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func fbButtonPressed(sender: facebookLoginButton) {
-        let permissions = [
-            "public_profile",
-            "email",
-            "user_friends"
-        ]
         if sender.loginState == .LoggedOut {
-            User.sharedInstance.login({ (result) -> Void in
-//                updateUIWithFacebookProfile(<#profile: JSON#>)
-                sender.loginState = result ? .LoggedIn : .LoggedOut
+            User.sharedInstance.login({ (error) -> Void in
+                if error != nil {
+                    error!.showAlert()
+                } else {
+                    sender.loginState = .LoggedIn
+                }
             })
         } else {
             PFUser.logOut()
