@@ -18,6 +18,7 @@ private func primaryLetterForUser(user: User) -> String {
 private var FRIENDSCTX = 0
 class FriendsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     private(set) var sortedFriends = NSDictionary()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = false
@@ -27,16 +28,19 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         view.backgroundColor = UIColor.whiteColor()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if (!User.sharedInstance.isLoggedIn) {
+    override func viewWillAppear(animated: Bool) {
+        if !User.sharedInstance.isLoggedIn {
             let signIn = SignInViewController(nibName: "SignInViewController", bundle: nil)
-            signIn.completionHandler = {
-                [unowned self] result in
-                
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-                self.tableView.reloadData()
+            signIn.title = self.title
+            signIn.navigationItem.setHidesBackButton(true, animated: false)
+            signIn.completionHandler = { (error) -> Void in
+                if error != nil {
+                    error!.handleFacebookError()
+                } else {
+                    signIn.navigationController?.setViewControllers([self], animated: false)
+                }
             }
-            self.navigationController?.presentViewController(signIn, animated: true, completion: nil)
+            self.navigationController?.setViewControllers([signIn], animated: false)
         }
     }
     

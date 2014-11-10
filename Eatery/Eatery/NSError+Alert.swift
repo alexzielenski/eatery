@@ -58,6 +58,8 @@ extension NSError {
             println("FacebbokOther")
         case .BadRequest:
             println("BadRequest")
+        default:
+            println("default case in error category")
         }
         
         if DEBUG {

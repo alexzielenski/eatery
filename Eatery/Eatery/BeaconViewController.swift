@@ -19,13 +19,18 @@ class BeaconViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        println("vwa")
-        if !userIsLoggedIn() {
-            let signInViewController: SignInViewController = SignInViewController(nibName: "SignInViewController", bundle: nil)
-            signInViewController.navigationItem.setHidesBackButton(true, animated: false)
-            navigationController?.setViewControllers([signInViewController], animated: false)
-        } else {
-            // beacon stuff
+        if !User.sharedInstance.isLoggedIn {
+            let signIn = SignInViewController(nibName: "SignInViewController", bundle: nil)
+            signIn.title = self.title
+            signIn.navigationItem.setHidesBackButton(true, animated: false)
+            signIn.completionHandler = { (error) -> Void in
+                if error != nil {
+                    error!.handleFacebookError()
+                } else {
+                    signIn.navigationController?.setViewControllers([self], animated: false)
+                }
+            }
+            self.navigationController?.setViewControllers([signIn], animated: false)
         }
     }
 }

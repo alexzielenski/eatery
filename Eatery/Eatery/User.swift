@@ -200,26 +200,18 @@ class User: NSObject {
                 if let swiftyJSON = JSON(rawValue: result) {
                     let friendObjects: Array = swiftyJSON["data"].arrayValue
                     var friendUsers: [User] = []
-                    println(friendObjects)
 
                     friendUsers.reserveCapacity(friendObjects.count)
                     for fo in friendObjects {
                         let friendUser = User(responseDictionary: fo.dictionaryObject!)
                         friendUsers.append(friendUser)
-                        println(fo.dictionaryObject)
-                        println(friendUser)
-                        println(friendUser.facebookID)
                     }
                     self.friendsList = friendUsers
-                    
-                    
-                    println((self.friendsList as AnyObject).valueForKey("parseUser"))
                     
                     if let completion = completion {
                         completion(error: nil)
                     }
-                }
-                else {
+                } else {
                     if let completion = completion {
                         let error = NSError(domain: "com.eatery", code: 100, userInfo: ["message" : "Error parsing facebook friends response"])
                         completion(error: error)
@@ -253,7 +245,9 @@ class User: NSObject {
             } else {
                 self.loadInformation({ (error) -> Void in
                     if error != nil {
-                        error!.showAlert()
+                        if let completion = completion {
+                            completion(error: error!)
+                        }
                     }
                     else {
                         self.didChangeValueForKey("isLoggedIn")
@@ -272,6 +266,9 @@ class User: NSObject {
                                 user["email"] = self.email
                                 user.saveInBackgroundWithBlock(nil)
                             }
+                        }
+                        if let completion = completion {
+                            completion(error: nil)
                         }
                     }
                 })
