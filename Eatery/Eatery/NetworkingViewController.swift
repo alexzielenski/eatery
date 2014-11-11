@@ -137,7 +137,6 @@ class NetworkingViewController: UIViewController {
         let profileViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         navigationController?.pushViewController(profileViewController, animated: true)
     }
-    
 
 }
 
