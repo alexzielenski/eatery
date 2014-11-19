@@ -88,6 +88,7 @@ class NetworkingViewController: UIViewController {
 //                println("\n>>>>>>>>Beacon Object Saved")
 //            }
 //        }
+        /*
         var testGroup = PFObject(className: "Group")
 
         var relation = User.sharedInstance.parseUser!.relationForKey("members")
@@ -99,7 +100,12 @@ class NetworkingViewController: UIViewController {
         testGroup["creator"] = User.sharedInstance.parseUser!
         testGroup["name"] = "ballers"
         testGroup.saveInBackgroundWithBlock(nil)
-        println(User.sharedInstance.friendsList.valueForKeyPath("parseUser"));
+        println(User.sharedInstance.friendsList.valueForKeyPath("parseUser"));*/
+
+        PFCloud.callFunctionInBackground("addFriend", withParameters: ["target" as NSString: "YQEhKcmOe7" as NSString, "initiator" as NSString: "513eebJKlB" as NSString]) { (any, err) -> Void in
+            println(any);
+            println(err);
+        }
     }
     
     // MARK: eateryAPI methods
