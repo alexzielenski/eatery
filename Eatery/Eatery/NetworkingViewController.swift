@@ -88,24 +88,35 @@ class NetworkingViewController: UIViewController {
 //                println("\n>>>>>>>>Beacon Object Saved")
 //            }
 //        }
-        /*
         var testGroup = PFObject(className: "Group")
 
-        var relation = User.sharedInstance.parseUser!.relationForKey("members")
-        for user in User.sharedInstance.friendsList.valueForKeyPath("parseUser")! as NSArray {
-            println(user);
-            relation.addObject(user as PFUser)
+        var friendParseIDs: [String] = [PFUser.currentUser().objectId]
+        for user in User.sharedInstance.friendsList {
+            if let parseUser = user.parseUser {
+                friendParseIDs.append(parseUser.objectId)
+            }
         }
         
         testGroup["creator"] = User.sharedInstance.parseUser!
         testGroup["name"] = "ballers"
-        testGroup.saveInBackgroundWithBlock(nil)
-        println(User.sharedInstance.friendsList.valueForKeyPath("parseUser"));*/
-
-        PFCloud.callFunctionInBackground("addFriend", withParameters: ["target" as NSString: "YQEhKcmOe7" as NSString, "initiator" as NSString: "513eebJKlB" as NSString]) { (any, err) -> Void in
-            println(any);
-            println(err);
+        testGroup["members"] = friendParseIDs
+        testGroup.saveInBackgroundWithBlock { (success, error) -> Void in
+            // test the results
+            self.retrieveGroupsForUser(PFUser.currentUser().objectId)
+        
         }
+//        println((User.sharedInstance.friendsList as AnyObject).valueForKeyPath("parseUser"));
+    }
+    
+    func retrieveGroupsForUser(id: String) {
+        var query = PFQuery(className: "Group")
+        query.whereKey("members", equalTo: PFUser.currentUser().objectId)
+        query.findObjectsInBackgroundWithBlock({ (result: [AnyObject]!, error) -> Void in
+            println("Group IDs User \(id) is a member of:")
+            for r in result as [PFObject] {
+                println(r.objectId)
+            }
+        })
     }
     
     // MARK: eateryAPI methods
@@ -126,7 +137,6 @@ class NetworkingViewController: UIViewController {
         let profileViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         navigationController?.pushViewController(profileViewController, animated: true)
     }
-    
 
 }
 

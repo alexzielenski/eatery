@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 CUAppDev. All rights reserved.
 //
 
-private enum ResponseKey: NSString {
+private enum ResponseKey: String {
     case Birthday    = "birthday"
     case Email       = "email"
     case FirstName   = "first_name"
@@ -21,7 +21,6 @@ private enum ResponseKey: NSString {
     case TimeZone    = "timezone"
     case LastUpdated = "update_time"
     case IsVerified  = "verified"
-    
     case Data        = "data"
 }
 
@@ -35,7 +34,17 @@ class User: NSObject {
         return self.loadedUserInfo && self.loadedFriendsList
     }
     
-    var parseUser: PFUser?;
+    var isLoggedIn: Bool {
+        if let user = PFUser.currentUser() { // Check parse
+            if PFFacebookUtils.session().isOpen { // Check facebook
+                return true
+            }
+            return false
+        }
+        return false
+    }
+    
+    var parseUser: PFUser?
     
     private var _profilePicture: UIImage?
     var profilePicture: UIImage {
@@ -49,20 +58,20 @@ class User: NSObject {
     }
     
     // MARK: Facebook user information
-    dynamic var friendsList: NSMutableArray = []
+    dynamic var friendsList: [User] = []
     
     // List properties as dynamic to enabled KVO
     dynamic private(set) var birthday: NSDate!
-    dynamic private(set) var email: NSString!
-    dynamic private(set) var firstName: NSString!
-    dynamic private(set) var gender: NSString!
-    dynamic private(set) var facebookID: NSString!
-    dynamic private(set) var lastName: NSString!
+    dynamic private(set) var email: String!
+    dynamic private(set) var firstName: String!
+    dynamic private(set) var gender: String!
+    dynamic private(set) var facebookID: String!
+    dynamic private(set) var lastName: String!
     dynamic private(set) var profileURL: NSURL!
-    dynamic private(set) var locale: NSString!
-    private(set) var location: (id: NSString, name: NSString)!
-    dynamic private(set) var middleName: NSString!
-    dynamic private(set) var name: NSString!
+    dynamic private(set) var locale: String!
+    private(set) var location: (id: String, name: String)!
+    dynamic private(set) var middleName: String!
+    dynamic private(set) var name: String!
     dynamic private(set) var timeZone: Int = 0
     dynamic private(set) var lastUpdated: NSDate!
     dynamic private(set) var isVerified: Bool = false
@@ -91,32 +100,7 @@ class User: NSObject {
         
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             if error == nil && results.count > 0{
-                self.parseUser = results[0] as? PFUser;
-            }
-        }
-    }
-    
-    private func loadInformation(completion: ((result: Bool) -> Void)?) {
-        println(self.isLoggedIn)
-        
-        if (self.isLoggedIn) {
-            loadUserInfo() {
-                [unowned self] result in
-                self.loadedUserInfo = true
-                
-                if (self.isLoggedIn && completion != nil) {
-                    completion!(result: true);
-                }
-                
-            }
-            
-            loadFriendsList() {
-                [unowned self] result in
-                self.loadedFriendsList = true
-                
-                if (self.isLoggedIn && completion != nil) {
-                    completion!(result: true);
-                }
+                self.parseUser = results[0] as? PFUser
             }
         }
     }
@@ -153,64 +137,93 @@ class User: NSObject {
         self.isVerified = ((responseDictionary[ResponseKey.IsVerified.rawValue] as? Int ?? 0) == 1) ? true : false
     }
     
-    private func loadUserInfo(completion: ((result: Bool) -> Void)?) {
+    private func loadInformation(completion: ((error: NSError?) -> Void)?) {
+        // Use GCD to dispatch then wait for the responses instead of chaining FBRequests
+        if isLoggedIn {
+            loadUserInfo({ (error) -> Void in
+                if error != nil {
+                    if let completion = completion {
+                        error!.handleFacebookError()
+                        completion(error: error)
+                    }
+                } else {
+                    self.loadedUserInfo = true
+                    
+                    self.loadFriendsList({ (error) -> Void in
+                        if error != nil {
+                            if let completion = completion {
+                                error!.handleFacebookError()
+                                completion(error: error)
+                            }
+                        } else {
+                            self.loadedFriendsList = true
+                            
+                            if let completion = completion {
+                                completion(error: nil)
+                            }
+                        }
+                    })
+                }
+            })
+            
+        } else {
+            if let completion = completion {
+                let error = NSError(domain: "com.eatery", code: 100, userInfo: ["message" : "Tried loading facebook information but ws not logged in"])
+                completion(error: error)
+            }
+        }
+    }
+    
+    private func loadUserInfo(completion: ((error: NSError?) -> Void)?) {
         FBRequestConnection.startForMeWithCompletionHandler { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             if error != nil {
-                error.handleFacebookError()
                 if let completion = completion {
-                    completion(result: false)
+                    completion(error: error!)
                 }
             } else {
                 let object = (result as NSDictionary)
                 self.initializeProperties(object)
                 if let completion = completion {
-                    completion(result: true)
+                    completion(error: nil)
                 }
             }
         }
     }
     
-    private func loadFriendsList(completion:((result: Bool) -> Void)?) {
+    private func loadFriendsList(completion:((error: NSError?) -> Void)?) {
         FBRequestConnection.startForMyFriendsWithCompletionHandler { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             if error != nil {
-                error.handleFacebookError()
-                if (completion != nil) {
-                    completion!(result: false)
+                if let completion = completion {
+                    completion(error: error!)
                 }
             } else {
-                if let response = result as? NSDictionary {
-                    let data: [NSDictionary]! = (response[ResponseKey.Data.rawValue as String] as? [NSDictionary])
-                    if data == nil {
-                        println("Error parsing response")
-                        if (completion != nil) {
-                            completion!(result: false)
-                        }
+                if let swiftyJSON = JSON(rawValue: result) {
+                    let friendObjects: Array = swiftyJSON["data"].arrayValue
+                    var friendUsers: [User] = []
+
+                    friendUsers.reserveCapacity(friendObjects.count)
+                    for fo in friendObjects {
+                        let friendUser = User(responseDictionary: fo.dictionaryObject!)
+                        friendUsers.append(friendUser)
                     }
+                    self.friendsList = friendUsers
                     
-                    var friends = NSMutableArray(capacity: data.count)
-                    for object: NSDictionary in data {
-                        friends.addObject(User(responseDictionary: object))
+                    if let completion = completion {
+                        completion(error: nil)
                     }
-                    
-                    self.friendsList = friends
                 } else {
-                    println("Error parsing response")
-                    if (completion != nil) {
-                        completion!(result: false)
+                    if let completion = completion {
+                        let error = NSError(domain: "com.eatery", code: 100, userInfo: ["message" : "Error parsing facebook friends response"])
+                        completion(error: error)
                     }
                 }
             }
         }
     }
     
-    var isLoggedIn: Bool {
-        if let user = PFUser.currentUser() {
-            return true
-        }
-        return false
-    }
+
     
-    func login(completion: ((result: Bool) -> Void)?) {
+    func login(completion: ((error: NSError?) -> Void)?) {
         let permissions = [
             "public_profile",
             "email",
@@ -223,41 +236,43 @@ class User: NSObject {
             
             self.willChangeValueForKey("isLoggedIn")
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            if user == nil {
+            
+            if error != nil {
                 println(">>>>>>>>Facebook login failed.")
-                error.handleFacebookError()
-                
                 if let completion = completion {
-                    completion(result: false)
+                    completion(error: error!)
                 }
-                
             } else {
-                self.loadInformation({ (result) -> Void in
-                    println(self.facebookID)
-                    println("finished")
-                    println(user)
-                    if user.isNew {
-                        println(">>>>>>>>User signed up and logged in through Facebook!")
-                        user["facebookID"] = self.facebookID
-                        user["name"] = self.name
-                        user["email"] = self.email
-                        
-                        user.saveInBackgroundWithBlock(nil)
-                    } else {
-                        println(">>>>>>>>User logged in through Facebook!")
-                        if user["name"] as NSString != self.name || user["email"] as NSString != self.email  {
+                self.loadInformation({ (error) -> Void in
+                    if error != nil {
+                        if let completion = completion {
+                            completion(error: error!)
+                        }
+                    }
+                    else {
+                        self.didChangeValueForKey("isLoggedIn")
+                        if user.isNew {
+                            println(">>>>>>>>User signed up and logged in through Facebook!")
+                            // set additional properties on parse
+                            user["facebookID"] = self.facebookID
                             user["name"] = self.name
                             user["email"] = self.email
                             user.saveInBackgroundWithBlock(nil)
+                        } else {
+                            println(">>>>>>>>User logged in through Facebook!")
+                            // check if facebook info has changed
+                            if user["name"] as? String != self.name || user["email"] as? String != self.email  {
+                                user["name"] = self.name
+                                user["email"] = self.email
+                                user.saveInBackgroundWithBlock(nil)
+                            }
                         }
-                    }
-                    if let completion = completion {
-                        completion(result: result);
+                        if let completion = completion {
+                            completion(error: nil)
+                        }
                     }
                 })
             }
-            
-            self.didChangeValueForKey("isLoggedIn")
         })
     }
     

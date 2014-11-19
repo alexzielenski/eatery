@@ -39,9 +39,17 @@
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MLG-SE-DAu">
                     <rect key="frame" x="290" y="366" width="20" height="20"/>
                 </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lh0-Fw-jdd">
+                    <rect key="frame" x="252" y="74" width="96.5" height="38.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Lh0-Fw-jdd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="8P2-Ob-0gd"/>
+                <constraint firstAttribute="centerX" secondItem="Lh0-Fw-jdd" secondAttribute="centerX" id="SXH-S7-eZH"/>
                 <constraint firstItem="jVE-FB-tiU" firstAttribute="top" secondItem="tWa-aD-GF6" secondAttribute="bottom" constant="88" id="XvV-oV-P5n"/>
                 <constraint firstAttribute="centerX" secondItem="MLG-SE-DAu" secondAttribute="centerX" id="aOz-nU-hPx"/>
                 <constraint firstItem="MLG-SE-DAu" firstAttribute="top" secondItem="jVE-FB-tiU" secondAttribute="bottom" constant="44" id="hfP-6g-O0i"/>
