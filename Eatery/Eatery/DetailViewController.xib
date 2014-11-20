@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="MenuSlider" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundImageView" destination="3dC-jd-CEa" id="dSq-b9-HMv"/>
+                <outlet property="contentPagingView" destination="YIx-B0-XBi" id="WAr-OR-Bc2"/>
+                <outlet property="pageIndexIndicator" destination="lau-3f-3xq" id="Ubq-Mh-Ag2"/>
+                <outlet property="portraitPhotoImageView" destination="xUq-dr-19H" id="OXu-jO-PB4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3dC-jd-CEa">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="286"/>
+                    <color key="backgroundColor" red="1" green="0.3815818949" blue="0.30408964620000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="286" id="qbt-ie-Gf9"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xUq-dr-19H">
+                    <rect key="frame" x="230" y="72" width="141" height="141"/>
+                    <color key="backgroundColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="141" id="ZZF-EB-UFN"/>
+                    </constraints>
+                </imageView>
+                <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lau-3f-3xq" customClass="PageIndexIndicator" customModule="MenuSlider" customModuleProvider="target">
+                    <rect key="frame" x="53" y="256" width="494" height="30"/>
+                    <color key="backgroundColor" red="0.061210954909999997" green="0.59094412900000004" blue="0.70240752549999996" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIx-B0-XBi">
+                    <rect key="frame" x="0.0" y="284" width="600" height="316"/>
+                    <color key="backgroundColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="YIx-B0-XBi" firstAttribute="top" secondItem="xUq-dr-19H" secondAttribute="bottom" constant="71" id="37Q-Ah-rU5"/>
+                <constraint firstItem="3dC-jd-CEa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9CB-kQ-cPb"/>
+                <constraint firstItem="YIx-B0-XBi" firstAttribute="trailing" secondItem="3dC-jd-CEa" secondAttribute="trailing" id="9XQ-Ha-GuM"/>
+                <constraint firstItem="lau-3f-3xq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="53" id="Beg-YH-rtZ"/>
+                <constraint firstItem="lau-3f-3xq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="256" id="KhW-ew-9v4"/>
+                <constraint firstItem="YIx-B0-XBi" firstAttribute="leading" secondItem="3dC-jd-CEa" secondAttribute="leading" id="QDS-Jh-D0h"/>
+                <constraint firstItem="3dC-jd-CEa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VKL-s8-eNJ"/>
+                <constraint firstAttribute="bottom" secondItem="YIx-B0-XBi" secondAttribute="bottom" id="ect-Dy-iSk"/>
+                <constraint firstItem="3dC-jd-CEa" firstAttribute="bottom" secondItem="lau-3f-3xq" secondAttribute="bottom" id="ftY-Qm-6hC"/>
+                <constraint firstAttribute="trailing" secondItem="3dC-jd-CEa" secondAttribute="trailing" id="hNS-ub-W00"/>
+                <constraint firstItem="xUq-dr-19H" firstAttribute="centerX" secondItem="lau-3f-3xq" secondAttribute="centerX" id="jFd-QP-uEt"/>
+                <constraint firstItem="xUq-dr-19H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="kdF-Et-v1U"/>
+                <constraint firstItem="3dC-jd-CEa" firstAttribute="centerX" secondItem="lau-3f-3xq" secondAttribute="centerX" id="yKS-OM-F4D"/>
+                <constraint firstItem="lau-3f-3xq" firstAttribute="top" secondItem="xUq-dr-19H" secondAttribute="bottom" constant="43" id="ywN-4G-vuV"/>
+            </constraints>
+            <point key="canvasLocation" x="322" y="378"/>
+        </view>
+    </objects>
+</document>
