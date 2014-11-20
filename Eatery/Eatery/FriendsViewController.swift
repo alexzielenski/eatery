@@ -11,8 +11,8 @@ import UIKit
 private func primaryLetterForUser(user: User) -> String {
     // Typically return first letter of last name, but if
     // that isnt available, first letter of name
-    let primaryName = user.lastName != nil && user.lastName.length > 0 ? user.lastName : user.name
-    return primaryName.substringToIndex(1)
+    let primaryName = user.lastName != nil && countElements(user.lastName) > 0 ? user.lastName : user.name
+    return primaryName.substringToIndex(advance(primaryName.startIndex, 1))
 }
 
 private var FRIENDSCTX = 0
@@ -23,7 +23,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = false
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "FriendCell")
+//        self.tableView.registerNib("FriendsListTableViewCell", forCellReuseIdentifier: "FriendCell")
         self.tableView.registerClass(GroupsTableViewCell.self, forCellReuseIdentifier: "GroupsCell")
         User.sharedInstance.addObserver(self, forKeyPath: "friendsList", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
         view.backgroundColor = UIColor.whiteColor()
@@ -36,6 +36,11 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
 
     @objc private func stateChanged(sender: AnyObject?) {
         println("state change")
+        if (self.modeSegmentedControl.selectedSegmentIndex == 0) {
+            self.sortFiendsList((User.sharedInstance.friends as NSArray).filteredArrayUsingPredicate(NSPredicate(format: "isFriend == true")!))
+        } else {
+            self.sortFiendsList((User.sharedInstance.friends as NSArray))
+        }
         self.tableView.reloadData()
     }
     
@@ -57,7 +62,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (context == &FRIENDSCTX) {
-            self.sortFiendsList(User.sharedInstance.friendsList)
+            self.stateChanged(nil)
         } else {
             super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
         }

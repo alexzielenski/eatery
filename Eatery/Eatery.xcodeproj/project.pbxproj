@@ -57,6 +57,8 @@
 		E2C2BF081A1074730027C86C /* SortByTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2BF071A1074730027C86C /* SortByTableViewController.swift */; };
 		E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */; };
 		E2C2BF0D1A1074AC0027C86C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0C1A1074AC0027C86C /* Keys.plist */; };
+		FA7FA4CA1A1C242600F75207 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7FA4C81A1C242600F75207 /* FriendsListTableViewCell.swift */; };
+		FA7FA4CB1A1C242600F75207 /* FriendsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7FA4C91A1C242600F75207 /* FriendsListTableViewCell.xib */; };
 		FA89C0921A10057100725E2C /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C0911A10057100725E2C /* GroupsTableViewCell.swift */; };
 		FA89C0961A10057600725E2C /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C0941A10057600725E2C /* GroupsCollectionViewController.swift */; };
 		FA89C0971A10057600725E2C /* GroupsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA89C0951A10057600725E2C /* GroupsCollectionViewController.xib */; };
@@ -163,6 +165,8 @@
 		E2C2BF071A1074730027C86C /* SortByTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortByTableViewController.swift; sourceTree = "<group>"; };
 		E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortByTableViewController.xib; sourceTree = "<group>"; };
 		E2C2BF0C1A1074AC0027C86C /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		FA7FA4C81A1C242600F75207 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsListTableViewCell.swift; path = src/views/FriendsListTableViewCell.swift; sourceTree = "<group>"; };
+		FA7FA4C91A1C242600F75207 /* FriendsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendsListTableViewCell.xib; path = src/views/FriendsListTableViewCell.xib; sourceTree = "<group>"; };
 		FA89C0911A10057100725E2C /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsTableViewCell.swift; path = src/views/GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		FA89C0941A10057600725E2C /* GroupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsCollectionViewController.swift; path = src/views/GroupsCollectionViewController.swift; sourceTree = "<group>"; };
 		FA89C0951A10057600725E2C /* GroupsCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupsCollectionViewController.xib; path = src/views/GroupsCollectionViewController.xib; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 				C033B3FF1A0AB907000EFB98 /* facebookLoginButton.swift */,
 				FA89C0911A10057100725E2C /* GroupsTableViewCell.swift */,
 				C096409D1A081EA300F3841F /* Eat Now TableViewCell */,
+				FA7FA4C81A1C242600F75207 /* FriendsListTableViewCell.swift */,
+				FA7FA4C91A1C242600F75207 /* FriendsListTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
 				C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */,
 				6DC708491A100AB3002F56A0 /* EatNowDetailViewController.xib in Resources */,
+				FA7FA4CB1A1C242600F75207 /* FriendsListTableViewCell.xib in Resources */,
 				E2C2BF0D1A1074AC0027C86C /* Keys.plist in Resources */,
 				C06149271A0C067C00AB4DEF /* SignInViewController.xib in Resources */,
 				E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */,
@@ -612,6 +619,7 @@
 				1DD756CB1A0CAC530061891B /* Event.swift in Sources */,
 				C033B4001A0AB907000EFB98 /* facebookLoginButton.swift in Sources */,
 				C096408D1A08188B00F3841F /* TabBarController.swift in Sources */,
+				FA7FA4CA1A1C242600F75207 /* FriendsListTableViewCell.swift in Sources */,
 				C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */,
 				C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */,
 				C06149261A0C067C00AB4DEF /* SignInViewController.swift in Sources */,

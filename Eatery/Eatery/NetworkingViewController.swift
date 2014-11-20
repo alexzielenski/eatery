@@ -88,10 +88,11 @@ class NetworkingViewController: UIViewController {
 //                println("\n>>>>>>>>Beacon Object Saved")
 //            }
 //        }
+        /*
         var testGroup = PFObject(className: "Group")
 
         var friendParseIDs: [String] = [PFUser.currentUser().objectId]
-        for user in User.sharedInstance.friendsList {
+        for user in User.sharedInstance.friends {
             if let parseUser = user.parseUser {
                 friendParseIDs.append(parseUser.objectId)
             }
@@ -104,8 +105,12 @@ class NetworkingViewController: UIViewController {
             // test the results
             self.retrieveGroupsForUser(PFUser.currentUser().objectId)
         
-        }
+        }*/
 //        println((User.sharedInstance.friendsList as AnyObject).valueForKeyPath("parseUser"));
+        PFCloud.callFunctionInBackground("addFriend", withParameters: ["initiator": "YQEhKcmOe7", "target": "513eebJKlB"]) { (res, err) -> Void in
+            println(res)
+            println(err)
+        }
     }
     
     func retrieveGroupsForUser(id: String) {
