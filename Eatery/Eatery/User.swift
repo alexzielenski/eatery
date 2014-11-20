@@ -76,6 +76,9 @@ class User: NSObject {
     dynamic private(set) var lastUpdated: NSDate!
     dynamic private(set) var isVerified: Bool = false
     
+    // Group me token
+    var groupmeAccessToken: String?
+    
     //MARK: Constructors
     class var sharedInstance: User {
         struct Static {

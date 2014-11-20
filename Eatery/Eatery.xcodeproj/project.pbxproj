@@ -54,6 +54,7 @@
 		C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */; };
 		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 		C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */; };
+		C0ECB46C1A1D83F500E5C708 /* GroupMeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ECB46B1A1D83F500E5C708 /* GroupMeManager.swift */; };
 		E2C2BF081A1074730027C86C /* SortByTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2BF071A1074730027C86C /* SortByTableViewController.swift */; };
 		E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */; };
 		E2C2BF0D1A1074AC0027C86C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0C1A1074AC0027C86C /* Keys.plist */; };
@@ -160,6 +161,7 @@
 		C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableViewCell.xib; sourceTree = "<group>"; };
 		C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Alert.swift"; sourceTree = "<group>"; };
+		C0ECB46B1A1D83F500E5C708 /* GroupMeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMeManager.swift; sourceTree = "<group>"; };
 		E2C2BF071A1074730027C86C /* SortByTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortByTableViewController.swift; sourceTree = "<group>"; };
 		E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortByTableViewController.xib; sourceTree = "<group>"; };
 		E2C2BF0C1A1074AC0027C86C /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			children = (
 				C01E041919E5C7380050E8C7 /* Models */,
 				C01E041F19E611650050E8C7 /* DataManager.swift */,
+				C0ECB46B1A1D83F500E5C708 /* GroupMeManager.swift */,
 				C061492B1A0C092F00AB4DEF /* ConvenienceMethods.swift */,
 			);
 			name = Data;
@@ -622,6 +625,7 @@
 				C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */,
 				C033B3FA1A0AB372000EFB98 /* AF+Date+Extension.swift in Sources */,
 				C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */,
+				C0ECB46C1A1D83F500E5C708 /* GroupMeManager.swift in Sources */,
 				C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */,
 				C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */,
 				C033B3FD1A0AB7FD000EFB98 /* ProfileViewController.swift in Sources */,

@@ -22,7 +22,7 @@ class NetworkingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         view.backgroundColor = UIColor.whiteColor()
         
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -55,13 +55,22 @@ class NetworkingViewController: UIViewController {
     // Facebook
 
         /* BUTTON: Login with facebook */
-        let loginButton = UIButton(frame: CGRect(origin: CGPointZero, size: CGSize(width: 244, height: 44)))
-        loginButton.center = CGPoint(x: view.center.x, y: view.center.y + 84)
-        loginButton.layer.cornerRadius = 5
-        loginButton.backgroundColor = UIColor.facebookBlue()
-        loginButton.setTitle("Facebook", forState: UIControlState.Normal)
-        loginButton.addTarget(self, action: "loginWithFacebookButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        view.addSubview(loginButton)
+        let fbLoginButton = UIButton(frame: CGRect(origin: CGPointZero, size: CGSize(width: 244, height: 44)))
+        fbLoginButton.center = CGPoint(x: view.center.x, y: view.center.y + 84)
+        fbLoginButton.layer.cornerRadius = 5
+        fbLoginButton.backgroundColor = UIColor.facebookBlue()
+        fbLoginButton.setTitle("Facebook", forState: UIControlState.Normal)
+        fbLoginButton.addTarget(self, action: "loginWithFacebookButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        view.addSubview(fbLoginButton)
+        
+        /* BUTTON: Login with groupme */
+        let gmLoginButton = UIButton(frame: CGRect(origin: CGPointZero, size: CGSize(width: 244, height: 44)))
+        gmLoginButton.center = CGPoint(x: view.center.x, y: view.center.y + 168)
+        gmLoginButton.layer.cornerRadius = 5
+        gmLoginButton.backgroundColor = UIColor.groupmeBlue()
+        gmLoginButton.setTitle("GroupMe", forState: UIControlState.Normal)
+        gmLoginButton.addTarget(self, action: "loginWithGroupMeButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        view.addSubview(gmLoginButton)
         
     }
     
@@ -136,6 +145,11 @@ class NetworkingViewController: UIViewController {
     func loginWithFacebookButtonPressed(sender: UIButton) {
         let profileViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         navigationController?.pushViewController(profileViewController, animated: true)
+    }
+    
+    // MARK: GroupMe methods
+    func loginWithGroupMeButtonPressed(sender: UIButton) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://oauth.groupme.com/oauth/authorize?client_id=UzeBwQvr1uCfMBAAtBeSkZlGfypW78ur2TsgvbGMRXEmMj5n")!)
     }
 
 }

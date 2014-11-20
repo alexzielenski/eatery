@@ -18,5 +18,8 @@ let PARSEDICT: Dictionary<String, String> = KEYS["Parse"] as Dictionary<String, 
 let kParseApplicationID: String = PARSEDICT["applicationID"]!
 let kParseClientKey: String = PARSEDICT["clientKey"]!
 
+// Mark: GroupMe
+let kGroupMeKey: String = KEYS["GroupMe"]! as String
+
 // Mark: Eatery API
 private let kApiBaseURL: String = "foo.com/"
