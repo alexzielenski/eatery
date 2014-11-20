@@ -10,6 +10,10 @@ import UIKit
 
 class EatNowTableViewController: UITableViewController {
     
+    var diningHalls = [
+        DiningHall(location: CLLocation() , name: "North Star", summary: "Appel Commons - Dining Hall", paymentMethods: ["Credit card", "Cash"], hours: [], id: "id")
+    ]
+    
     override func viewDidLoad() {        
 		super.viewDidLoad()
 
@@ -20,14 +24,6 @@ class EatNowTableViewController: UITableViewController {
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search:"), animated: true)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort By", style: UIBarButtonItemStyle.Plain, target: self, action: "sortBy:")
     }
-    
-    var items: [(String, String, String, String, String)] = [
-        ("appel.jpg", "North Star", "Appel Commons - Dining Hall", "0.1mi", "Open until 8:30PM"),
-        ("appel.jpg", "RPCC Eatery", "RPCC - Dining Hall", "0.3mi", "Open until 8:30PM"),
-        ("appel.jpg", "Bear Necessities", "Appel Commons - Dining Hall", "0.5mi", "Open until 8:30PM"),
-        ("appel.jpg", "Cafe Jennie", "Cornell Store - Cafe", "0.1mi", "Open until 8:30PM"),
-        ("appel.jpg", "Cascadeli", "Willard Straight Hall - Cafe", "0.3mi", "Open until 8:30PM")
-    ]
     
     // MARK: - Actions
     
@@ -45,15 +41,18 @@ class EatNowTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return diningHalls.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("eatNowCell", forIndexPath: indexPath) as EatNowTableViewCell
 
-        var (image, name, desc, miles, hours) = items[indexPath.row]
-
-        cell.loadItem(image: image, name: name, desc: desc, miles: miles, hours: hours)
+        let name = diningHalls[indexPath.row].name
+        let summary = diningHalls[indexPath.row].summary
+        let paymentMethods = diningHalls[indexPath.row].paymentMethods
+        let hours = diningHalls[indexPath.row].hours
+        
+        cell.loadItem(image: "appel.jpg", name: "Northstar Cafe", desc: "Appel Commons", loc: "poop", paymentMethods: ["Cornell Card", "Cash"], hours: "Open from 8 to 9")
         
         return cell
         //cell.textLabel.text = "Cell (\(indexPath.section),\(indexPath.row))"
