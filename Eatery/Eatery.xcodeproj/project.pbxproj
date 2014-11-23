@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D92BD641A1D73D8001C1045 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D92BD631A1D73D8001C1045 /* Menu.swift */; };
 		1DD756CA1A0CAC530061891B /* DiningHall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD756C81A0CAC520061891B /* DiningHall.swift */; };
 		1DD756CB1A0CAC530061891B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD756C91A0CAC530061891B /* Event.swift */; };
 		6DC708451A0FDA63002F56A0 /* appel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6DC708441A0FDA63002F56A0 /* appel.jpg */; };
@@ -109,6 +110,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D92BD631A1D73D8001C1045 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1DD756C81A0CAC520061891B /* DiningHall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningHall.swift; sourceTree = "<group>"; };
 		1DD756C91A0CAC530061891B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6DC708441A0FDA63002F56A0 /* appel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appel.jpg; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				FA89C0981A10058100725E2C /* User.swift */,
+				1D92BD631A1D73D8001C1045 /* Menu.swift */,
 				1DD756C81A0CAC520061891B /* DiningHall.swift */,
 				1DD756C91A0CAC530061891B /* Event.swift */,
 			);
@@ -625,6 +628,7 @@
 				C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */,
 				C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */,
 				C033B3FD1A0AB7FD000EFB98 /* ProfileViewController.swift in Sources */,
+				1D92BD641A1D73D8001C1045 /* Menu.swift in Sources */,
 				C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */,
 				C09640931A081D2700F3841F /* BeaconViewController.swift in Sources */,
 				FA89C0991A10058100725E2C /* User.swift in Sources */,
