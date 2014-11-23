@@ -40,18 +40,18 @@ class EatNowTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diningHalls.count
+        return DataManager.sharedInstance.diningHalls.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("eatNowCell", forIndexPath: indexPath) as EatNowTableViewCell
 
-        let name = diningHalls[indexPath.row].name
-        let summary = diningHalls[indexPath.row].summary
-        let paymentMethods = diningHalls[indexPath.row].paymentMethods
-        let hours = diningHalls[indexPath.row].hours
+        let name = DataManager.sharedInstance.diningHalls[indexPath.row].name
+        let summary = DataManager.sharedInstance.diningHalls[indexPath.row].summary
+        let paymentMethods = DataManager.sharedInstance.diningHalls[indexPath.row].paymentMethods
+        let hours = DataManager.sharedInstance.diningHalls[indexPath.row].hours
         
-        cell.loadItem(image: "appel.jpg", name: "Northstar Cafe", desc: "Appel Commons", loc: "poop", paymentMethods: ["Cornell Card", "Cash"], hours: "Open from 8 to 9")
+        cell.loadItem(image: "appel.jpg", name: name, desc: summary, loc: "poop", paymentMethods: paymentMethods, hours: "8pm to 9pm")
         
         return cell
         //cell.textLabel.text = "Cell (\(indexPath.section),\(indexPath.row))"
