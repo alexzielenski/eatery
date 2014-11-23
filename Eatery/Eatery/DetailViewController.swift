@@ -43,7 +43,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "pageWasSwitched:", name: "PageWasSwitched", object: nil)
         
         pageVC.view.frame = CGRectMake(0, 0, self.contentPagingView.frame.width, self.contentPagingView.frame.height)
-        print(pageVC.view.frame)
+        
         self.contentPagingView.addSubview(pageVC.view)
         
         setUpPages()
@@ -59,15 +59,14 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     
     func setUpPages(){
         
-        let locationVC = LocationInfoViewController(nibName: "LocationInfoViewController", bundle: nil)
+        let locationVC = LocationInfoTableViewController(nibName: "LocationInfoTableViewController", bundle: nil)
         locationVC.view.frame = pageVC.view.frame
         
-        let menuVC = MenuInfoViewController(nibName: "MenuInfoViewController", bundle: nil)
+        let menuVC = MenuInfoTableViewController(nibName: "MenuInfoTableViewController", bundle: nil)
         menuVC.view.frame = pageVC.view.frame
         
         let photoVC = DiningPhotosViewController(nibName: "DiningPhotosViewController", bundle: nil)
         photoVC.view.frame = pageVC.view.frame
-        print(photoVC.view.frame)
         
         detailPages.addObject(locationVC)
         detailPages.addObject(menuVC)
