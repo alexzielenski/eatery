@@ -54,10 +54,7 @@
 		C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */; };
 		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 		C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */; };
-<<<<<<< HEAD
 		E2BB8B2D1A1943380090FD0D /* EatNowTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2BB8B2C1A1943380090FD0D /* EatNowTableView.xib */; };
-=======
->>>>>>> FETCH_HEAD
 		E2C2BF081A1074730027C86C /* SortByTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2BF071A1074730027C86C /* SortByTableViewController.swift */; };
 		E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */; };
 		E2C2BF0D1A1074AC0027C86C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0C1A1074AC0027C86C /* Keys.plist */; };
@@ -164,10 +161,7 @@
 		C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableViewCell.xib; sourceTree = "<group>"; };
 		C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Alert.swift"; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		E2BB8B2C1A1943380090FD0D /* EatNowTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableView.xib; sourceTree = "<group>"; };
-=======
->>>>>>> FETCH_HEAD
 		E2C2BF071A1074730027C86C /* SortByTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortByTableViewController.swift; sourceTree = "<group>"; };
 		E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortByTableViewController.xib; sourceTree = "<group>"; };
 		E2C2BF0C1A1074AC0027C86C /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
@@ -415,16 +409,11 @@
 			children = (
 				6DC708441A0FDA63002F56A0 /* appel.jpg */,
 				C096408E1A08191900F3841F /* EatNowTableViewController.swift */,
-<<<<<<< HEAD
 				E2BB8B2C1A1943380090FD0D /* EatNowTableView.xib */,
 				6DC708461A100AB3002F56A0 /* EatNowDetailViewController.swift */,
 				6DC708471A100AB3002F56A0 /* EatNowDetailViewController.xib */,
 				E2C2BF071A1074730027C86C /* SortByTableViewController.swift */,
 				E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */,
-=======
-				E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */,
-				E2C2BF071A1074730027C86C /* SortByTableViewController.swift */,
->>>>>>> FETCH_HEAD
 			);
 			name = "Eat Now";
 			sourceTree = "<group>";
@@ -593,10 +582,7 @@
 				6DC708451A0FDA63002F56A0 /* appel.jpg in Resources */,
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
 				C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */,
-<<<<<<< HEAD
 				6DC708491A100AB3002F56A0 /* EatNowDetailViewController.xib in Resources */,
-=======
->>>>>>> FETCH_HEAD
 				E2C2BF0D1A1074AC0027C86C /* Keys.plist in Resources */,
 				C06149271A0C067C00AB4DEF /* SignInViewController.xib in Resources */,
 				E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */,
@@ -625,10 +611,7 @@
 				C01E042019E611650050E8C7 /* DataManager.swift in Sources */,
 				C061492C1A0C092F00AB4DEF /* ConvenienceMethods.swift in Sources */,
 				C096408B1A07D4D800F3841F /* PFUser+Printable.swift in Sources */,
-<<<<<<< HEAD
 				6DC708481A100AB3002F56A0 /* EatNowDetailViewController.swift in Sources */,
-=======
->>>>>>> FETCH_HEAD
 				E2C2BF081A1074730027C86C /* SortByTableViewController.swift in Sources */,
 				1DD756CB1A0CAC530061891B /* Event.swift in Sources */,
 				C033B4001A0AB907000EFB98 /* facebookLoginButton.swift in Sources */,
