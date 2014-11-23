@@ -10,7 +10,7 @@ import UIKit
 
 class EatNowTableViewController: UITableViewController {
     
-    override func viewDidLoad() {        
+    override func viewDidLoad() {
 		super.viewDidLoad()
 
         var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)        
@@ -19,6 +19,9 @@ class EatNowTableViewController: UITableViewController {
 
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search:"), animated: true)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort By", style: UIBarButtonItemStyle.Plain, target: self, action: "sortBy:")
+        
+        DataManager.sharedInstance.loadTestData()
+        print(DataManager.sharedInstance.diningHalls)
     }
     
     var items: [(String, String, String, String, String)] = [

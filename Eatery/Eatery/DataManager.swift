@@ -26,6 +26,8 @@ enum MealType: String {
     case Dinner = "Dinner"
 }
 
+let menuIDs = ["cook_house_dining_room", "becker_house_dining_room", "keeton_house_dining_room", "rose_house_dining_room", "jansens_dining_room,_bethe_house", "robert_purcell_marketplace_eatery", "north_star", "risley_dining", "104west", "okenshields"]
+
 /**
 Router Endpoints enum
 
@@ -78,9 +80,9 @@ enum Router: URLStringConvertible {
     }
 }
 
-
-
 class DataManager: NSObject {
+    
+    var diningHalls: [DiningHall] = []
     
     class var sharedInstance : DataManager {
         struct Static {
@@ -136,21 +138,78 @@ class DataManager: NSObject {
         Alamofire
             .request(.GET, Router.Calendars, parameters: nil, encoding: .URL)
             .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
-                printNetworkResponse(request, response, data, error)
+                if let e = error {
+                    completion(error: e, result: nil)
+                } else {
+                    if let swiftyJSON = JSON(rawValue: data!) {
+                        let diningAreas = swiftyJSON.arrayValue
+                        print(diningAreas)
+                        var result = diningAreas.map({ (element: JSON) -> DiningHall in
+                            return DiningHall(json: element)
+                        })
+                        
+                        self.diningHalls = result
+                        
+                        completion(error: nil, result: nil)
+                    }
+                }
+            }
+    }
+    
+    func getCalendar(id: String, completion:(error: NSError?, result: [String]?) -> Void) {
+        println("\nfunc getCalendars()")
+        Alamofire
+            .request(.GET, Router.Calendar(id), parameters: nil, encoding: .URL)
+            .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
                 if let e = error {
                     completion(error: e, result: nil)
                 } else {
                     if let swiftyJSON = JSON(rawValue: data!) {
                         
-                        let diningAreas = swiftyJSON.arrayValue
+                        self.diningHalls.append(DiningHall(json: swiftyJSON))
                         
-                        var result = diningAreas.map({ (element: JSON) -> String in
-                            return element.stringValue
-                        })
-                        completion(error: nil, result: result)
+                        completion(error: nil, result: nil)
                     }
                 }
-            }
+        }
+    }
+    
+    func updateMenus() {
+        for menuID in menuIDs {
+            updateMenu(menuID) {if $0 != nil { print($0) }}
+        }
+    }
+    
+    func updateMenu(id: String, completion:((error: NSError?) -> Void)?) {
+        if !contains(menuIDs, id) {
+            completion?(error: NSError())
+            return
+        }
+        Alamofire
+            .request(.GET, Router.Menu(id), parameters: nil, encoding: .URL)
+            .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
+                if let e = error {
+                    completion?(error: e)
+                } else {
+                    if let swiftyJSON = JSON(rawValue: data!) {
+                        
+                        print("\(id):\n\(Menu(data: swiftyJSON))")
+                        
+                        completion?(error: nil)
+                    }
+                }
+        }
+    }
+    
+    func loadTestData() {
+        diningHalls = [
+            DiningHall(location: CLLocation(), name: "North Star", summary: "North Star Summary", paymentMethods: ["BRB", "cash", "swipe"], hours: [], id: "north_star"),
+            DiningHall(location: CLLocation(), name: "104 West", summary: "104 West Summary", paymentMethods: ["BRB", "swipe"], hours: [], id: "104west"),
+            DiningHall(location: CLLocation(), name: "Cascadeli", summary: "Cascadeli Summary", paymentMethods: ["cash", "swipe"], hours: [], id: "cascadeli"),
+            DiningHall(location: CLLocation(), name: "okenshields", summary: "Okenshields Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "okenshields"),
+            DiningHall(location: CLLocation(), name: "Goldies", summary: "Goldies Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "goldies"),
+            DiningHall(location: CLLocation(), name: "Ivy Room", summary: "Ivy Room Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "ivy_room")
+        ]
     }
     
 }
