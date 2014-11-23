@@ -21,6 +21,7 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
         
         super.viewDidLoad()
         
+<<<<<<< HEAD
         
         var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)
         
@@ -45,6 +46,13 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
         
         // Reload the table
         self.tableView.reloadData()
+=======
+        tableView.registerClass(EatNowTableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
+        
+        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search"), animated: true)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort By", style: UIBarButtonItemStyle.Plain, target: self, action: "sortby")
+>>>>>>> FETCH_HEAD
     }
     
     var items: [(String, String, String, String, String)] = [
@@ -100,6 +108,7 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
         
         return cell
     }
+<<<<<<< HEAD
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         self.filteredPlaces = self.places.filter({(place : Place) -> Bool in
@@ -108,6 +117,40 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
         })
         
       
+=======
+    //Function used to confirm functionality of the SortByTableView
+   // override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+     //   let sortByTableViewController =  SortByTableViewController(nibName: "SortByTableViewController", bundle: nil)
+       // self.navigationController?.pushViewController(sortByTableViewController, animated: true)
+        
+   // }
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return NO if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+>>>>>>> FETCH_HEAD
     }
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {

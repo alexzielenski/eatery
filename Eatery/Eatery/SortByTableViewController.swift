@@ -12,9 +12,12 @@ class SortByTableViewController: UITableViewController, UITableViewDataSource, U
     
     let options = ["Distance", "Open", "Closed", "Popularity", "Dining Hall", "Food Court", "Cafe", "Coffee House"]
     
+<<<<<<< HEAD
     override convenience init() {
         self.init(nibName: "SortByTableViewController", bundle: nil)
     }
+=======
+>>>>>>> FETCH_HEAD
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,7 @@ class SortByTableViewController: UITableViewController, UITableViewDataSource, U
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+<<<<<<< HEAD
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancel:"), animated: true)
     
     }
@@ -33,6 +37,13 @@ class SortByTableViewController: UITableViewController, UITableViewDataSource, U
     
     func cancel(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
+=======
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+>>>>>>> FETCH_HEAD
     }
 
     // MARK: - Table view data source
