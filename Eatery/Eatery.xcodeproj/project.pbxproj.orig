@@ -667,8 +667,11 @@
 				C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */,
 				C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */,
 				C033B3FD1A0AB7FD000EFB98 /* ProfileViewController.swift in Sources */,
-				95DD55461A1D825D005FEE6F /* DiningPhotosViewController.swift in Sources */,
+<<<<<<< HEAD
 				1D92BD641A1D73D8001C1045 /* Menu.swift in Sources */,
+=======
+				95DD55461A1D825D005FEE6F /* DiningPhotosViewController.swift in Sources */,
+>>>>>>> 1a585244008a7d1298d402729af6e8966e7aaa4e
 				C01E041519E5C6FF0050E8C7 /* Constants.swift in Sources */,
 				C09640931A081D2700F3841F /* BeaconViewController.swift in Sources */,
 				FA89C0991A10058100725E2C /* User.swift in Sources */,
