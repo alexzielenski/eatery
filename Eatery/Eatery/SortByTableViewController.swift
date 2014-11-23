@@ -26,6 +26,7 @@ class SortByTableViewController: UITableViewController, UITableViewDataSource, U
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancel:"), animated: true)
+    
     }
     
     // MARK: - Actions
