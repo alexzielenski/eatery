@@ -10,7 +10,15 @@ import UIKit
 
 class EatNowTableViewController: UITableViewController {
     
+<<<<<<< HEAD
+    var diningHalls = [
+        DiningHall(location: CLLocation() , name: "North Star", summary: "Appel Commons - Dining Hall", paymentMethods: ["Credit card", "Cash"], hours: [], id: "id")
+    ]
+    
+    override func viewDidLoad() {        
+=======
     override func viewDidLoad() {
+>>>>>>> 4f5ee70f4977887a38d52849de288b0d66f88edb
 		super.viewDidLoad()
 
         var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)        
