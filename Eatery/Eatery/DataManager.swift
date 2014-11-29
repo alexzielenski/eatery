@@ -112,18 +112,6 @@ class DataManager: NSObject {
                             println("error getting value for key: " + "swiftyJSON[\"headers\"][\"Host\"]")
                         }
                         
-                        /*
-                        Use .xxxValue to get the non-optional value
-                        *
-                        *  BEWARE:
-                        *  These are the values you will get if nil (taken from SwiftyJSON github page ( https://github.com/SwiftyJSON/SwiftyJSON#non-optional-getter )
-                        *
-                        **    If not a Number or nil, return 0
-                        **    If not a String or nil, return ""
-                        **    If not a Array or nil, return []
-                        **    If not a Dictionary or nil, return [:]
-                        *
-                        */
                         let url = swiftyJSON["url"].stringValue
                         println("url: \(url)")
                         
@@ -136,7 +124,7 @@ class DataManager: NSObject {
     func getCalendars(completion:(error: NSError?, result: [String]?) -> Void) {
         println("\nfunc getCalendars()")
         Alamofire
-            .request(.GET, Router.Calendars, parameters: nil, encoding: .URL)
+            .request(.GET, Router.Calendars)
             .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
                 if let e = error {
                     completion(error: e, result: nil)
@@ -144,9 +132,9 @@ class DataManager: NSObject {
                     if let swiftyJSON = JSON(rawValue: data!) {
                         let diningAreas = swiftyJSON.arrayValue
                         print(diningAreas)
-                        var result = diningAreas.map({ (element: JSON) -> DiningHall in
+                        var result = diningAreas.map { element -> DiningHall in
                             return DiningHall(json: element)
-                        })
+                        }
                         
                         self.diningHalls = result
                         
@@ -159,14 +147,15 @@ class DataManager: NSObject {
     func getCalendar(id: String, completion:(error: NSError?, result: [String]?) -> Void) {
         println("\nfunc getCalendars()")
         Alamofire
-            .request(.GET, Router.Calendar(id), parameters: nil, encoding: .URL)
-            .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
+            .request(.GET, Router.Calendar(id))
+            .responseJSON { (request, response, data, error) -> Void in
                 if let e = error {
                     completion(error: e, result: nil)
                 } else {
                     if let swiftyJSON = JSON(rawValue: data!) {
-                        
-                        self.diningHalls.append(DiningHall(json: swiftyJSON))
+                        let diningHall = DiningHall(json: swiftyJSON)
+                        println(diningHall)
+                        self.diningHalls.append(diningHall)
                         
                         completion(error: nil, result: nil)
                     }
@@ -186,7 +175,7 @@ class DataManager: NSObject {
             return
         }
         Alamofire
-            .request(.GET, Router.Menu(id), parameters: nil, encoding: .URL)
+            .request(.GET, Router.Menu(id))
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
                 if let e = error {
                     completion?(error: e)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1C70401A2937860084CE56 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C703F1A2937860084CE56 /* DateParser.swift */; };
+		1D1C70451A295C960084CE56 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C70441A295C960084CE56 /* Rule.swift */; };
 		1D92BD641A1D73D8001C1045 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D92BD631A1D73D8001C1045 /* Menu.swift */; };
 		1DD756CA1A0CAC530061891B /* DiningHall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD756C81A0CAC520061891B /* DiningHall.swift */; };
 		1DD756CB1A0CAC530061891B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD756C91A0CAC530061891B /* Event.swift */; };
@@ -126,6 +128,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D1C703F1A2937860084CE56 /* DateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
+		1D1C70441A295C960084CE56 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		1D92BD631A1D73D8001C1045 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1DD756C81A0CAC520061891B /* DiningHall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningHall.swift; sourceTree = "<group>"; };
 		1DD756C91A0CAC530061891B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				C01E041919E5C7380050E8C7 /* Models */,
+				1D1C703F1A2937860084CE56 /* DateParser.swift */,
 				C01E041F19E611650050E8C7 /* DataManager.swift */,
 				C061492B1A0C092F00AB4DEF /* ConvenienceMethods.swift */,
 			);
@@ -379,6 +384,7 @@
 				1D92BD631A1D73D8001C1045 /* Menu.swift */,
 				1DD756C81A0CAC520061891B /* DiningHall.swift */,
 				1DD756C91A0CAC530061891B /* Event.swift */,
+				1D1C70441A295C960084CE56 /* Rule.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -679,6 +685,8 @@
 			files = (
 				9539A9BA1A2276330073DD3A /* DetailViewController.swift in Sources */,
 				9539A9C61A227BCA0073DD3A /* LocationInfoTableViewCell.swift in Sources */,
+				1D1C70401A2937860084CE56 /* DateParser.swift in Sources */,
+				1D1C70451A295C960084CE56 /* Rule.swift in Sources */,
 				C007CAC719E1BEAC00E3BD46 /* NetworkingViewController.swift in Sources */,
 				C01E042019E611650050E8C7 /* DataManager.swift in Sources */,
 				C061492C1A0C092F00AB4DEF /* ConvenienceMethods.swift in Sources */,

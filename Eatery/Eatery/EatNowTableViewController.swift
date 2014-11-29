@@ -49,7 +49,7 @@ class EatNowTableViewController: UITableViewController {
         let name = DataManager.sharedInstance.diningHalls[indexPath.row].name
         let summary = DataManager.sharedInstance.diningHalls[indexPath.row].summary
         let paymentMethods = DataManager.sharedInstance.diningHalls[indexPath.row].paymentMethods
-        let hours = DataManager.sharedInstance.diningHalls[indexPath.row].hours
+        let events = DataManager.sharedInstance.diningHalls[indexPath.row].events
         
         cell.loadItem(image: "appel.jpg", name: name, desc: summary, loc: "poop", paymentMethods: paymentMethods, hours: "8pm to 9pm")
         
