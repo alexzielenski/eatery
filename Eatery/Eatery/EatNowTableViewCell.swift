@@ -16,13 +16,13 @@ class EatNowTableViewCell: UITableViewCell {
     @IBOutlet weak var eateryMiles: UILabel!
     @IBOutlet weak var eateryHours: UILabel!
     
-    func loadItem(#image: String, name: String, desc: String, miles: String, hours: String) {
+    func loadItem(#image: String, name: String, desc: String, loc: String, paymentMethods: [String], hours: String) {
         eateryImage.image = UIImage(named: image)
         eateryImage.layer.cornerRadius = eateryImage.frame.size.width / 2;
         eateryImage.clipsToBounds = true;
         eateryName.text = name
         eateryDesc.text = desc
-        eateryMiles.text = miles
+        eateryMiles.text = loc
         eateryHours.text = hours
     }
     
