@@ -11,24 +11,28 @@ import CoreLocation
 
 class DetailViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate{
 
-    @IBOutlet var pageIndexIndicator: PageIndexIndicator!
-    @IBOutlet var backgroundImageView: UIImageView!
-    @IBOutlet var contentPagingView: UIView!
-    @IBOutlet var portraitPhotoImageView: UIImageView!
+    let pageIndexIndicator = PageIndexIndicator()
+    let backgroundImageView = UIImageView()
+    let contentPagingView = UIView()
+    let portraitPhotoImageView = UIImageView()
     
     var detailPages:NSMutableArray = []
     let pageVC = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options:  nil)
     var currentIndex = 0
     
     ////////////////////////////////////
-    ///////TEST DATA/////////////////////
-    let location: CLLocation = CLLocation(latitude: 50, longitude: 50)
-    let name:String = "Appel Commons"
-    let summary: String = "A great place to eat for freshmen"
-    let paymentMethods: [String] = ["Cash","Swipe","BRB"]
-    let hours: [String] = ["7:30am-10:00pm"]
-    let id: String = "APPELID"
-    ///////TEST DATA/////////////////////
+    ///////VIEW RATIO CONSTANTS/////////////////////
+    
+    //weight by percentage of height
+    let BACKGROUND_IMAGE_VIEW_HEIGHT:CGFloat = 0.4
+    let CONTENT_PAGING_VIEW_HEIGHT:CGFloat = 0.6
+    let PORTRAIT_IMAGE_SIZE:CGFloat = 0.15
+    let PAGE_INDICATOR_HEIGHT:CGFloat = 0.05
+    
+    //weight by percentage of width
+    let PAGE_INDICATOR_WIDTH:CGFloat = 0.6
+    
+    ///////VIEW RATIO CONSTANTS/////////////////////
     ///////////////////////////////////
     
     //MARK: - Load View
@@ -39,6 +43,8 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        setUpViews()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "pageWasSwitched:", name: "PageWasSwitched", object: nil)
         
@@ -57,20 +63,47 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         
     }
     
+    func setUpViews(){
+        
+        let viewHeight:CGFloat = self.view.frame.size.height
+        let viewWidth:CGFloat = self.view.frame.size.width
+        
+        //background image view
+        self.backgroundImageView.frame = CGRectMake(0, 0, viewWidth, BACKGROUND_IMAGE_VIEW_HEIGHT * viewHeight)
+        self.backgroundImageView.backgroundColor = UIColor.redColor()
+        self.backgroundImageView.userInteractionEnabled = true
+        
+        //content view
+        self.contentPagingView.frame = CGRectMake(0, self.backgroundImageView.frame.size.height, viewWidth,CONTENT_PAGING_VIEW_HEIGHT * viewHeight)
+        
+        //dining image portrait view
+        self.portraitPhotoImageView.frame = CGRectMake(0, 0, PORTRAIT_IMAGE_SIZE * viewHeight, PORTRAIT_IMAGE_SIZE * viewHeight)
+        self.portraitPhotoImageView.center = backgroundImageView.center
+        self.portraitPhotoImageView.backgroundColor = UIColor.blueColor()
+        
+        //detail pages container view
+        self.pageIndexIndicator.frame = CGRectMake(0, 0, PAGE_INDICATOR_WIDTH * viewWidth, PAGE_INDICATOR_HEIGHT * viewHeight)
+        self.pageIndexIndicator.center = CGPointMake(self.backgroundImageView.center.x, self.backgroundImageView.frame.size.height - self.pageIndexIndicator.frame.size.height/2.0)
+        self.pageIndexIndicator.userInteractionEnabled = true
+        
+        self.view.addSubview(backgroundImageView)
+        self.view.addSubview(contentPagingView)
+        self.backgroundImageView.addSubview(portraitPhotoImageView)
+        self.backgroundImageView.addSubview(pageIndexIndicator)
+        
+    }
+    
     func setUpPages(){
         
-        let locationVC = LocationInfoTableViewController(nibName: "LocationInfoTableViewController", bundle: nil)
+        let locationVC = DiningLocationDetailViewController()
         locationVC.view.frame = pageVC.view.frame
         
-        let menuVC = MenuInfoTableViewController(nibName: "MenuInfoTableViewController", bundle: nil)
+        let menuVC = DiningMenuDetailViewController()
         menuVC.view.frame = pageVC.view.frame
         
-        let photoVC = DiningPhotosViewController(nibName: "DiningPhotosViewController", bundle: nil)
-        photoVC.view.frame = pageVC.view.frame
         
         detailPages.addObject(locationVC)
         detailPages.addObject(menuVC)
-        detailPages.addObject(photoVC)
         
         
     }
