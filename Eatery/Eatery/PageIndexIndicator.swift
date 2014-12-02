@@ -11,7 +11,7 @@ import UIKit
 class PageIndexIndicator: UIView {
     
     //Constants to change
-    let sections = ["Info","Menu","Photos"]
+    let sections = ["Info","Menu"]
     let menuBackgroundColor = UIColor.whiteColor()
     let menuButtonColorNormal = UIColor.grayColor()
     let menuButtonColorSelected = UIColor.redColor()
@@ -42,17 +42,12 @@ class PageIndexIndicator: UIView {
         
     }
     
-    override func awakeFromNib() {
-        
+    override init() {
+        super.init()
     }
     
-    
-    init(frame: CGRect, numberOfSections sections: Int, spacing space: Int) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.spacing = CGFloat(space)
-        self.backgroundColor = UIColor.blueColor()
-        self.addSubview(self.indicatior)
-        
     }
     
     override func layoutSubviews() {
