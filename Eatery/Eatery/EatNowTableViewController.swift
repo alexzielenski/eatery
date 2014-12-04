@@ -9,7 +9,11 @@ import UIKit
 
 class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
+    //var places = [DiningHall]()
+    var filteredPlaces: [DiningHall] = []
+    
     override func viewDidLoad() {
+        
 		super.viewDidLoad()
 
         var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)        
@@ -23,6 +27,8 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
         
         DataManager.sharedInstance.loadTestData()
         print(DataManager.sharedInstance.diningHalls)
+        
+        self.tableView.reloadData()
     }
     
     // MARK: - Actions
@@ -36,25 +42,44 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataManager.sharedInstance.diningHalls.count
+        
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            tableView.rowHeight = 95
+            return self.filteredPlaces.count
+            
+        } else
+        {
+            tableView.rowHeight = 95
+            return DataManager.sharedInstance.diningHalls.count
+
+        }
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("eatNowCell", forIndexPath: indexPath) as EatNowTableViewCell
-
-        let name = DataManager.sharedInstance.diningHalls[indexPath.row].name
-        let summary = DataManager.sharedInstance.diningHalls[indexPath.row].summary
-        let paymentMethods = DataManager.sharedInstance.diningHalls[indexPath.row].paymentMethods
-        let hours = DataManager.sharedInstance.diningHalls[indexPath.row].hours
         
-        cell.loadItem(image: "appel.jpg", name: name, desc: summary, loc: "poop", paymentMethods: paymentMethods, hours: "8pm to 9pm")
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("eatNowCell") as EatNowTableViewCell
+        
+        var hall : DiningHall
+        
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            hall = filteredPlaces[indexPath.row]
+            
+        } else {
+            hall = DataManager.sharedInstance.diningHalls[indexPath.row]
+        }
+        
+
+        
+        cell.loadItem(image: "appel.jpg", name: hall.name, desc: hall.summary, loc: "0.1", paymentMethods: hall.paymentMethods, hours: "8pm to 9pm")
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
         return cell
     }
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
-        self.filteredPlaces = self.places.filter({(place : Place) -> Bool in
-            var stringMatch = place.name.rangeOfString(searchText)
+        self.filteredPlaces = DataManager.sharedInstance.diningHalls.filter({(hall: DiningHall) -> Bool in
+            var stringMatch = hall.name.lowercaseString.rangeOfString(searchText.lowercaseString)
             return (stringMatch != nil)
         })
         
@@ -71,8 +96,8 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
       
-        let detailViewController =  EatNowDetailViewController(nibName: "EatNowDetailViewController", bundle: nil)
-        
+//        let detailViewController =  EatNowDetailViewController(nibName: "DetailViewController", bundle: nil)
+        let detailViewController = DetailViewController()
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }

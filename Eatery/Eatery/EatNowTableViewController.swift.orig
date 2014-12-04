@@ -5,69 +5,161 @@
 //  Created by Eric Appel on 11/3/14.
 //  Copyright (c) 2014 CUAppDev. All rights reserved.
 //
-
 import UIKit
 
-class EatNowTableViewController: UITableViewController {
+class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
 <<<<<<< HEAD
-    var diningHalls = [
-        DiningHall(location: CLLocation() , name: "North Star", summary: "Appel Commons - Dining Hall", paymentMethods: ["Credit card", "Cash"], hours: [], id: "id")
-    ]
+    struct Place {
+        let category : String
+        let name : String
+    }
     
-    override func viewDidLoad() {        
+    var places = [Place]()
+    var filteredPlaces = [Place]()
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        
+        var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)
+        
 =======
     override func viewDidLoad() {
->>>>>>> 4f5ee70f4977887a38d52849de288b0d66f88edb
 		super.viewDidLoad()
 
         var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)        
+>>>>>>> e3871fe8696d1c58623d6e02dca4d2d035561921
         tableView.registerNib(nib, forCellReuseIdentifier: "eatNowCell")
+        
         tableView.rowHeight = 95
-
-        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search:"), animated: true)
+        
+        //tableView.registerClass(EatNowTableViewCell.classForCoder(), forCellReuseIdentifier: "eatNowCell")
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort By", style: UIBarButtonItemStyle.Plain, target: self, action: "sortBy:")
         
+<<<<<<< HEAD
+        
+        self.places = [Place(category:"Meal Swipe", name:"Appel Commons"),
+            Place(category:"Meal Swipe", name:"RPCC Eatery"),
+            Place(category:"BRBs", name:"Bear Necessities"),
+            Place(category:"BRBs", name:"Cafe Jennie"),
+            Place(category:"BRBs", name:"Trillium"),
+            Place(category:"BRBs", name:"Synapsis"),
+            Place(category:"BRBs", name:"Green Dragon"),
+            Place(category:"BRBs", name:"Amit Bhatia"),
+            Place(category:"BRBs", name:"Terrace")]
+        
+        // Reload the table
+        self.tableView.reloadData()
+    }
+    
+    var items: [(String, String, String, String, String)] = [
+        
+        ("appel.jpg", "North Star", "Appel Commons - Dining Hall", "0.1mi", "Open until 8:30PM"),
+        
+        ("appel.jpg", "RPCC Eatery", "RPCC - Dining Hall", "0.3mi", "Open until 8:30PM"),
+        
+        ("appel.jpg", "Bear Necessities", "Appel Commons - Dining Hall", "0.5mi", "Open until 8:30PM"),
+        
+        ("appel.jpg", "Cafe Jennie", "Cornell Store - Cafe", "0.1mi", "Open until 8:30PM"),
+        
+        ("appel.jpg", "Cascadeli", "Willard Straight Hall - Cafe", "0.3mi", "Open until 8:30PM")
+        
+    ]
+=======
         DataManager.sharedInstance.loadTestData()
         print(DataManager.sharedInstance.diningHalls)
     }
     
     // MARK: - Actions
+>>>>>>> e3871fe8696d1c58623d6e02dca4d2d035561921
     
     func sortBy(sender: UIBarButtonItem) {
+        
         let sortByViewController = SortByTableViewController()
         let navController = UINavigationController(rootViewController: sortByViewController)
-        
         self.presentViewController(navController, animated: true, completion: nil)
+        
     }
     
-    func search(sender: UIBarButtonItem) {
-        println("Search Not Implemented")
-    }
-
-    // MARK: - Table view data source
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diningHalls.count
+<<<<<<< HEAD
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            tableView.rowHeight = 95
+            return self.filteredPlaces.count
+            
+        } else
+        {   tableView.rowHeight = 95
+            return self.places.count
+        }
+=======
+        return DataManager.sharedInstance.diningHalls.count
+>>>>>>> e3871fe8696d1c58623d6e02dca4d2d035561921
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+<<<<<<< HEAD
+       
+    
+       let cell = self.tableView.dequeueReusableCellWithIdentifier("eatNowCell") as EatNowTableViewCell
+        
+        var place : Place
+        
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            place = filteredPlaces[indexPath.row]
+            
+        } else {
+            place = places[indexPath.row]
+        }
+        
+       // var (image,  name, desc, miles, hours) = items[indexPath.row]
+        cell.loadItem(image: "appel.jpg", name: place.name, desc: "Description", miles: "0.1 mi", hours: "Hours")
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+=======
         let cell = tableView.dequeueReusableCellWithIdentifier("eatNowCell", forIndexPath: indexPath) as EatNowTableViewCell
 
-        let name = diningHalls[indexPath.row].name
-        let summary = diningHalls[indexPath.row].summary
-        let paymentMethods = diningHalls[indexPath.row].paymentMethods
-        let hours = diningHalls[indexPath.row].hours
+        let name = DataManager.sharedInstance.diningHalls[indexPath.row].name
+        let summary = DataManager.sharedInstance.diningHalls[indexPath.row].summary
+        let paymentMethods = DataManager.sharedInstance.diningHalls[indexPath.row].paymentMethods
+        let hours = DataManager.sharedInstance.diningHalls[indexPath.row].hours
         
-        cell.loadItem(image: "appel.jpg", name: "Northstar Cafe", desc: "Appel Commons", loc: "poop", paymentMethods: ["Cornell Card", "Cash"], hours: "Open from 8 to 9")
+        cell.loadItem(image: "appel.jpg", name: name, desc: summary, loc: "poop", paymentMethods: paymentMethods, hours: "8pm to 9pm")
+>>>>>>> e3871fe8696d1c58623d6e02dca4d2d035561921
         
         return cell
-        //cell.textLabel.text = "Cell (\(indexPath.section),\(indexPath.row))"
     }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        self.filteredPlaces = self.places.filter({(place : Place) -> Bool in
+            var stringMatch = place.name.rangeOfString(searchText)
+            return (stringMatch != nil)
+        })
+        
+      
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+       
+    
+        self.filterContentForSearchText(searchString)
+        return true
+    }
+  
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+      
         let detailViewController =  EatNowDetailViewController(nibName: "EatNowDetailViewController", bundle: nil)
+        
         self.navigationController?.pushViewController(detailViewController, animated: true)
+        
     }
-    
 }
+    
+    
+    
+    
+    
+    
+

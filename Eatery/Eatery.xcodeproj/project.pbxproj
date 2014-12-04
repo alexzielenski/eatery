@@ -12,7 +12,6 @@
 		1DD756CB1A0CAC530061891B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD756C91A0CAC530061891B /* Event.swift */; };
 		6DC708451A0FDA63002F56A0 /* appel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6DC708441A0FDA63002F56A0 /* appel.jpg */; };
 		6DC708481A100AB3002F56A0 /* EatNowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC708461A100AB3002F56A0 /* EatNowDetailViewController.swift */; };
-		6DC708491A100AB3002F56A0 /* EatNowDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC708471A100AB3002F56A0 /* EatNowDetailViewController.xib */; };
 		9515D68B1A194DFF0070EA2D /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9515D68A1A194DFF0070EA2D /* Keys.plist */; };
 		956125ED1A2D9B8100ACECE1 /* PageIndexIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956125EC1A2D9B8100ACECE1 /* PageIndexIndicator.swift */; };
 		956125F01A2D9B9400ACECE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956125EE1A2D9B9400ACECE1 /* DetailViewController.swift */; };
@@ -58,9 +57,9 @@
 		C09640931A081D2700F3841F /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640921A081D2700F3841F /* BeaconViewController.swift */; };
 		C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640961A081DC000F3841F /* FriendsViewController.swift */; };
 		C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */; };
-		C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */; };
 		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 		C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */; };
+		E28F39D81A2FFC140060AC19 /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28F39D71A2FFC140060AC19 /* EatNowTableViewCell.xib */; };
 		E2BB8B2D1A1943380090FD0D /* EatNowTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2BB8B2C1A1943380090FD0D /* EatNowTableView.xib */; };
 		E2C2BF081A1074730027C86C /* SortByTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2BF071A1074730027C86C /* SortByTableViewController.swift */; };
 		E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */; };
@@ -121,7 +120,6 @@
 		1DD756C91A0CAC530061891B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6DC708441A0FDA63002F56A0 /* appel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appel.jpg; sourceTree = "<group>"; };
 		6DC708461A100AB3002F56A0 /* EatNowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatNowDetailViewController.swift; sourceTree = "<group>"; };
-		6DC708471A100AB3002F56A0 /* EatNowDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowDetailViewController.xib; sourceTree = "<group>"; };
 		9515D68A1A194DFF0070EA2D /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		956125EC1A2D9B8100ACECE1 /* PageIndexIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexIndicator.swift; sourceTree = "<group>"; };
 		956125EE1A2D9B9400ACECE1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -171,9 +169,9 @@
 		C09640921A081D2700F3841F /* BeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewController.swift; sourceTree = "<group>"; };
 		C09640961A081DC000F3841F /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatNowTableViewCell.swift; sourceTree = "<group>"; };
-		C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableViewCell.xib; sourceTree = "<group>"; };
 		C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Alert.swift"; sourceTree = "<group>"; };
+		E28F39D71A2FFC140060AC19 /* EatNowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableViewCell.xib; sourceTree = "<group>"; };
 		E2BB8B2C1A1943380090FD0D /* EatNowTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableView.xib; sourceTree = "<group>"; };
 		E2C2BF071A1074730027C86C /* SortByTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortByTableViewController.swift; sourceTree = "<group>"; };
 		E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortByTableViewController.xib; sourceTree = "<group>"; };
@@ -437,7 +435,6 @@
 				C096408E1A08191900F3841F /* EatNowTableViewController.swift */,
 				E2BB8B2C1A1943380090FD0D /* EatNowTableView.xib */,
 				6DC708461A100AB3002F56A0 /* EatNowDetailViewController.swift */,
-				6DC708471A100AB3002F56A0 /* EatNowDetailViewController.xib */,
 				E2C2BF071A1074730027C86C /* SortByTableViewController.swift */,
 				C09640951A081D3D00F3841F /* Beacon */,
 				E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */,
@@ -467,7 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */,
-				C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */,
+				E28F39D71A2FFC140060AC19 /* EatNowTableViewCell.xib */,
 			);
 			name = "Eat Now TableViewCell";
 			sourceTree = "<group>";
@@ -605,11 +602,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9515D68B1A194DFF0070EA2D /* Keys.plist in Resources */,
+				E28F39D81A2FFC140060AC19 /* EatNowTableViewCell.xib in Resources */,
 				C033B3FE1A0AB7FD000EFB98 /* ProfileViewController.xib in Resources */,
 				6DC708451A0FDA63002F56A0 /* appel.jpg in Resources */,
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
-				C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */,
-				6DC708491A100AB3002F56A0 /* EatNowDetailViewController.xib in Resources */,
 				C06149271A0C067C00AB4DEF /* SignInViewController.xib in Resources */,
 				956125F11A2D9B9400ACECE1 /* DetailViewController.xib in Resources */,
 				E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */,
