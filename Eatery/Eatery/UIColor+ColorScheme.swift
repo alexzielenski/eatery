@@ -19,4 +19,8 @@ extension UIColor {
         return UIColor(red:0.86, green:0.43, blue:0.18, alpha:1)
     }
     
+    class func groupmeBlue() -> UIColor {
+        return UIColor(red:0.11, green:0.69, blue:0.93, alpha:1)
+    }
+    
 }

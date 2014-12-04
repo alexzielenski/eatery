@@ -85,6 +85,15 @@ class User: NSObject {
     dynamic private(set) var lastUpdated: NSDate!
     dynamic private(set) var isVerified: Bool = false
     
+    // Group me token
+    var groupmeAccessToken: String?
+    
+    //MARK: Constructors
+    class var sharedInstance: User {
+        struct Static {
+            static let instance: User = User()
+        }
+        return Static.instance
     dynamic var isFriend: Bool {
         get {
             if (self.parseUser == nil) {
@@ -104,13 +113,6 @@ class User: NSObject {
             return (User.sharedInstance.requestedFriendIDs as NSArray).containsObject(self.parseUser!.objectId)
         }
     }
-    
-    //MARK: Constructors
-    class var sharedInstance: User {
-        struct Static {
-            static let instance: User = User()
-        }
-        return Static.instance
     }
     
     private override init() {
@@ -151,7 +153,6 @@ class User: NSObject {
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             if error == nil && results.count > 0{
                 self.parseUser = results[0] as? PFUser
-
             }
         }
     }
@@ -271,6 +272,8 @@ class User: NSObject {
             }
         }
     }
+    
+
     
     func login(completion: ((error: NSError?) -> Void)?) {
         let permissions = [

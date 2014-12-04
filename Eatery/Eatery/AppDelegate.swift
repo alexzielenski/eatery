@@ -87,11 +87,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         openURL url: NSURL,
         sourceApplication: String,
         annotation: AnyObject?) -> Bool {
-//            println(url)
-//            println(sourceApplication)
-//            println(annotation)
             
-            return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, withSession:PFFacebookUtils.session())
+            
+            println("APPLICATION: \(application)")
+            println("url: \(url)")
+            println("scheme: \(url.scheme)")
+            println("query: \(url.query)")
+            println("paramstring: \(url.parameterString)")
+            println("path components: \(url.pathComponents)")
+            println("Source: \(sourceApplication)")
+            println("Annotation: \(annotation)")
+            
+            if url.scheme == "fb1631925100367901" {
+                return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, withSession:PFFacebookUtils.session())
+            }
+            
+            if url.scheme == "cuappdeveatery" {
+                
+                return GroupMeManager.sharedInstance.handleOpenURL(url)
+            }
+            
+            
+            return true
     }
 
 }
