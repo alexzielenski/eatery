@@ -23,9 +23,8 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = false
-        let tb = self.tableView;
         
-        tb.registerNib(UINib(nibName: "FriendsListTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
+        self.tableView.registerNib(UINib(nibName: "FriendsListTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
         self.tableView.registerClass(GroupsTableViewCell.self, forCellReuseIdentifier: "GroupsCell")
         User.sharedInstance.addObserver(self, forKeyPath: "friendsList", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
         view.backgroundColor = UIColor.whiteColor()
@@ -37,7 +36,6 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     }
 
     @objc private func stateChanged(sender: AnyObject?) {
-        println("state change")
         if (self.modeSegmentedControl.selectedSegmentIndex == 0) {
             self.sortFiendsList((User.sharedInstance.friends as NSArray).filteredArrayUsingPredicate(NSPredicate(format: "isFriend == true")!))
         } else {
@@ -110,6 +108,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as UITableViewCell
         let key: String = self.sortedFriends.allKeys[indexPath.section/* - 1*/] as String
         let user:User = self.sortedFriends[key]![indexPath.row]! as User
+        cell.imageView?.image = user.profilePicture
         cell.textLabel?.text = user.name
         return cell
     }

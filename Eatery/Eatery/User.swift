@@ -94,6 +94,7 @@ class User: NSObject {
             static let instance: User = User()
         }
         return Static.instance
+    }
     dynamic var isFriend: Bool {
         get {
             if (self.parseUser == nil) {
@@ -112,7 +113,6 @@ class User: NSObject {
             
             return (User.sharedInstance.requestedFriendIDs as NSArray).containsObject(self.parseUser!.objectId)
         }
-    }
     }
     
     private override init() {
