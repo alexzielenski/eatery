@@ -27,14 +27,13 @@ private enum ResponseKey: String {
 import Foundation
 
 class User: NSObject {
-    private(set) var isMe = false
     dynamic private var loadedUserInfo = false
     dynamic private var loadedFriendsList = false
     dynamic var isFinishedLoading: Bool {
         return self.loadedUserInfo && self.loadedFriendsList
     }
     
-    var isLoggedIn: Bool {
+    class var isLoggedIn: Bool {
         if let user = PFUser.currentUser() { // Check parse
             if PFFacebookUtils.session().isOpen { // Check facebook
                 return true
@@ -95,6 +94,8 @@ class User: NSObject {
         }
         return Static.instance
     }
+    
+    
     dynamic var isFriend: Bool {
         get {
             if (self.parseUser == nil) {
@@ -115,14 +116,15 @@ class User: NSObject {
         }
     }
     
+    /*
+    
+    */
     private override init() {
         super.init()
-        self.isMe = true
-//        self.parseUser = PFUser.currentUser()
         var query = PFUser.query()
         query.whereKey("objectId", equalTo: PFUser.currentUser().objectId)
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            if error == nil && results.count > 0{
+            if error == nil && results.count > 0 {
                 self.parseUser = results[0] as? PFUser
                 
                 self.requestedFriendIDs = self.parseUser!["requests"] as [String]
@@ -191,7 +193,7 @@ class User: NSObject {
     
     private func loadInformation(completion: ((error: NSError?) -> Void)?) {
         // Use GCD to dispatch then wait for the responses instead of chaining FBRequests
-        if isLoggedIn {
+        if User.isLoggedIn {
             loadUserInfo({ (error) -> Void in
                 if error != nil {
                     if let completion = completion {

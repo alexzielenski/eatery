@@ -26,7 +26,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         
         self.tableView.registerNib(UINib(nibName: "FriendsListTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
         self.tableView.registerClass(GroupsTableViewCell.self, forCellReuseIdentifier: "GroupsCell")
-        User.sharedInstance.addObserver(self, forKeyPath: "friendsList", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
+//        User.sharedInstance.addObserver(self, forKeyPath: "friendsList", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
         view.backgroundColor = UIColor.whiteColor()
         
         self.modeSegmentedControl = UISegmentedControl(items: ["Friends", "Facebook"])
@@ -45,7 +45,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     }
     
     override func viewWillAppear(animated: Bool) {
-        if !User.sharedInstance.isLoggedIn {
+        if !User.isLoggedIn {
             let signIn = SignInViewController(nibName: "SignInViewController", bundle: nil)
             signIn.title = self.title
             signIn.navigationItem.setHidesBackButton(true, animated: false)
@@ -54,6 +54,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
                     error!.handleFacebookError()
                 } else {
                     signIn.navigationController?.setViewControllers([self], animated: false)
+                    self.navigationController?.navigationBarHidden = false
                 }
             }
             self.navigationController?.setViewControllers([signIn], animated: false)

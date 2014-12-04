@@ -18,10 +18,11 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         instructionLabel.text = "Login with Facebook to use this screen"
+        navigationController?.navigationBarHidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
-        if User.sharedInstance.isLoggedIn {
+        if User.isLoggedIn {
             completionHandler!(error: nil)
         }
     }
@@ -35,6 +36,14 @@ class SignInViewController: UIViewController {
                 completion(error: error)
             }
         }
+        
+//        User2.login { (error) -> Void in
+//            println("done logging in")
+//            self.activityIndicator.stopAnimating()
+//            if let completion = self.completionHandler {
+//                completion(error: error)
+//            }
+//        }
     }
 
 }

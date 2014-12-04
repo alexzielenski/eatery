@@ -59,6 +59,7 @@
 		C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640961A081DC000F3841F /* FriendsViewController.swift */; };
 		C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */; };
 		C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */; };
+		C09851561A3001B5000E1E27 /* User2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09851551A3001B5000E1E27 /* User2.swift */; };
 		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 		C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */; };
 		C0ECB46C1A1D83F500E5C708 /* GroupMeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ECB46B1A1D83F500E5C708 /* GroupMeManager.swift */; };
@@ -174,6 +175,7 @@
 		C09640961A081DC000F3841F /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatNowTableViewCell.swift; sourceTree = "<group>"; };
 		C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableViewCell.xib; sourceTree = "<group>"; };
+		C09851551A3001B5000E1E27 /* User2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User2.swift; sourceTree = "<group>"; };
 		C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Alert.swift"; sourceTree = "<group>"; };
 		C0ECB46B1A1D83F500E5C708 /* GroupMeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMeManager.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			children = (
 				C096408C1A08188B00F3841F /* TabBarController.swift */,
 				C09640941A081D3800F3841F /* Eat Now */,
+				C09640951A081D3D00F3841F /* Beacon */,
 				C09640981A081DC800F3841F /* Friends */,
 				C06149291A0C068500AB4DEF /* Facebook */,
 			);
@@ -347,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				FA89C0981A10058100725E2C /* User.swift */,
+				C09851551A3001B5000E1E27 /* User2.swift */,
 				1D92BD631A1D73D8001C1045 /* Menu.swift */,
 				1DD756C81A0CAC520061891B /* DiningHall.swift */,
 				1DD756C91A0CAC530061891B /* Event.swift */,
@@ -443,7 +447,6 @@
 				6DC708461A100AB3002F56A0 /* EatNowDetailViewController.swift */,
 				6DC708471A100AB3002F56A0 /* EatNowDetailViewController.xib */,
 				E2C2BF071A1074730027C86C /* SortByTableViewController.swift */,
-				C09640951A081D3D00F3841F /* Beacon */,
 				E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */,
 			);
 			name = "Eat Now";
@@ -460,11 +463,11 @@
 		C09640981A081DC800F3841F /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				C09640961A081DC000F3841F /* FriendsViewController.swift */,
 				FAF8B1541A2FFA4500E1E56E /* FriendsListTableViewCell.swift */,
 				FAF8B1551A2FFA4500E1E56E /* FriendsListTableViewCell.xib */,
 				FA89C0941A10057600725E2C /* GroupsCollectionViewController.swift */,
 				FA89C0951A10057600725E2C /* GroupsCollectionViewController.xib */,
-				C09640961A081DC000F3841F /* FriendsViewController.swift */,
 			);
 			name = Friends;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				1DD756CA1A0CAC530061891B /* DiningHall.swift in Sources */,
 				C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */,
 				C033B3FA1A0AB372000EFB98 /* AF+Date+Extension.swift in Sources */,
+				C09851561A3001B5000E1E27 /* User2.swift in Sources */,
 				C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */,
 				C0ECB46C1A1D83F500E5C708 /* GroupMeManager.swift in Sources */,
 				C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */,
