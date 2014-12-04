@@ -38,7 +38,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     @objc private func stateChanged(sender: AnyObject?) {
         if (User.isLoggedIn) {            
             if (self.modeSegmentedControl.selectedSegmentIndex == 0) {
-                self.sortFiendsList((User.currentUser!.friends as NSArray).filteredArrayUsingPredicate(NSPredicate(format: "isFriend == true")!) as [User])
+                self.sortFiendsList(User.currentUser!.friends)
             } else {
                 self.sortFiendsList(User.currentUser!.facebookFriends)
             }

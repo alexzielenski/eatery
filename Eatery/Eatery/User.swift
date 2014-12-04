@@ -216,11 +216,16 @@ class User: NSObject {
                 let dict = result as NSDictionary
                 let data = dict[ResponseKey.Data.rawValue] as NSArray
                 
-                for obj in data {
-                    let person = obj as NSDictionary
-                    let id = person[ResponseKey.ID.rawValue] as String
-                    self.facebookFriends.append(User(facebookID: id))
+                let facebookIDs = data.valueForKeyPath(ResponseKey.ID.rawValue) as [String]
+                let fbquery = PFUser.query()
+                fbquery.whereKey("facebookID", containedIn: facebookIDs)
+                if let friendUsers = query.findObjects() {
+                    for object in friendUsers {
+                        self.facebookFriends.append(User(user: object as PFUser))
+                    }
                 }
+                
+                
                 
             } else {
                 //!TODO: handle error
