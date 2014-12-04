@@ -19,7 +19,7 @@ class BeaconViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        if !User.sharedInstance.isLoggedIn {
+        if !User.isLoggedIn {
             let signIn = SignInViewController(nibName: "SignInViewController", bundle: nil)
             signIn.title = self.title
             signIn.navigationItem.setHidesBackButton(true, animated: false)

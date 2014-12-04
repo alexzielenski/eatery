@@ -34,11 +34,10 @@ class FriendsListTableViewCell: UITableViewCell {
     let PADDING: CGFloat = 20
     override func layoutSubviews() {
         contentView.addSubview(friendIndicator)
-        friendIndicator.frame = CGRect(x: frame.size.width - IMAGESIZE - PADDING, y: CGRectGetMidY(frame) - (IMAGESIZE / 2), width: IMAGESIZE, height: IMAGESIZE)
+        friendIndicator.frame = CGRect(x: frame.size.width - IMAGESIZE - PADDING, y: CGRectGetMidY(contentView.bounds) - (IMAGESIZE / 2), width: IMAGESIZE, height: IMAGESIZE)
         super.layoutSubviews()
         
         isFriend = true
-        println("layout");
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

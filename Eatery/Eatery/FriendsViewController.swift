@@ -11,7 +11,7 @@ import UIKit
 private func primaryLetterForUser(user: User) -> String {
     // Typically return first letter of last name, but if
     // that isnt available, first letter of name
-    let primaryName = user.lastName != nil && countElements(user.lastName) > 0 ? user.lastName : user.name
+    let primaryName = countElements(user.lname) > 0 ? user.lname : user.fname
     return primaryName.substringToIndex(advance(primaryName.startIndex, 1))
 }
 
@@ -26,7 +26,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         
         self.tableView.registerNib(UINib(nibName: "FriendsListTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
         self.tableView.registerClass(GroupsTableViewCell.self, forCellReuseIdentifier: "GroupsCell")
-        User.sharedInstance.addObserver(self, forKeyPath: "friendsList", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
+        User.currentUser?.addObserver(self, forKeyPath: "friendsList", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
         view.backgroundColor = UIColor.whiteColor()
         
         self.modeSegmentedControl = UISegmentedControl(items: ["Friends", "Facebook"])
@@ -36,16 +36,20 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     }
 
     @objc private func stateChanged(sender: AnyObject?) {
-        if (self.modeSegmentedControl.selectedSegmentIndex == 0) {
-            self.sortFiendsList((User.sharedInstance.friends as NSArray).filteredArrayUsingPredicate(NSPredicate(format: "isFriend == true")!))
+        if (User.isLoggedIn) {            
+            if (self.modeSegmentedControl.selectedSegmentIndex == 0) {
+                self.sortFiendsList((User.currentUser!.friends as NSArray).filteredArrayUsingPredicate(NSPredicate(format: "isFriend == true")!) as [User])
+            } else {
+                self.sortFiendsList(User.currentUser!.facebookFriends)
+            }
         } else {
-            self.sortFiendsList((User.sharedInstance.friends as NSArray))
+            self.sortFiendsList([])
         }
         self.tableView.reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {
-        if !User.sharedInstance.isLoggedIn {
+        if !User.isLoggedIn {
             let signIn = SignInViewController(nibName: "SignInViewController", bundle: nil)
             signIn.title = self.title
             signIn.navigationItem.setHidesBackButton(true, animated: false)
@@ -68,10 +72,10 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         }
     }
     
-    private func sortFiendsList(friends: NSArray) {
+    private func sortFiendsList(friends: [User]) {
         var sorted = NSMutableDictionary()
         for object in friends {
-            let primary = primaryLetterForUser(object as User)
+            let primary = primaryLetterForUser(object)
             var list: NSMutableArray!
             if ((sorted.allKeys as NSArray).containsObject(primary)) {
                 list = sorted[primary] as NSMutableArray
@@ -114,11 +118,11 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (section == 0) {
-            return nil;
-        }
-        
-        return self.sortedFriends.allKeys[section - 1] as? String
+//        if (section == 0) {
+//            return nil;
+//        }
+//        
+        return self.sortedFriends.allKeys[section] as? String
     }
     
 //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -134,7 +138,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     }
     
     deinit {
-        User.sharedInstance.removeObserver(self, forKeyPath: "friendsList", context: &FRIENDSCTX)
+        User.currentUser?.removeObserver(self, forKeyPath: "friendsList", context: &FRIENDSCTX)
     }
 
 }
