@@ -17,4 +17,19 @@ class Event: NSObject {
         self.startTime = NSDate(timeIntervalSince1970: NSTimeInterval(startTime))
         self.endTime = NSDate(timeIntervalSince1970: NSTimeInterval(endTime))
     }
+    
+    // MARK: - NSCoding
+    
+    required init(coder aDecoder: NSCoder) {
+        summary = aDecoder.decodeObjectForKey("location") as String
+        startTime = aDecoder.decodeObjectForKey("name") as NSDate
+        endTime = aDecoder.decodeObjectForKey("summary") as NSDate
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(summary)
+        aCoder.encodeObject(startTime)
+        aCoder.encodeObject(endTime)
+    }
+    
 }

@@ -126,15 +126,17 @@ class NetworkingViewController: UIViewController {
     
     // MARK: eateryAPI methods
     func eateryAPIButtonPressed(sender: UIButton) {
+        DataManager.sharedInstance.updateMenus()
         //// Get a list of dining areas
-        DataManager.sharedInstance.getCalendars { (error, result) -> Void in
-            if error != nil {
-                error!.showAlert()
-            } else {
-                println("\n>>>>>>>>Got Dining Areas:")
-                println(result!)
-            }
-        }
+//        DataManager.sharedInstance.getCalendars { (error, result) -> Void in
+//            if error != nil {
+//                error!.showAlert()
+//            } else {
+//                println("\n>>>>>>>>Got Dining Areas:")
+//                print(DataManager.sharedInstance.diningHalls)
+////                println(result!)
+//            }
+//        }
     }
     
     // MARK: Facebook methods
