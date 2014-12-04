@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EatNowTableViewController" customModule="Eatery" customModuleProvider="target">
+            <connections>
+                <outlet property="searchDisplayController" destination="BGA-Kv-a9t" id="8Y3-6j-NJ1"/>
+                <outlet property="view" destination="hFG-0f-GGN" id="kMv-43-I0K"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hFG-0f-GGN">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <searchBar key="tableHeaderView" contentMode="redraw" id="9f6-rE-oq9">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <textInputTraits key="textInputTraits"/>
+                <connections>
+                    <outlet property="delegate" destination="-1" id="imQ-IZ-Qsn"/>
+                </connections>
+            </searchBar>
+            <connections>
+                <outlet property="dataSource" destination="-1" id="Kya-Zg-rqv"/>
+                <outlet property="delegate" destination="-1" id="znt-bB-PAg"/>
+            </connections>
+            <point key="canvasLocation" x="493" y="386"/>
+        </tableView>
+        <searchDisplayController id="BGA-Kv-a9t">
+            <connections>
+                <outlet property="delegate" destination="-1" id="rRH-ws-CiG"/>
+                <outlet property="searchBar" destination="9f6-rE-oq9" id="jcY-QZ-lVd"/>
+                <outlet property="searchContentsController" destination="-1" id="MLR-0M-PeL"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="NLf-Vy-s3l"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="ZuZ-Al-VbH"/>
+            </connections>
+        </searchDisplayController>
+    </objects>
+</document>
