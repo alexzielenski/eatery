@@ -23,7 +23,9 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = false
-//        self.tableView.registerNib("FriendsListTableViewCell", forCellReuseIdentifier: "FriendCell")
+        let tb = self.tableView;
+        
+        tb.registerNib(UINib(nibName: "FriendsListTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
         self.tableView.registerClass(GroupsTableViewCell.self, forCellReuseIdentifier: "GroupsCell")
         User.sharedInstance.addObserver(self, forKeyPath: "friendsList", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
         view.backgroundColor = UIColor.whiteColor()
