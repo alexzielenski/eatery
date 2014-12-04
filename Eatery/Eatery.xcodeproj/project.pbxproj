@@ -57,7 +57,6 @@
 		E2BB8B2D1A1943380090FD0D /* EatNowTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2BB8B2C1A1943380090FD0D /* EatNowTableView.xib */; };
 		E2C2BF081A1074730027C86C /* SortByTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2BF071A1074730027C86C /* SortByTableViewController.swift */; };
 		E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */; };
-		E2C2BF0D1A1074AC0027C86C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2C2BF0C1A1074AC0027C86C /* Keys.plist */; };
 		FA89C0921A10057100725E2C /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C0911A10057100725E2C /* GroupsTableViewCell.swift */; };
 		FA89C0961A10057600725E2C /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C0941A10057600725E2C /* GroupsCollectionViewController.swift */; };
 		FA89C0971A10057600725E2C /* GroupsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA89C0951A10057600725E2C /* GroupsCollectionViewController.xib */; };
@@ -583,7 +582,6 @@
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
 				C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */,
 				6DC708491A100AB3002F56A0 /* EatNowDetailViewController.xib in Resources */,
-				E2C2BF0D1A1074AC0027C86C /* Keys.plist in Resources */,
 				C06149271A0C067C00AB4DEF /* SignInViewController.xib in Resources */,
 				E2C2BF0B1A1074800027C86C /* SortByTableViewController.xib in Resources */,
 				C007CACF19E1BEAC00E3BD46 /* LaunchScreen.xib in Resources */,
