@@ -16,9 +16,20 @@ class EatNowTableViewController: UITableViewController {
         var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)        
         tableView.registerNib(nib, forCellReuseIdentifier: "eatNowCell")
         tableView.rowHeight = 95
+        
+        let customblue = UIColor(red:(77/255.0), green:(133/255.0), blue:(199/255.0), alpha:1.0);
+
+        self.navigationController?.navigationBar.barTintColor = customblue
 
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search:"), animated: true)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort By", style: UIBarButtonItemStyle.Plain, target: self, action: "sortBy:")
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort by", style: UIBarButtonItemStyle.Plain, target: self, action: "sortBy:")
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir Next", size: 20)!]
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         DataManager.sharedInstance.loadTestData()
         print(DataManager.sharedInstance.diningHalls)
@@ -51,7 +62,7 @@ class EatNowTableViewController: UITableViewController {
         let paymentMethods = DataManager.sharedInstance.diningHalls[indexPath.row].paymentMethods
         let hours = DataManager.sharedInstance.diningHalls[indexPath.row].hours
         
-        cell.loadItem(image: "appel.jpg", name: name, desc: summary, loc: "poop", paymentMethods: paymentMethods, hours: "8pm to 9pm")
+        cell.loadItem(image: "appel.jpg", name: name, desc: summary, loc: "loc", paymentMethods: paymentMethods, hours: "8pm to 9pm")
         
         return cell
         //cell.textLabel.text = "Cell (\(indexPath.section),\(indexPath.row))"
