@@ -154,7 +154,7 @@ class DiningLocationDetailViewController: UIViewController {
     func populateViews()
     {
 
-        self.diningNameLabel.text = self.diningHall.name
+//        self.diningNameLabel.text = self.diningHall.name
         
         //TODO
         
