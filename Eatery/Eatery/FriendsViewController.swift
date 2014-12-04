@@ -26,7 +26,8 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         
         self.tableView.registerNib(UINib(nibName: "FriendsListTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
         self.tableView.registerClass(GroupsTableViewCell.self, forCellReuseIdentifier: "GroupsCell")
-        User.currentUser?.addObserver(self, forKeyPath: "friendsList", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
+        User.currentUser?.addObserver(self, forKeyPath: "friends", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
+        User.currentUser?.addObserver(self, forKeyPath: "facebookFriends", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
         view.backgroundColor = UIColor.whiteColor()
         
         self.modeSegmentedControl = UISegmentedControl(items: ["Friends", "Facebook"])
@@ -138,7 +139,8 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     }
     
     deinit {
-        User.currentUser?.removeObserver(self, forKeyPath: "friendsList", context: &FRIENDSCTX)
+        User.currentUser?.removeObserver(self, forKeyPath: "friends", context: &FRIENDSCTX)
+        User.currentUser?.removeObserver(self, forKeyPath: "facebookFriends", context: &FRIENDSCTX)
     }
 
 }

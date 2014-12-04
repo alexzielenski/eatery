@@ -97,8 +97,8 @@ class User: NSObject {
         return fname + " " + lname
     }
     
-    var friends: [User] = []
-    var facebookFriends: [User] = []
+    dynamic var friends: [User] = []
+    dynamic var facebookFriends: [User] = []
     
     var requests = [User]()
     
@@ -197,6 +197,8 @@ class User: NSObject {
     }
     
     private func fetchFriends() {
+        self.willChangeValueForKey("friends")
+        self.willChangeValueForKey("facebookFriends")
         
         // get the friends ids from parse
         parseUser.fetch()
@@ -209,6 +211,7 @@ class User: NSObject {
                 self.friends.append(User(user: object as PFUser))
             }
         }
+        self.didChangeValueForKey("friends")
         
         // get the facebook ids from facebook
         FBRequestConnection.startForMyFriendsWithCompletionHandler { (request, result, error) -> Void in
@@ -224,8 +227,7 @@ class User: NSObject {
                         self.facebookFriends.append(User(user: object as PFUser))
                     }
                 }
-                
-                
+                self.didChangeValueForKey("facebookFriends")
                 
             } else {
                 //!TODO: handle error
