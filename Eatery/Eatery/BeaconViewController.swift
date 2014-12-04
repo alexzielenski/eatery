@@ -28,6 +28,7 @@ class BeaconViewController: UIViewController {
                     error!.handleFacebookError()
                 } else {
                     signIn.navigationController?.setViewControllers([self], animated: false)
+                    self.navigationController?.navigationBarHidden = false
                 }
             }
             self.navigationController?.setViewControllers([signIn], animated: false)
