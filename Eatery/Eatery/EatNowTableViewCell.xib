@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+>>>>>>> e3871fe8696d1c58623d6e02dca4d2d035561921
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -92,8 +96,8 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="eateryDesc" destination="H9b-ZV-aVi" id="mWV-cb-Ehw"/>
-                <outlet property="eateryHours" destination="0cY-Ry-Yv3" id="Ius-St-Emx"/>
+                <outlet property="eateryDesc" destination="0cY-Ry-Yv3" id="Vjb-tM-DmN"/>
+                <outlet property="eateryHours" destination="H9b-ZV-aVi" id="5be-NX-m53"/>
                 <outlet property="eateryImage" destination="hTv-uK-R0e" id="zXk-7E-ssY"/>
                 <outlet property="eateryMiles" destination="its-Zk-5ET" id="yE6-p0-Vpe"/>
                 <outlet property="eateryName" destination="GUf-xc-qNr" id="Hhw-d0-hz6"/>
