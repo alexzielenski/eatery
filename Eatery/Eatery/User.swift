@@ -190,8 +190,8 @@ class User: NSObject {
                 User.currentUser = User(user: user)
                 completion?(User.currentUser, nil)
             } else {
-                println(error);
-                completion?(nil, error);
+                println(error)
+                completion?(nil, error)
             }
         })
     }
@@ -222,12 +222,12 @@ class User: NSObject {
                 let facebookIDs = data.valueForKeyPath(ResponseKey.ID.rawValue) as [String]
                 let fbquery = PFUser.query()
                 fbquery.whereKey("facebookID", containedIn: facebookIDs)
-                if let friendUsers = query.findObjects() {
-                    for object in friendUsers {
+                fbquery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+                    for object in results {
                         self.facebookFriends.append(User(user: object as PFUser))
                     }
+                    self.didChangeValueForKey("facebookFriends")
                 }
-                self.didChangeValueForKey("facebookFriends")
                 
             } else {
                 //!TODO: handle error
