@@ -45,12 +45,11 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         //set paging content height
-        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
-        self.CONTENT_PAGING_VIEW_HEIGHT -= self.CONTENT_PAGING_VIEW_HEIGHT - tabBarHeight!/self.view.frame.size.height
+        if let tabBarHeight = self.tabBarController?.tabBar.frame.size.height {
+            
+            self.CONTENT_PAGING_VIEW_HEIGHT -= tabBarHeight/self.view.frame.size.height
         
-    }
-    
-    override func viewDidAppear(animated: Bool) {
+        }
         
         setUpViews()
         
@@ -72,7 +71,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         if let scrollView = pageVC.view.subviews[0] as? UIScrollView {
             scrollView.delegate = self
         }
+
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+            }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if(self.userTransitionedWithButton)
