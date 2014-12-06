@@ -93,49 +93,50 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return /*1 + */self.sortedFriends.allKeys.count
+        return self.sortedFriends.allKeys.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       /* if (section == 0) {
-            return 1
-        }*/
         let key: String = self.sortedFriends.allKeys[section/* - 1*/] as String
         return self.sortedFriends[key]!.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       /* if (indexPath.row == 0 && indexPath.section == 0) {
-            let cell: GroupsTableViewCell = tableView.dequeueReusableCellWithIdentifier("GroupsCell", forIndexPath: indexPath) as GroupsTableViewCell
-            return cell
-        }
-        */
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as UITableViewCell
-        let key: String = self.sortedFriends.allKeys[indexPath.section/* - 1*/] as String
+        let cell: FriendsListTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as FriendsListTableViewCell
+        let key = self.sortedFriends.allKeys[indexPath.section] as String
         let user:User = self.sortedFriends[key]![indexPath.row]! as User
-        cell.imageView?.image = user.profilePicture
-        cell.textLabel?.text = user.name
+        cell.profilePictureView.image = user.profilePicture
+        cell.titleField.text = user.name
+        cell.isFriend = (User.currentUser!.friends as NSArray).containsObject(user)
+        
+        cell.touchHandler = {
+            [weak user]
+            (cell) -> () in
+            
+            if let user = user {
+                if (!cell.isFriend) {
+                    User.currentUser!.addFriend(user, completion: { (success) -> () in
+                        cell.isFriend = (User.currentUser!.friends as NSArray).containsObject(user)
+                    })
+                } else {
+                    //!TODO remove friend
+                }
+            }
+        }
+        
         return cell
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if (section == 0) {
-//            return nil;
-//        }
-//        
-        return self.sortedFriends.allKeys[section] as? String
+        return UILocalizedIndexedCollation.currentCollation().sectionTitles[section] as? String
     }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return indexPath.row == 0 && indexPath.section == 0 ? 72 : tableView.rowHeight
-//    }
-//    
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
-        return self.sortedFriends.allKeys
+        return UILocalizedIndexedCollation.currentCollation().sectionIndexTitles
     }
     
     override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        return index;// + 1;
+        return UILocalizedIndexedCollation.currentCollation().sectionForSectionIndexTitleAtIndex(index)
     }
     
     deinit {

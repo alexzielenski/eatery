@@ -112,7 +112,7 @@ class User: NSObject {
         return false
     }
     
-    var parseUser: PFUser
+    dynamic var parseUser: PFUser
     private var _profilePicture: UIImage?
     var profilePicture: UIImage {
         if (_profilePicture == nil) {
@@ -146,7 +146,7 @@ class User: NSObject {
                 }
             })
             
-            User.currentUser?.fetchFriends()
+            User.currentUser?.fetch()
         }
     }
     
@@ -196,19 +196,25 @@ class User: NSObject {
         })
     }
     
-    private func fetchFriends() {
+    private func fetchFriends(clear: Bool) {
+        if (clear) {
+            self.friends = []
+            self.facebookFriends = []
+        }
+        
         self.willChangeValueForKey("friends")
         self.willChangeValueForKey("facebookFriends")
         
-        // get the friends ids from parse
-        parseUser.fetch()
-
+        let oldFriendIDs: NSArray! = (friends as NSArray).valueForKeyPath("parseUser.objectId") as? NSArray
+        
         let query = PFUser.query()
         query.whereKey("objectId", containedIn: friendIDs)
         
-        if let friendUsers = query.findObjects() {
+        if let friendUsers = query.findObjects() as? [PFUser] {
             for object in friendUsers {
-                self.friends.append(User(user: object as PFUser))
+                if (!oldFriendIDs.containsObject(object.objectId)) {
+                    self.friends.append(User(user: object))
+                }
             }
         }
         self.didChangeValueForKey("friends")
@@ -220,11 +226,17 @@ class User: NSObject {
                 let data = dict[ResponseKey.Data.rawValue] as NSArray
                 
                 let facebookIDs = data.valueForKeyPath(ResponseKey.ID.rawValue) as [String]
+                
                 let fbquery = PFUser.query()
                 fbquery.whereKey("facebookID", containedIn: facebookIDs)
-                if let friendUsers = query.findObjects() {
+                
+                var oldFacebookFriends:NSArray! = (self.facebookFriends as NSArray).valueForKeyPath("parseUser.objectId") as? NSArray
+                
+                if let friendUsers = fbquery.findObjects() as? [PFUser] {
                     for object in friendUsers {
-                        self.facebookFriends.append(User(user: object as PFUser))
+                        if (!oldFacebookFriends.containsObject(object.objectId)) {
+                            self.facebookFriends.append(User(user: object))
+                        }
                     }
                 }
                 self.didChangeValueForKey("facebookFriends")
@@ -248,11 +260,42 @@ class User: NSObject {
             requestIDs = []
         }
         
-        
         //!TODO: group me api key
         parseUser.saveEventually()
+    }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let object: AnyObject = object {
+            if object.isKindOfClass(User.self) {
+                let user = object as User
+                return user.parseUser.objectId == parseUser.objectId
+            }
+        }
         
-        println(self.facebookID)
+        return false;
+    }
+    
+    func addFriend(friend: User, completion: ((Bool) -> ())?) {
+        if (!self.parseUser.isAuthenticated()) {
+            println("cannot add friend for unauthenticated user")
+            completion?(false);
+            return;
+        }
+        
+        PFCloud.callFunctionInBackground("addFriend", withParameters: ["target": friend.parseUser.objectId]) {
+            [unowned self] (res, err) -> Void in
+            self.fetch()
+            if (err != nil) {
+                println(err)
+            }
+            completion?(err == nil)
+        }
+    }
+    
+    func fetch() {
+        // get the friends ids from parse
+        parseUser.fetch()
+        fetchFriends(false)
     }
     
     deinit {
