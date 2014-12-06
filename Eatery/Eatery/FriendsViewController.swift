@@ -59,6 +59,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
                     error!.handleFacebookError()
                 } else {
                     signIn.navigationController?.setViewControllers([self], animated: false)
+                    self.navigationController?.navigationBarHidden = false
                 }
             }
             self.navigationController?.setViewControllers([signIn], animated: false)

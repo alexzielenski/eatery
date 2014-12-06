@@ -225,21 +225,18 @@ class User: NSObject {
                 let dict = result as NSDictionary
                 let data = dict[ResponseKey.Data.rawValue] as NSArray
                 
+                var oldFacebookFriends:NSArray! = (self.facebookFriends as NSArray).valueForKeyPath("parseUser.objectId") as? NSArray
                 let facebookIDs = data.valueForKeyPath(ResponseKey.ID.rawValue) as [String]
-                
                 let fbquery = PFUser.query()
                 fbquery.whereKey("facebookID", containedIn: facebookIDs)
-                
-                var oldFacebookFriends:NSArray! = (self.facebookFriends as NSArray).valueForKeyPath("parseUser.objectId") as? NSArray
-                
-                if let friendUsers = fbquery.findObjects() as? [PFUser] {
-                    for object in friendUsers {
+                fbquery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+                    for object in results {
                         if (!oldFacebookFriends.containsObject(object.objectId)) {
-                            self.facebookFriends.append(User(user: object))
+                            self.facebookFriends.append(User(user: object as PFUser))
                         }
                     }
+                    self.didChangeValueForKey("facebookFriends")
                 }
-                self.didChangeValueForKey("facebookFriends")
                 
             } else {
                 //!TODO: handle error

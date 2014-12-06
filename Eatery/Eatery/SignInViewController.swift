@@ -33,6 +33,7 @@ class SignInViewController: UIViewController {
         User.login { (user, error) -> Void in
             self.activityIndicator.stopAnimating()
             if let completion = self.completionHandler {
+                println("login completion")
                 completion(error: error)
             }
         }
