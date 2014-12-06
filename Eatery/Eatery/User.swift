@@ -99,8 +99,7 @@ class User: NSObject {
     
     dynamic var friends: [User] = []
     dynamic var facebookFriends: [User] = []
-    
-    var requests = [User]()
+    dynamic var requestedFriends: [User] = []
     
     class var isLoggedIn: Bool {
         if let user = PFUser.currentUser() { // Check parse
@@ -197,6 +196,7 @@ class User: NSObject {
     }
     
     private func fetchFriends(clear: Bool) {
+        self.requestedFriends = []
         if (clear) {
             self.friends = []
             self.facebookFriends = []
@@ -204,23 +204,48 @@ class User: NSObject {
         
         self.willChangeValueForKey("friends")
         self.willChangeValueForKey("facebookFriends")
+        self.willChangeValueForKey("requestedFriends")
         
         let oldFriendIDs: NSArray! = (friends as NSArray).valueForKeyPath("parseUser.objectId") as? NSArray
         
         let query = PFUser.query()
         query.whereKey("objectId", containedIn: friendIDs)
         
-        if let friendUsers = query.findObjects() as? [PFUser] {
-            for object in friendUsers {
-                if (!oldFriendIDs.containsObject(object.objectId)) {
-                    self.friends.append(User(user: object))
+        query.findObjectsInBackgroundWithBlock { [unowned self] (results, error) -> Void in
+            if (error == nil) {
+                let friendUsers = results as [PFUser]
+                for object in friendUsers {
+                    if (!oldFriendIDs.containsObject(object.objectId)) {
+                        self.friends.append(User(user: object))
+                    }
                 }
+            } else {
+                println("Error while finding friends: " + error.description)
             }
+            
+            self.didChangeValueForKey("friends")
         }
-        self.didChangeValueForKey("friends")
+        
+
+        let requestQuery = PFUser.query()
+        requestQuery.whereKey("objectId", containedIn: requestIDs)
+        
+        requestQuery.findObjectsInBackgroundWithBlock { [unowned self] (results, error) -> Void in
+            if (error == nil) {
+                let friendUsers = results as [PFUser]
+                for object in friendUsers {
+                    self.requestedFriends.append(User(user: object))
+                }
+            } else {
+                println("Error while finding requested friends: " + error.description)
+            }
+            
+            self.didChangeValueForKey("requestedFriends")
+        }
+        
         
         // get the facebook ids from facebook
-        FBRequestConnection.startForMyFriendsWithCompletionHandler { (request, result, error) -> Void in
+        FBRequestConnection.startForMyFriendsWithCompletionHandler { [unowned self] (request, result, error) -> Void in
             if (error == nil) {
                 let dict = result as NSDictionary
                 let data = dict[ResponseKey.Data.rawValue] as NSArray
@@ -239,7 +264,7 @@ class User: NSObject {
                 }
                 
             } else {
-                //!TODO: handle error
+                println("Error while finding facebook friends: " + error.description)
             }
         }
     }
@@ -293,6 +318,10 @@ class User: NSObject {
         // get the friends ids from parse
         parseUser.fetch()
         fetchFriends(false)
+    }
+    
+    func isFriendsWith(user: User) -> Bool {
+        return (friendIDs as NSArray).containsObject(user.parseUser.objectId)
     }
     
     deinit {

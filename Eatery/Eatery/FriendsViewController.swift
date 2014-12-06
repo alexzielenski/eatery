@@ -18,7 +18,9 @@ private func primaryLetterForUser(user: User) -> String {
 private var FRIENDSCTX = 0
 class FriendsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     private(set) var sortedFriends = NSDictionary()
+    private var sortedSections = []
     private var modeSegmentedControl: UISegmentedControl!
+    private var showsRequested = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         self.tableView.registerClass(GroupsTableViewCell.self, forCellReuseIdentifier: "GroupsCell")
         User.currentUser?.addObserver(self, forKeyPath: "friends", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
         User.currentUser?.addObserver(self, forKeyPath: "facebookFriends", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
+        User.currentUser?.addObserver(self, forKeyPath: "requestedFriends", options: NSKeyValueObservingOptions.allZeros, context: &FRIENDSCTX)
         view.backgroundColor = UIColor.whiteColor()
         
         self.modeSegmentedControl = UISegmentedControl(items: ["Friends", "Facebook"])
@@ -39,13 +42,16 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     @objc private func stateChanged(sender: AnyObject?) {
         if (User.isLoggedIn) {            
             if (self.modeSegmentedControl.selectedSegmentIndex == 0) {
+                self.showsRequested = User.currentUser!.requestedFriends.count > 0
                 self.sortFiendsList(User.currentUser!.friends)
             } else {
+                self.showsRequested = false;
                 self.sortFiendsList(User.currentUser!.facebookFriends)
             }
         } else {
             self.sortFiendsList([])
         }
+        
         self.tableView.reloadData()
     }
     
@@ -62,13 +68,13 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
                     self.navigationController?.navigationBarHidden = false
                 }
             }
-            self.navigationController?.setViewControllers([signIn], animated: false)
+            navigationController?.setViewControllers([signIn], animated: false)
         }
     }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (context == &FRIENDSCTX) {
-            self.stateChanged(nil)
+            stateChanged(nil)
         } else {
             super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
         }
@@ -89,26 +95,48 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
             list.addObject(object)
         }
         self.sortedFriends = sorted
-        
+        self.sortedSections = (sorted.allKeys as NSArray).sortedArrayUsingSelector("caseInsensitiveCompare:") as [String]
         self.tableView.reloadData()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.sortedFriends.allKeys.count
+        var count = self.sortedSections.count
+        if showsRequested {
+            count++
+        }
+        return count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let key: String = self.sortedFriends.allKeys[section/* - 1*/] as String
+        var sec = section
+        if (showsRequested) {
+            sec--
+        }
+        if (sec == -1) {
+            return User.currentUser!.requestedFriends.count
+        }
+        
+        let key: String = self.sortedSections[sec] as String
         return self.sortedFriends[key]!.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var sec = indexPath.section
+        if (showsRequested) {
+            sec--;
+        }
+        
         let cell: FriendsListTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as FriendsListTableViewCell
-        let key = self.sortedFriends.allKeys[indexPath.section] as String
-        let user:User = self.sortedFriends[key]![indexPath.row]! as User
+        var user = User.currentUser!
+        if (sec == -1) {
+            user = user.requestedFriends[indexPath.row]
+        } else {
+            let key = self.sortedSections[sec] as String
+            user = self.sortedFriends[key]![indexPath.row]! as User
+        }
         cell.profilePictureView.image = user.profilePicture
         cell.titleField.text = user.name
-        cell.isFriend = (User.currentUser!.friends as NSArray).containsObject(user)
+        cell.isFriend = User.currentUser!.isFriendsWith(user)
         
         cell.touchHandler = {
             [weak user]
@@ -117,7 +145,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
             if let user = user {
                 if (!cell.isFriend) {
                     User.currentUser!.addFriend(user, completion: { (success) -> () in
-                        cell.isFriend = (User.currentUser!.friends as NSArray).containsObject(user)
+                        cell.isFriend = User.currentUser!.isFriendsWith(user)
                     })
                 } else {
                     //!TODO remove friend
@@ -129,7 +157,15 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return UILocalizedIndexedCollation.currentCollation().sectionTitles[section] as? String
+        var sec = section
+        if (showsRequested) {
+            sec--
+        }
+        
+        if (sec == -1) {
+            return "Requested Friends"
+        }
+        return self.sortedSections[sec] as? String
     }
     
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
@@ -143,6 +179,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
     deinit {
         User.currentUser?.removeObserver(self, forKeyPath: "friends", context: &FRIENDSCTX)
         User.currentUser?.removeObserver(self, forKeyPath: "facebookFriends", context: &FRIENDSCTX)
+        User.currentUser?.removeObserver(self, forKeyPath: "requestedFriends", context: &FRIENDSCTX)
     }
 
 }
