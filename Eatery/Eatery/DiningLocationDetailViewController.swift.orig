@@ -153,13 +153,18 @@ class DiningLocationDetailViewController: UIViewController {
     
     func populateViews()
     {
+<<<<<<< HEAD
         
         //dining name
+        self.diningNameLabel.text = self.diningHall.name
+=======
+
 //        self.diningNameLabel.text = self.diningHall.name
-//        
-//        let span = MKCoordinateSpanMake(1, 1)
-//        let region = MKCoordinateRegion(center: self.diningHall.location.coordinate, span: span)
-//        self.mapView.setRegion(region, animated: false)
+>>>>>>> 82c8f36e3b8ad1a33b54ec048a7f6aa6f5d0cc9a
+        
+        let span = MKCoordinateSpanMake(1, 1)
+        let region = MKCoordinateRegion(center: self.diningHall.location.coordinate, span: span)
+        self.mapView.setRegion(region, animated: false)
         
         //TODO
         
