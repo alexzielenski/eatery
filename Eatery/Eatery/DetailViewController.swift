@@ -9,23 +9,24 @@
 import UIKit
 import CoreLocation
 
-class DetailViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate{
-
+class DetailViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
+    
     let pageIndexIndicator = PageIndexIndicator()
     let backgroundImageView = UIImageView()
     let contentPagingView = UIView()
     let portraitPhotoImageView = UIImageView()
     
     var detailPages:NSMutableArray = []
-    let pageVC = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options:  nil)
+    var pageVC = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options:  nil)
     var currentIndex = 0
-    
+    var willTransitionToIndex = 0
+    var userTransitionedWithButton = false
     ////////////////////////////////////
     ///////VIEW RATIO CONSTANTS/////////////////////
     
     //weight by percentage of height
     let BACKGROUND_IMAGE_VIEW_HEIGHT:CGFloat = 0.4
-    let CONTENT_PAGING_VIEW_HEIGHT:CGFloat = 0.6
+    var CONTENT_PAGING_VIEW_HEIGHT:CGFloat = 0.6
     let PORTRAIT_IMAGE_SIZE:CGFloat = 0.15
     let PAGE_INDICATOR_HEIGHT:CGFloat = 0.05
     
@@ -35,10 +36,17 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     ///////VIEW RATIO CONSTANTS/////////////////////
     ///////////////////////////////////
     
+    //indicator animation speed
+    let INDICATOR_ANIMATION_SPEED = 0.2
+    
+    
     //MARK: - Load View
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //set paging content height
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
+        self.CONTENT_PAGING_VIEW_HEIGHT -= self.CONTENT_PAGING_VIEW_HEIGHT - tabBarHeight!/self.view.frame.size.height
         
     }
     
@@ -46,7 +54,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         setUpViews()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pageWasSwitched:", name: "PageWasSwitched", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pageWasSwitchedWithButton:", name: "PageWasSwitched", object: nil)
         
         pageVC.view.frame = CGRectMake(0, 0, self.contentPagingView.frame.width, self.contentPagingView.frame.height)
         
@@ -61,7 +69,43 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         addChildViewController(pageVC)
         pageVC.didMoveToParentViewController(self)
         
+        if let scrollView = pageVC.view.subviews[0] as? UIScrollView {
+            scrollView.delegate = self
+        }
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if(self.userTransitionedWithButton)
+        {
+            return
+        }
+        let width = self.view.frame.size.width
+        let offset = scrollView.contentOffset.x
+        
+        if(offset < self.view.frame.size.width/2.0)
+        {
+            if(self.pageIndexIndicator.currentIndex == self.currentIndex)
+            {
+                self.pageIndexIndicator.didScrollToIndex(anIndex: self.currentIndex-1, animationDuration: 0.2)
+            }
+        }
+        else if((offset > width && offset < width * 1.5))
+        {
+            self.pageIndexIndicator.didScrollToIndex(anIndex: self.currentIndex, animationDuration: 0.2)
+        }
+        else if(offset > self.view.frame.size.width * 1.5 )
+        {
+            if(self.pageIndexIndicator.currentIndex == self.currentIndex)
+            {
+                self.pageIndexIndicator.didScrollToIndex(anIndex: self.currentIndex + 1, animationDuration: 0.2)
+            }
+        }
+        else if(offset > width/2.0 && offset < 375.0)
+        {
+            self.pageIndexIndicator.didScrollToIndex(anIndex: self.currentIndex, animationDuration: 0.2)
+        }
+    }
+    
     
     func setUpViews(){
         
@@ -109,15 +153,20 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
     // MARK: - User Input Handling
     
-    func pageWasSwitched(notification:NSNotification)
+    func pageWasSwitchedWithButton(notification:NSNotification)
     {
+        self.userTransitionedWithButton = true
         var index:Int = notification.object as Int
         var direction =  UIPageViewControllerNavigationDirection.Reverse
         if (index > self.currentIndex) {
             direction = UIPageViewControllerNavigationDirection.Forward
         }
-        self.pageVC.setViewControllers([self.detailPages.objectAtIndex(index)], direction:direction, animated: true, completion: nil)
+        self.pageVC.setViewControllers([self.detailPages.objectAtIndex(index)], direction:direction, animated: true, completion:{(Bool)  in
+            self.userTransitionedWithButton = false
+        })
         self.currentIndex = index
+        self.pageIndexIndicator.didScrollToIndex(anIndex: self.currentIndex, animationDuration: self.INDICATOR_ANIMATION_SPEED)
+        
         
     }
     
@@ -138,7 +187,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-       
+        
         let index =  self.detailPages.indexOfObject(viewController)
         
         if (index <= 0) {
@@ -147,64 +196,26 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
         // return the previous page's view controller
         return (self.detailPages.objectAtIndex(index - 1) as UIViewController)
-
+        
     }
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
         
         let newController = pendingViewControllers.first as UIViewController
         let index = self.detailPages.indexOfObject(newController)
-        
-        self.pageIndexIndicator.didScrollToIndex(anIndex: index, animationDuration: 0.2)
-        self.currentIndex = index
-
+        self.willTransitionToIndex = index
         
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         
-        if(!completed)
+        if(completed)
         {
-            let newController = previousViewControllers.first as UIViewController
-            let index = self.detailPages.indexOfObject(newController)
+            self.currentIndex = self.willTransitionToIndex
             
-            self.pageIndexIndicator.didScrollToIndex(anIndex: index, animationDuration: 0.01)
-            self.currentIndex = index
-
         }
         
     }
-   /*
-    - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers{
-    
-    SJJeanViewController* controller = [pendingViewControllers firstObject];
-    self.nextIndex = [self indexOfViewController:controller];
-    
-    }
-    
-    - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
-    
-    if(completed){
-    
-    self.currentIndex = self.nextIndex;
-    
-    }
-    
-    self.nextIndex = 0;
-    
-    }*/
     
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
