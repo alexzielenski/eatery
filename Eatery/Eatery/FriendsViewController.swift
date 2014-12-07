@@ -92,7 +92,7 @@ class FriendsViewController: UITableViewController, UITableViewDataSource, UITab
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as UITableViewCell
         let key: String = self.sortedFriends.allKeys[indexPath.section - 1] as String
         let user:User = self.sortedFriends[key]![indexPath.row]! as User
-        cell.textLabel.text = user.name
+        cell.textLabel?.text = user.name
         return cell
     }
     

@@ -26,6 +26,8 @@ enum MealType: String {
     case Dinner = "Dinner"
 }
 
+let calIDs = ["104west", "amit_bhatia_libe_cafe", "atrium_cafe", "bear_necessities", "bears_den", "becker_house_dining_room", "big_red_barn", "cafe_jennie", "carols_cafe", "cascadeli", "cook_house_dining_room", "cornell_dairy_bar", "goldies", "green_dragon", "ivy_room", "jansens_dining_room,_bethe_house", "jansens_market", "keeton_house_dining_room", "marthas_cafe", "mattins_cafe", "north_star", "okenshields", "risley_dining", "robert_purcell_marketplace_eatery", "rose_house_dining_room", "rustys", "synapsis_cafe", "trillium"]
+
 let menuIDs = ["cook_house_dining_room", "becker_house_dining_room", "keeton_house_dining_room", "rose_house_dining_room", "jansens_dining_room,_bethe_house", "robert_purcell_marketplace_eatery", "north_star", "risley_dining", "104west", "okenshields"]
 
 /**
@@ -131,7 +133,6 @@ class DataManager: NSObject {
                 } else {
                     if let swiftyJSON = JSON(rawValue: data!) {
                         let diningAreas = swiftyJSON.arrayValue
-                        print(diningAreas)
                         var result = diningAreas.map { element -> DiningHall in
                             return DiningHall(json: element)
                         }
@@ -163,28 +164,32 @@ class DataManager: NSObject {
         }
     }
     
-    func updateMenus() {
-        for menuID in menuIDs {
-            updateMenu(menuID) {if $0 != nil { print($0) }}
+    func updateCalendars(completion:()->()) {
+        dispatch_async(DISPATCH_QUEUE_PRIORITY_DEFAULT) {
+            
         }
     }
     
-    func updateMenu(id: String, completion:((error: NSError?) -> Void)?) {
+//    func updateMenus() {
+//        for menuID in menuIDs {
+//            updateMenu(menuID) {if $0 != nil { printn($0) }}
+//        }
+//    }
+    
+    func updateMenu(id: String, completion:(menu: Menu?) -> Void) {
         if !contains(menuIDs, id) {
-            completion?(error: NSError())
+            completion(menu: nil)
             return
         }
         Alamofire
             .request(.GET, Router.Menu(id))
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
                 if let e = error {
-                    completion?(error: e)
+                    completion(menu: nil)
                 } else {
                     if let swiftyJSON = JSON(rawValue: data!) {
-                        
-                        print("\(id):\n\(Menu(data: swiftyJSON))")
-                        
-                        completion?(error: nil)
+                        let menu = Menu(data: swiftyJSON)
+                        completion(menu: Menu(data: swiftyJSON))
                     }
                 }
         }
@@ -200,7 +205,6 @@ class DataManager: NSObject {
             DiningHall(location: CLLocation(), name: "Ivy Room", summary: "Ivy Room Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "ivy_room")
         ]
     }
-    
 }
 
 func printNetworkResponse(request: NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) {

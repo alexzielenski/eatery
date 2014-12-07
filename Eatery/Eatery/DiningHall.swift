@@ -17,8 +17,6 @@ class DiningHall: NSObject, NSCoding {
     let events: [Event]
     let id: String
     
-    var menu: Menu? = nil
-    
     init(location: CLLocation, name: String, summary: String, paymentMethods: [String], hours: [Event], id: String) {
         self.location = location
         self.name = name
@@ -34,30 +32,18 @@ class DiningHall: NSObject, NSCoding {
         let name = json["name"].stringValue
         let summary = json["description"].stringValue
         let paymentMethods = (json["payment_methods"].arrayValue).map {$0.stringValue}
-        
-        var hours: [Event] = []
-        let today = NSDate()
-        for eJSON in json["events"].arrayValue {
-            if !(eJSON["summary"].stringValue as NSString).localizedCaseInsensitiveContainsString("closed") {
-                let e = Event(json: eJSON)
-                if let rule = e.rule {
-                    if rule.end.isLaterThanDate(today) {
-                        hours.append(e)
-                    }
-                } else {
-                    if e.end.isLaterThanDate(today) {
-                        hours.append(e)
-                    }
-                }
-            }
-        }
-        
+        let hours = json["events"].arrayValue.map {Event(json: $0)}
         let id = json["cal_id"].stringValue
+        
         self.init(location: location, name: name, summary: summary, paymentMethods: paymentMethods, hours: hours, id: id)
     }
     
     override var description: String {
-        return "\n\(name) has id \(id) with payment methods \(paymentMethods) at location \(location) with events: \n\(events)"
+        return "\(name) has id \(id) with payment methods \(paymentMethods) at location \(location) with events: \(events)"
+    }
+    
+    func pullMenuData(completion:(menu: Menu?) -> Void) {
+        DataManager.sharedInstance.updateMenu(id, completion: completion)
     }
     
     // MARK: - NSCoding

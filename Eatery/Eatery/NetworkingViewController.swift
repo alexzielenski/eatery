@@ -133,7 +133,7 @@ class NetworkingViewController: UIViewController {
 //                error!.showAlert()
 //            } else {
 //                println("\n>>>>>>>>Got Dining Areas:")
-//                print(DataManager.sharedInstance.diningHalls)
+//                println(DataManager.sharedInstance.diningHalls)
 ////                println(result!)
 //            }
 //        }

@@ -11,45 +11,30 @@ class Event: NSObject {
     let start: NSDate
     let end: NSDate
     
-    let rule: Rule?
-    
     init(json: JSON) {
         summary = json["summary"].stringValue
-        start = DateParser.dateFromString(json["start"].stringValue)
-        end = DateParser.dateFromString(json["end"].stringValue)
-        rule = json["rrule"].dictionary != nil ? Rule(json: json["rrule"]) : nil
+        start = NSDate(timeIntervalSince1970: NSTimeInterval(json["start"].intValue/1000))
+        end = NSDate(timeIntervalSince1970: NSTimeInterval(json["end"].intValue/1000))
     }
     
     override var description: String {
-        return "Event: \(summary)starting: \(start) ending: \(end) rule: \(rule)\n"
-    }
-    
-    func startAndEndTimeForToday() -> (start: NSDate, end: NSDate)? {
-        let today = NSDate()
-        if let r = rule {
-            let cal = NSCalendar(calendarIdentifier: NSGregorianCalendar)!
-            let weekday = cal.components(NSCalendarUnit.CalendarUnitWeekday, fromDate: today).weekday
-            if contains(r.weekdays, Weekday(rawValue: weekday)!) {
-                return (start, end)
-            }
-        }
-        return nil
+        return "Event: \(summary) starting: \(start) ending: \(end)"
     }
     
     // MARK: - NSCoding
     
-//    required init(coder aDecoder: NSCoder) {
-//        summary = State(rawValue: aDecoder.decodeIntegerForKey("summary"))!
-//        start = aDecoder.decodeObjectForKey("start") as NSDate
-//        end = aDecoder.decodeObjectForKey("end") as NSDate
-//        
-//    }
-//    
-//    func encodeWithCoder(aCoder: NSCoder) {
-//        aCoder.encodeObject(summary.rawValue, forKey: "summary")
-//        aCoder.encodeObject(start, forKey: "start")
-//        aCoder.encodeObject(end, forKey: "end")
-//    }
+    required init(coder aDecoder: NSCoder) {
+        summary = aDecoder.decodeObjectForKey("summary") as String
+        start = aDecoder.decodeObjectForKey("start") as NSDate
+        end = aDecoder.decodeObjectForKey("end") as NSDate
+        
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(summary, forKey: "summary")
+        aCoder.encodeObject(start, forKey: "start")
+        aCoder.encodeObject(end, forKey: "end")
+    }
     
 }
 

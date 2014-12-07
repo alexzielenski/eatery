@@ -13,7 +13,7 @@ class EatNowTableViewController: UITableViewController {
     override func viewDidLoad() {
 		super.viewDidLoad()
 
-        var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)        
+        var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "eatNowCell")
         tableView.rowHeight = 95
 
@@ -21,7 +21,7 @@ class EatNowTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort By", style: UIBarButtonItemStyle.Plain, target: self, action: "sortBy:")
         
         DataManager.sharedInstance.loadTestData()
-        print(DataManager.sharedInstance.diningHalls)
+        println(DataManager.sharedInstance.diningHalls)
     }
     
     // MARK: - Actions
@@ -31,10 +31,6 @@ class EatNowTableViewController: UITableViewController {
         let navController = UINavigationController(rootViewController: sortByViewController)
         
         self.presentViewController(navController, animated: true, completion: nil)
-    }
-    
-    func search(sender: UIBarButtonItem) {
-        println("Search Not Implemented")
     }
 
     // MARK: - Table view data source
@@ -58,6 +54,11 @@ class EatNowTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        DataManager.sharedInstance.diningHalls[0].pullMenuData({
+            if let menu = $0 {
+                println(menu)
+            }
+        })
         let detailViewController =  EatNowDetailViewController(nibName: "EatNowDetailViewController", bundle: nil)
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
