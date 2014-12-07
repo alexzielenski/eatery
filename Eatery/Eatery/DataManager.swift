@@ -200,7 +200,7 @@ class DataManager: NSObject {
             DiningHall(location: CLLocation(), name: "North Star", summary: "North Star Summary", paymentMethods: ["BRB", "cash", "swipe"], hours: [], id: "north_star"),
             DiningHall(location: CLLocation(), name: "104 West", summary: "104 West Summary", paymentMethods: ["BRB", "swipe"], hours: [], id: "104west"),
             DiningHall(location: CLLocation(), name: "Cascadeli", summary: "Cascadeli Summary", paymentMethods: ["cash", "swipe"], hours: [], id: "cascadeli"),
-            DiningHall(location: CLLocation(), name: "okenshields", summary: "Okenshields Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "okenshields"),
+            DiningHall(location: CLLocation(), name: "Okenshields", summary: "Okenshields Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "okenshields"),
             DiningHall(location: CLLocation(), name: "Goldies", summary: "Goldies Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "goldies"),
             DiningHall(location: CLLocation(), name: "Ivy Room", summary: "Ivy Room Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "ivy_room")
         ]

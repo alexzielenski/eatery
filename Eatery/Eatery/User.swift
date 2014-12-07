@@ -57,8 +57,17 @@ class User: NSObject {
         return self._profilePicture!
     }
     
-    // MARK: Facebook user information
-    dynamic var friendsList: [User] = []
+    // MARK: friend user information
+    // Includes all facebook friends.
+    // to filter by friends who are associated with the current user
+    // use valueForKeyPath(isFriend)
+    // and to filter by friends who have requested to be friends with the user
+    // user valueForKeyPath(isRequested)
+    dynamic private(set) var friends: [User] = []
+//    dynamic private(set) var requestedFriends: [User] = []
+    
+    dynamic private(set) var friendIDs = [String]()
+    dynamic private(set) var requestedFriendIDs = [String]()
     
     // List properties as dynamic to enabled KVO
     dynamic private(set) var birthday: NSDate!
@@ -76,6 +85,9 @@ class User: NSObject {
     dynamic private(set) var lastUpdated: NSDate!
     dynamic private(set) var isVerified: Bool = false
     
+    // Group me token
+    var groupmeAccessToken: String?
+    
     //MARK: Constructors
     class var sharedInstance: User {
         struct Static {
@@ -83,11 +95,51 @@ class User: NSObject {
         }
         return Static.instance
     }
+    dynamic var isFriend: Bool {
+        get {
+            if (self.parseUser == nil) {
+                return false;
+            }
+            
+            return (User.sharedInstance.friendIDs as NSArray).containsObject(self.parseUser!.objectId)
+        }
+    }
+    
+    dynamic var isRequesting: Bool {
+        get {
+            if (self.parseUser == nil) {
+                return false;
+            }
+            
+            return (User.sharedInstance.requestedFriendIDs as NSArray).containsObject(self.parseUser!.objectId)
+        }
+    }
     
     private override init() {
         super.init()
         self.isMe = true
-        self.parseUser = PFUser.currentUser()
+//        self.parseUser = PFUser.currentUser()
+        var query = PFUser.query()
+        query.whereKey("objectId", equalTo: PFUser.currentUser().objectId)
+        query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+            if error == nil && results.count > 0{
+                self.parseUser = results[0] as? PFUser
+                
+                self.requestedFriendIDs = self.parseUser!["requests"] as [String]
+                self.friendIDs = self.parseUser!["friends"] as [String]
+                
+                // Get requested friend objects
+//                var requestQuery = PFUser.query()
+//                query.whereKey("objectId", containedIn: self.requestedFriendIDs)
+//                query.findObjectsInBackgroundWithBlock({ (res, err) -> Void in
+//                    if error == nil && res.count > 0 {
+//                        // Array of PFUser objects
+//                        
+//                    }
+//                })
+            }
+        }
+        
         self.loadInformation(nil)
     }
     
@@ -206,7 +258,7 @@ class User: NSObject {
                         let friendUser = User(responseDictionary: fo.dictionaryObject!)
                         friendUsers.append(friendUser)
                     }
-                    self.friendsList = friendUsers
+                    self.friends = friendUsers
                     
                     if let completion = completion {
                         completion(error: nil)
