@@ -99,8 +99,7 @@ class User: NSObject {
     
     dynamic var friends: [User] = []
     dynamic var facebookFriends: [User] = []
-    
-    var requests = [User]()
+    dynamic var requestedFriends: [User] = []
     
     class var isLoggedIn: Bool {
         if let user = PFUser.currentUser() { // Check parse
@@ -112,7 +111,7 @@ class User: NSObject {
         return false
     }
     
-    var parseUser: PFUser
+    dynamic var parseUser: PFUser
     private var _profilePicture: UIImage?
     var profilePicture: UIImage {
         if (_profilePicture == nil) {
@@ -146,7 +145,7 @@ class User: NSObject {
                 }
             })
             
-            User.currentUser?.fetchFriends()
+            User.currentUser?.fetch()
         }
     }
     
@@ -190,47 +189,82 @@ class User: NSObject {
                 User.currentUser = User(user: user)
                 completion?(User.currentUser, nil)
             } else {
-                println(error)
-                completion?(nil, error)
+                println(error);
+                completion?(nil, error);
             }
         })
     }
     
-    private func fetchFriends() {
+    private func fetchFriends(clear: Bool) {
+        self.requestedFriends = []
+        if (clear) {
+            self.friends = []
+            self.facebookFriends = []
+        }
+        
         self.willChangeValueForKey("friends")
         self.willChangeValueForKey("facebookFriends")
+        self.willChangeValueForKey("requestedFriends")
         
-        // get the friends ids from parse
-        parseUser.fetch()
-
+        let oldFriendIDs: NSArray! = (friends as NSArray).valueForKeyPath("parseUser.objectId") as? NSArray
+        
         let query = PFUser.query()
         query.whereKey("objectId", containedIn: friendIDs)
         
-        if let friendUsers = query.findObjects() {
-            for object in friendUsers {
-                self.friends.append(User(user: object as PFUser))
+        query.findObjectsInBackgroundWithBlock { [unowned self] (results, error) -> Void in
+            if (error == nil) {
+                let friendUsers = results as [PFUser]
+                for object in friendUsers {
+                    if (!oldFriendIDs.containsObject(object.objectId)) {
+                        self.friends.append(User(user: object))
+                    }
+                }
+            } else {
+                println("Error while finding friends: " + error.description)
             }
+            
+            self.didChangeValueForKey("friends")
         }
-        self.didChangeValueForKey("friends")
+        
+
+        let requestQuery = PFUser.query()
+        requestQuery.whereKey("objectId", containedIn: requestIDs)
+        
+        requestQuery.findObjectsInBackgroundWithBlock { [unowned self] (results, error) -> Void in
+            if (error == nil) {
+                let friendUsers = results as [PFUser]
+                for object in friendUsers {
+                    self.requestedFriends.append(User(user: object))
+                }
+            } else {
+                println("Error while finding requested friends: " + error.description)
+            }
+            
+            self.didChangeValueForKey("requestedFriends")
+        }
+        
         
         // get the facebook ids from facebook
-        FBRequestConnection.startForMyFriendsWithCompletionHandler { (request, result, error) -> Void in
+        FBRequestConnection.startForMyFriendsWithCompletionHandler { [unowned self] (request, result, error) -> Void in
             if (error == nil) {
                 let dict = result as NSDictionary
                 let data = dict[ResponseKey.Data.rawValue] as NSArray
                 
+                var oldFacebookFriends:NSArray! = (self.facebookFriends as NSArray).valueForKeyPath("parseUser.objectId") as? NSArray
                 let facebookIDs = data.valueForKeyPath(ResponseKey.ID.rawValue) as [String]
                 let fbquery = PFUser.query()
                 fbquery.whereKey("facebookID", containedIn: facebookIDs)
                 fbquery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
                     for object in results {
-                        self.facebookFriends.append(User(user: object as PFUser))
+                        if (!oldFacebookFriends.containsObject(object.objectId)) {
+                            self.facebookFriends.append(User(user: object as PFUser))
+                        }
                     }
                     self.didChangeValueForKey("facebookFriends")
                 }
                 
             } else {
-                //!TODO: handle error
+                println("Error while finding facebook friends: " + error.description)
             }
         }
     }
@@ -248,11 +282,46 @@ class User: NSObject {
             requestIDs = []
         }
         
-        
         //!TODO: group me api key
         parseUser.saveEventually()
+    }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let object: AnyObject = object {
+            if object.isKindOfClass(User.self) {
+                let user = object as User
+                return user.parseUser.objectId == parseUser.objectId
+            }
+        }
         
-        println(self.facebookID)
+        return false;
+    }
+    
+    func addFriend(friend: User, completion: ((Bool) -> ())?) {
+        if (!self.parseUser.isAuthenticated()) {
+            println("cannot add friend for unauthenticated user")
+            completion?(false);
+            return;
+        }
+        
+        PFCloud.callFunctionInBackground("addFriend", withParameters: ["target": friend.parseUser.objectId]) {
+            [unowned self] (res, err) -> Void in
+            self.fetch()
+            if (err != nil) {
+                println(err)
+            }
+            completion?(err == nil)
+        }
+    }
+    
+    func fetch() {
+        // get the friends ids from parse
+        parseUser.fetch()
+        fetchFriends(false)
+    }
+    
+    func isFriendsWith(user: User) -> Bool {
+        return (friendIDs as NSArray).containsObject(user.parseUser.objectId)
     }
     
     deinit {
