@@ -135,11 +135,6 @@ class NetworkingViewController: UIViewController {
     
     // MARK: eateryAPI methods
     func eateryAPIButtonPressed(sender: UIButton) {
-        DataManager.sharedInstance.getCalendar("ivy_room", completion: { (error, result) -> Void in
-            if error != nil {
-                println(result)
-            }
-        })
 //        DataManager.sharedInstance.updateMenus()
         //// Get a list of dining areas
 //        DataManager.sharedInstance.getCalendars { (error, result) -> Void in

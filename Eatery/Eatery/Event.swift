@@ -27,7 +27,6 @@ class Event: NSObject {
         summary = aDecoder.decodeObjectForKey("summary") as String
         start = aDecoder.decodeObjectForKey("start") as NSDate
         end = aDecoder.decodeObjectForKey("end") as NSDate
-        
     }
     
     func encodeWithCoder(aCoder: NSCoder) {

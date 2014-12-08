@@ -9,36 +9,30 @@ import UIKit
 
 class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
-    //var places = [DiningHall]()
     var filteredPlaces: [DiningHall] = []
     
     override func viewDidLoad() {
-        
 		super.viewDidLoad()
 
-        var nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "EatNowTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "eatNowCell")
         
         tableView.rowHeight = 95
         
         let customblue = UIColor(red:(77/255.0), green:(133/255.0), blue:(199/255.0), alpha:1.0);
 
-        self.navigationController?.navigationBar.barTintColor = customblue
-
-        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search:"), animated: true)
+        navigationController?.navigationBar.barTintColor = customblue
+        navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search:"), animated: true)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort by", style: UIBarButtonItemStyle.Plain, target: self, action: "sortBy:")
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort by", style: UIBarButtonItemStyle.Plain, target: self, action: "sortBy:")
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir Next", size: 20)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir Next", size: 20)!]
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
-        DataManager.sharedInstance.loadTestData()
-        print(DataManager.sharedInstance.diningHalls)
-        
-        self.tableView.reloadData()
+        DataManager.sharedInstance.updateDiningHalls {
+            self.tableView.reloadData()
+        }
+        LocationManager.sharedInstance
     }
     
     // MARK: - Actions
@@ -47,7 +41,7 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
         
         let sortByViewController = SortByTableViewController()
         let navController = UINavigationController(rootViewController: sortByViewController)
-        self.presentViewController(navController, animated: true, completion: nil)
+        presentViewController(navController, animated: true, completion: nil)
         
     }
     
@@ -102,12 +96,20 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Testing
-        DataManager.sharedInstance.diningHalls[0].pullMenuData {
-            println($0)
+        
+        if tableView == searchDisplayController!.searchResultsTableView {
+            filteredPlaces[indexPath.row].pullMenuData {
+                println($0)
+            }
+        } else {
+            DataManager.sharedInstance.diningHalls[indexPath.row].pullMenuData {
+                println($0)
+            }
         }
         
+        
         let detailViewController = DetailViewController()
-        self.navigationController?.pushViewController(detailViewController, animated: true)
+        navigationController?.pushViewController(detailViewController, animated: true)
         
     }
 }

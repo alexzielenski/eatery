@@ -77,7 +77,7 @@ enum Router: URLStringConvertible {
             case .Location(let locationID):
                 return "/location/\(locationID)"
             }
-        }()
+            }()
         return Router.baseURLString + path
     }
 }
@@ -93,88 +93,39 @@ class DataManager: NSObject {
         return Static.instance
     }
     
-    func alamoTest(completion:(error: NSError?) -> Void) {
-        println("\nfunc alamoTest()")
-        let parameters = [
-            "foo" : "bar"
-        ]
-        Alamofire
-            .request(.GET, "http://httpbin.org/get", parameters: parameters, encoding: .URL)
-            .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
-                printNetworkResponse(request, response, data, error)
-                if let e = error {
-                    completion(error: e) // send error to completion closure
-                } else {
-                    if let swiftyJSON = JSON(rawValue: data!) { // if object can be converted to JSON
-                        
-                        println("SwiftyJSON values:")
-                        if let host = swiftyJSON["headers"]["Host"].string {
-                            println("host: \(host)")
-                        } else {
-                            println("error getting value for key: " + "swiftyJSON[\"headers\"][\"Host\"]")
-                        }
-                        
-                        let url = swiftyJSON["url"].stringValue
-                        println("url: \(url)")
-                        
-                        completion(error: nil) // call completion closure when request is complete
-                    }
-                }
-        }
-    }
-    
-    func getCalendars(completion:(error: NSError?, result: [String]?) -> Void) {
-        println("\nfunc getCalendars()")
-        Alamofire
-            .request(.GET, Router.Calendars)
-            .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
-                if let e = error {
-                    completion(error: e, result: nil)
-                } else {
-                    if let swiftyJSON = JSON(rawValue: data!) {
-                        let diningAreas = swiftyJSON.arrayValue
-                        var result = diningAreas.map { element -> DiningHall in
-                            return DiningHall(json: element)
-                        }
-                        
-                        self.diningHalls = result
-                        
-                        completion(error: nil, result: nil)
-                    }
-                }
-            }
-    }
-    
-    func getCalendar(id: String, completion:(error: NSError?, result: [String]?) -> Void) {
-        println("\nfunc getCalendars()")
+    private func updateDiningHall(id: String, completion:() -> Void) {
         Alamofire
             .request(.GET, Router.Calendar(id))
-            .responseJSON { (request, response, data, error) -> Void in
+            .responseJSON { (_, _, data, error) -> Void in
                 if let e = error {
-                    completion(error: e, result: nil)
+                    println("Error in pulling dining hall")
                 } else {
                     if let swiftyJSON = JSON(rawValue: data!) {
                         let diningHall = DiningHall(json: swiftyJSON)
-                        println(diningHall)
-                        self.diningHalls.append(diningHall)
-                        
-                        completion(error: nil, result: nil)
+                        var shouldAdd = true
+                        for (i, hall) in enumerate(self.diningHalls) {
+                            if hall.id == id {
+                                self.diningHalls[i] = hall
+                                shouldAdd = false
+                                break
+                            }
+                        }
+                        if shouldAdd {
+                            self.diningHalls.append(diningHall)
+                        }
+                        completion()
                     }
                 }
         }
     }
     
-    func updateCalendars(completion:()->()) {
-        dispatch_async(DISPATCH_QUEUE_PRIORITY_DEFAULT) {
-            
+    // Completion block currently being called multiple times for each network request
+    
+    func updateDiningHalls(completion:() -> Void) {
+        for id in calIDs {
+            self.updateDiningHall(id, completion)
         }
     }
-    
-//    func updateMenus() {
-//        for menuID in menuIDs {
-//            updateMenu(menuID) {if $0 != nil { printn($0) }}
-//        }
-//    }
     
     func updateMenu(id: String, completion:(menu: Menu?) -> Void) {
         if !contains(menuIDs, id) {
