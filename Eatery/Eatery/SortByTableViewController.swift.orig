@@ -52,7 +52,11 @@ class SortByTableViewController: UITableViewController, UITableViewDataSource, U
    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 0f7d40ba9d190377a1f218584043f6ae47d87e15
         cell.textLabel?.text = options[indexPath.row]
         return cell
     }
