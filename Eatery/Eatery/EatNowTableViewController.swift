@@ -92,21 +92,20 @@ class EatNowTableViewController: UITableViewController, UISearchBarDelegate, UIS
             var stringMatch = hall.name.lowercaseString.rangeOfString(searchText.lowercaseString)
             return (stringMatch != nil)
         })
-        
-      
     }
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
-       
-    
         self.filterContentForSearchText(searchString)
         return true
     }
   
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      
-//        let detailViewController =  EatNowDetailViewController(nibName: "DetailViewController", bundle: nil)
+        // Testing
+        DataManager.sharedInstance.diningHalls[0].pullMenuData {
+            println($0)
+        }
+        
         let detailViewController = DetailViewController()
         self.navigationController?.pushViewController(detailViewController, animated: true)
         

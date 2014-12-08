@@ -20,7 +20,6 @@ class Menu: NSObject {
         brunch = data["brunch"].arrayValue.map(toMenuItem)
         lunch = data["lunch"].arrayValue.map(toMenuItem)
         dinner = data["dinner"].arrayValue.map(toMenuItem)
-        super.init()
     }
     
     override var description: String {
@@ -41,7 +40,6 @@ class MenuItem: NSObject {
         self.category = category
         self.name = name
         self.healthy = healthy
-        super.init()
     }
     
     override var description: String {
