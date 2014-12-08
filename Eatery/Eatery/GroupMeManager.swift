@@ -10,8 +10,6 @@ import Foundation
 import Alamofire
 
 
-
-
 class GroupMeManager: NSObject {
     
     /**
@@ -68,7 +66,7 @@ class GroupMeManager: NSObject {
     
     func getGroups() {
         let parameters = [
-            "token" : User.sharedInstance.groupmeAccessToken!
+            "token" : User.currentUser!.groupmeApiKey
         ]
         Alamofire
             .request(.GET, Router.Groups, parameters: parameters, encoding: .URL)
@@ -83,7 +81,7 @@ class GroupMeManager: NSObject {
         let accessToken = query.componentsSeparatedByString("=")[1]
         println("ACCESS TOKEN = \(accessToken)")
         
-        User.sharedInstance.groupmeAccessToken = accessToken
+        User.currentUser!.groupmeApiKey = accessToken
         
         GroupMeManager.sharedInstance.getGroups()
         

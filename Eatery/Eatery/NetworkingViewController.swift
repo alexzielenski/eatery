@@ -116,7 +116,7 @@ class NetworkingViewController: UIViewController {
         
         }*/
 //        println((User.sharedInstance.friendsList as AnyObject).valueForKeyPath("parseUser"));
-        PFCloud.callFunctionInBackground("addFriend", withParameters: ["initiator": "YQEhKcmOe7", "target": "513eebJKlB"]) { (res, err) -> Void in
+        PFCloud.callFunctionInBackground("addFriend", withParameters: ["initiator": "eypeyUJkcC", "target": "efvmWhInFX"]) { (res, err) -> Void in
             println(res)
             println(err)
         }

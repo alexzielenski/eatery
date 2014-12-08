@@ -9,12 +9,19 @@
 import UIKit
 
 class FriendsListTableViewCell: UITableViewCell {
-    @IBOutlet var friendIndicator: UIImageView!;
+    @IBOutlet var friendIndicator: UIButton!;
     @IBOutlet var titleField: UILabel!
+    @IBOutlet var profilePictureView: UIImageView!
+    
+    var touchHandler: ((FriendsListTableViewCell) -> ())?
     
     required init(coder aDecoder: NSCoder) {
-        friendIndicator = UIImageView(frame: CGRectZero)
         super.init(coder: aDecoder)
+    }
+    
+    @IBAction func friendIndicatorPressed(sender: AnyObject?) {
+        println("friend pressed")
+        touchHandler?(self);
     }
 
     // indication of the user being friends with this user
@@ -22,25 +29,13 @@ class FriendsListTableViewCell: UITableViewCell {
     var isFriend: Bool = false {
         didSet {
             if (isFriend) {
-                friendIndicator.image = UIImage(named: "appel.jpg")
+                friendIndicator.imageView?.image = UIImage(named: "heart.jpg")
             } else {
-                friendIndicator.image = UIImage(named: "UIApplicationIcon")                
+                friendIndicator.imageView?.image = UIImage(named: "ploos.png")
             }
-            
         }
     }
-
-    let IMAGESIZE: CGFloat = 32
-    let PADDING: CGFloat = 20
-    override func layoutSubviews() {
-        contentView.addSubview(friendIndicator)
-        friendIndicator.frame = CGRect(x: frame.size.width - IMAGESIZE - PADDING, y: CGRectGetMidY(frame) - (IMAGESIZE / 2), width: IMAGESIZE, height: IMAGESIZE)
-        super.layoutSubviews()
-        
-        isFriend = true
-        println("layout");
-    }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

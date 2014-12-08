@@ -57,6 +57,11 @@
 		C09640931A081D2700F3841F /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640921A081D2700F3841F /* BeaconViewController.swift */; };
 		C09640971A081DC000F3841F /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640961A081DC000F3841F /* FriendsViewController.swift */; };
 		C096409B1A081E8C00F3841F /* EatNowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */; };
+<<<<<<< HEAD
+		C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */; };
+		C09851561A3001B5000E1E27 /* User2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09851551A3001B5000E1E27 /* User2.swift */; };
+=======
+>>>>>>> fd36ca9c07c543793cf54dd9b3379c2807c61164
 		C0A171B91A06FD480005BC03 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */; };
 		C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */; };
 		E28F39D81A2FFC140060AC19 /* EatNowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28F39D71A2FFC140060AC19 /* EatNowTableViewCell.xib */; };
@@ -68,6 +73,8 @@
 		FA89C0961A10057600725E2C /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C0941A10057600725E2C /* GroupsCollectionViewController.swift */; };
 		FA89C0971A10057600725E2C /* GroupsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA89C0951A10057600725E2C /* GroupsCollectionViewController.xib */; };
 		FA89C0991A10058100725E2C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C0981A10058100725E2C /* User.swift */; };
+		FABCA4E21A338E55004A24A2 /* heart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FABCA4E01A338E55004A24A2 /* heart.jpg */; };
+		FABCA4E31A338E55004A24A2 /* ploos.png in Resources */ = {isa = PBXBuildFile; fileRef = FABCA4E11A338E55004A24A2 /* ploos.png */; };
 		FAF8B1561A2FFA4500E1E56E /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8B1541A2FFA4500E1E56E /* FriendsListTableViewCell.swift */; };
 		FAF8B1571A2FFA4500E1E56E /* FriendsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF8B1551A2FFA4500E1E56E /* FriendsListTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -172,6 +179,11 @@
 		C09640921A081D2700F3841F /* BeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewController.swift; sourceTree = "<group>"; };
 		C09640961A081DC000F3841F /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		C09640991A081E8C00F3841F /* EatNowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatNowTableViewCell.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		C096409A1A081E8C00F3841F /* EatNowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableViewCell.xib; sourceTree = "<group>"; };
+		C09851551A3001B5000E1E27 /* User2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User2.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> fd36ca9c07c543793cf54dd9b3379c2807c61164
 		C0A171B81A06FD480005BC03 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0C1D0F21A072D08004B31D7 /* NSError+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Alert.swift"; sourceTree = "<group>"; };
 		E28F39D71A2FFC140060AC19 /* EatNowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatNowTableViewCell.xib; sourceTree = "<group>"; };
@@ -183,6 +195,8 @@
 		FA89C0941A10057600725E2C /* GroupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsCollectionViewController.swift; path = src/views/GroupsCollectionViewController.swift; sourceTree = "<group>"; };
 		FA89C0951A10057600725E2C /* GroupsCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupsCollectionViewController.xib; path = src/views/GroupsCollectionViewController.xib; sourceTree = "<group>"; };
 		FA89C0981A10058100725E2C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FABCA4E01A338E55004A24A2 /* heart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = heart.jpg; path = assets/heart.jpg; sourceTree = "<group>"; };
+		FABCA4E11A338E55004A24A2 /* ploos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ploos.png; path = assets/ploos.png; sourceTree = "<group>"; };
 		FAF8B1541A2FFA4500E1E56E /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsListTableViewCell.swift; path = src/views/FriendsListTableViewCell.swift; sourceTree = "<group>"; };
 		FAF8B1551A2FFA4500E1E56E /* FriendsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendsListTableViewCell.xib; path = src/views/FriendsListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -337,6 +351,7 @@
 			children = (
 				C096408C1A08188B00F3841F /* TabBarController.swift */,
 				C09640941A081D3800F3841F /* Eat Now */,
+				C09640951A081D3D00F3841F /* Beacon */,
 				C09640981A081DC800F3841F /* Friends */,
 				C06149291A0C068500AB4DEF /* Facebook */,
 			);
@@ -347,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				FA89C0981A10058100725E2C /* User.swift */,
+				C09851551A3001B5000E1E27 /* User2.swift */,
 				1D92BD631A1D73D8001C1045 /* Menu.swift */,
 				1DD756C81A0CAC520061891B /* DiningHall.swift */,
 				1DD756C91A0CAC530061891B /* Event.swift */,
@@ -357,6 +373,8 @@
 		C01E041A19E5C73F0050E8C7 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FABCA4E01A338E55004A24A2 /* heart.jpg */,
+				FABCA4E11A338E55004A24A2 /* ploos.png */,
 				9515D68A1A194DFF0070EA2D /* Keys.plist */,
 				C007CAC419E1BEAC00E3BD46 /* AppDelegate.swift */,
 				C01E041419E5C6FF0050E8C7 /* Constants.swift */,
@@ -443,7 +461,6 @@
 				E2BB8B2C1A1943380090FD0D /* EatNowTableView.xib */,
 				6DC708461A100AB3002F56A0 /* EatNowDetailViewController.swift */,
 				E2C2BF071A1074730027C86C /* SortByTableViewController.swift */,
-				C09640951A081D3D00F3841F /* Beacon */,
 				E2C2BF0A1A1074800027C86C /* SortByTableViewController.xib */,
 			);
 			name = "Eat Now";
@@ -460,11 +477,11 @@
 		C09640981A081DC800F3841F /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				C09640961A081DC000F3841F /* FriendsViewController.swift */,
 				FAF8B1541A2FFA4500E1E56E /* FriendsListTableViewCell.swift */,
 				FAF8B1551A2FFA4500E1E56E /* FriendsListTableViewCell.xib */,
 				FA89C0941A10057600725E2C /* GroupsCollectionViewController.swift */,
 				FA89C0951A10057600725E2C /* GroupsCollectionViewController.xib */,
-				C09640961A081DC000F3841F /* FriendsViewController.swift */,
 			);
 			name = Friends;
 			sourceTree = "<group>";
@@ -615,6 +632,7 @@
 				C033B3FE1A0AB7FD000EFB98 /* ProfileViewController.xib in Resources */,
 				6DC708451A0FDA63002F56A0 /* appel.jpg in Resources */,
 				C007CACA19E1BEAC00E3BD46 /* Main.storyboard in Resources */,
+				FABCA4E21A338E55004A24A2 /* heart.jpg in Resources */,
 				C096409C1A081E8C00F3841F /* EatNowTableViewCell.xib in Resources */,
 				6DC708491A100AB3002F56A0 /* EatNowDetailViewController.xib in Resources */,
 				FAF8B1571A2FFA4500E1E56E /* FriendsListTableViewCell.xib in Resources */,
@@ -625,6 +643,7 @@
 				E2BB8B2D1A1943380090FD0D /* EatNowTableView.xib in Resources */,
 				FA89C0971A10057600725E2C /* GroupsCollectionViewController.xib in Resources */,
 				C007CACC19E1BEAC00E3BD46 /* Images.xcassets in Resources */,
+				FABCA4E31A338E55004A24A2 /* ploos.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +682,7 @@
 				1DD756CA1A0CAC530061891B /* DiningHall.swift in Sources */,
 				C0C1D0F31A072D09004B31D7 /* NSError+Alert.swift in Sources */,
 				C033B3FA1A0AB372000EFB98 /* AF+Date+Extension.swift in Sources */,
+				C09851561A3001B5000E1E27 /* User2.swift in Sources */,
 				C037F36D1A07583C0061B57F /* UIColor+ColorScheme.swift in Sources */,
 				C0ECB46C1A1D83F500E5C708 /* GroupMeManager.swift in Sources */,
 				C09640901A08191900F3841F /* EatNowTableViewController.swift in Sources */,

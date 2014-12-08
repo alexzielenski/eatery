@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController {
 
     @IBAction func fbButtonPressed(sender: facebookLoginButton) {
         if sender.loginState == .LoggedOut {
-            User.sharedInstance.login({ (error) -> Void in
+            User.login({ (user, error) -> Void in
                 if error != nil {
                     error!.showAlert()
                 } else {
