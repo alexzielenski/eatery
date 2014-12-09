@@ -26,6 +26,7 @@ class SortByTableViewController: UITableViewController, UITableViewDataSource, U
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancel:"), animated: true)
+    
     }
     
     // MARK: - Actions
@@ -51,7 +52,6 @@ class SortByTableViewController: UITableViewController, UITableViewDataSource, U
    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-
         cell.textLabel?.text = options[indexPath.row]
         return cell
     }

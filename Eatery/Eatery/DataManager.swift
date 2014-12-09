@@ -26,6 +26,8 @@ enum MealType: String {
     case Dinner = "Dinner"
 }
 
+let calIDs = ["104west", "amit_bhatia_libe_cafe", "atrium_cafe", "bear_necessities", "bears_den", "becker_house_dining_room", "big_red_barn", "cafe_jennie", "carols_cafe", "cascadeli", "cook_house_dining_room", "cornell_dairy_bar", "goldies", "green_dragon", "ivy_room", "jansens_dining_room,_bethe_house", "jansens_market", "keeton_house_dining_room", "marthas_cafe", "mattins_cafe", "north_star", "okenshields", "risley_dining", "robert_purcell_marketplace_eatery", "rose_house_dining_room", "rustys", "synapsis_cafe", "trillium"]
+
 let menuIDs = ["cook_house_dining_room", "becker_house_dining_room", "keeton_house_dining_room", "rose_house_dining_room", "jansens_dining_room,_bethe_house", "robert_purcell_marketplace_eatery", "north_star", "risley_dining", "104west", "okenshields"]
 
 /**
@@ -75,7 +77,7 @@ enum Router: URLStringConvertible {
             case .Location(let locationID):
                 return "/location/\(locationID)"
             }
-        }()
+            }()
         return Router.baseURLString + path
     }
 }
@@ -91,111 +93,54 @@ class DataManager: NSObject {
         return Static.instance
     }
     
-    func alamoTest(completion:(error: NSError?) -> Void) {
-        println("\nfunc alamoTest()")
-        let parameters = [
-            "foo" : "bar"
-        ]
+    private func updateDiningHall(id: String, completion:() -> Void) {
         Alamofire
-            .request(.GET, "http://httpbin.org/get", parameters: parameters, encoding: .URL)
-            .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
-                printNetworkResponse(request, response, data, error)
+            .request(.GET, Router.Calendar(id))
+            .responseJSON { (_, _, data, error) -> Void in
                 if let e = error {
-                    completion(error: e) // send error to completion closure
+                    println("Error in pulling dining hall")
                 } else {
-                    if let swiftyJSON = JSON(rawValue: data!) { // if object can be converted to JSON
-                        
-                        println("SwiftyJSON values:")
-                        if let host = swiftyJSON["headers"]["Host"].string {
-                            println("host: \(host)")
-                        } else {
-                            println("error getting value for key: " + "swiftyJSON[\"headers\"][\"Host\"]")
+                    if let swiftyJSON = JSON(rawValue: data!) {
+                        let diningHall = DiningHall(json: swiftyJSON)
+                        var shouldAdd = true
+                        for (i, hall) in enumerate(self.diningHalls) {
+                            if hall.id == id {
+                                self.diningHalls[i] = hall
+                                shouldAdd = false
+                                break
+                            }
                         }
-                        
-                        /*
-                        Use .xxxValue to get the non-optional value
-                        *
-                        *  BEWARE:
-                        *  These are the values you will get if nil (taken from SwiftyJSON github page ( https://github.com/SwiftyJSON/SwiftyJSON#non-optional-getter )
-                        *
-                        **    If not a Number or nil, return 0
-                        **    If not a String or nil, return ""
-                        **    If not a Array or nil, return []
-                        **    If not a Dictionary or nil, return [:]
-                        *
-                        */
-                        let url = swiftyJSON["url"].stringValue
-                        println("url: \(url)")
-                        
-                        completion(error: nil) // call completion closure when request is complete
+                        if shouldAdd {
+                            self.diningHalls.append(diningHall)
+                        }
+                        completion()
                     }
                 }
         }
     }
     
-    func getCalendars(completion:(error: NSError?, result: [String]?) -> Void) {
-        println("\nfunc getCalendars()")
-        Alamofire
-            .request(.GET, Router.Calendars, parameters: nil, encoding: .URL)
-            .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
-                if let e = error {
-                    completion(error: e, result: nil)
-                } else {
-                    if let swiftyJSON = JSON(rawValue: data!) {
-                        let diningAreas = swiftyJSON.arrayValue
-                        print(diningAreas)
-                        var result = diningAreas.map({ (element: JSON) -> DiningHall in
-                            return DiningHall(json: element)
-                        })
-                        
-                        self.diningHalls = result
-                        
-                        completion(error: nil, result: nil)
-                    }
-                }
-            }
-    }
+    // Completion block currently being called multiple times for each network request
     
-    func getCalendar(id: String, completion:(error: NSError?, result: [String]?) -> Void) {
-        println("\nfunc getCalendars()")
-        Alamofire
-            .request(.GET, Router.Calendar(id), parameters: nil, encoding: .URL)
-            .responseJSON { (request : NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void in
-                if let e = error {
-                    completion(error: e, result: nil)
-                } else {
-                    if let swiftyJSON = JSON(rawValue: data!) {
-                        
-                        self.diningHalls.append(DiningHall(json: swiftyJSON))
-                        
-                        completion(error: nil, result: nil)
-                    }
-                }
+    func updateDiningHalls(completion:() -> Void) {
+        for id in calIDs {
+            self.updateDiningHall(id, completion)
         }
     }
     
-    func updateMenus() {
-        for menuID in menuIDs {
-            updateMenu(menuID) {if $0 != nil { print($0) }}
-        }
-    }
-    
-    func updateMenu(id: String, completion:((error: NSError?) -> Void)?) {
+    func updateMenu(id: String, completion:(menu: Menu?) -> Void) {
         if !contains(menuIDs, id) {
-            completion?(error: NSError())
+            completion(menu: nil)
             return
         }
         Alamofire
-            .request(.GET, Router.Menu(id), parameters: nil, encoding: .URL)
+            .request(.GET, Router.Menu(id))
             .responseJSON { (_, _, data: AnyObject?, error: NSError?) -> Void in
                 if let e = error {
-                    completion?(error: e)
+                    completion(menu: nil)
                 } else {
                     if let swiftyJSON = JSON(rawValue: data!) {
-                        
-                        print("\(id):\n\(Menu(data: swiftyJSON))")
-                        
-                        completion?(error: nil)
+                        let menu = Menu(data: swiftyJSON)
+                        completion(menu: Menu(data: swiftyJSON))
                     }
                 }
         }
@@ -206,12 +151,11 @@ class DataManager: NSObject {
             DiningHall(location: CLLocation(), name: "North Star", summary: "North Star Summary", paymentMethods: ["BRB", "cash", "swipe"], hours: [], id: "north_star"),
             DiningHall(location: CLLocation(), name: "104 West", summary: "104 West Summary", paymentMethods: ["BRB", "swipe"], hours: [], id: "104west"),
             DiningHall(location: CLLocation(), name: "Cascadeli", summary: "Cascadeli Summary", paymentMethods: ["cash", "swipe"], hours: [], id: "cascadeli"),
-            DiningHall(location: CLLocation(), name: "okenshields", summary: "Okenshields Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "okenshields"),
+            DiningHall(location: CLLocation(), name: "Okenshields", summary: "Okenshields Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "okenshields"),
             DiningHall(location: CLLocation(), name: "Goldies", summary: "Goldies Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "goldies"),
             DiningHall(location: CLLocation(), name: "Ivy Room", summary: "Ivy Room Summary", paymentMethods: ["BRB", "cash"], hours: [], id: "ivy_room")
         ]
     }
-    
 }
 
 func printNetworkResponse(request: NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) {
