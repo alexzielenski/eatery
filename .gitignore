@@ -16,3 +16,4 @@ DerivedData
 *.xcuserstate
 Eatery/Eatery/Keys.plist
 *.DS_Store
+*.orig
